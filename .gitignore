@@ -1,0 +1,10 @@
+ .settings/
+ .classpath
+ .project
+ .springBeans
+ 
+ 
+git rm -r --cached .
+git add . 
+git commit -m "cache removed"
+git push
