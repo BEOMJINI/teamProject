@@ -25,4 +25,8 @@
 		select * from member where id=#{id}
 	</select>
 
+
+	<select id="memberLogin" parameterType="String" resultMap="member">
+		select id from member where id=#{id} and pw=#{pw}
+	</select>
 </mapper>

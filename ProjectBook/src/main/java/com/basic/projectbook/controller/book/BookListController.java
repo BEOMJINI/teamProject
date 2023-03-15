@@ -18,6 +18,8 @@ public class BookListController implements Controller{
 		boolean best = Boolean.parseBoolean(request.getParameter("best"));
 		if(best == true) {
 			best = false;
+			
+			
 			return "book/bookListBest";
 		}
 		

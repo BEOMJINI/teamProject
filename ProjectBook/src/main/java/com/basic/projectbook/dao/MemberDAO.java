@@ -27,6 +27,13 @@ public class MemberDAO {
 		return vo;
 	}
 	
+	public String memberLogin(MemberVO vo) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		String x = session.selectOne("mapper.member.memberLogin", vo);
+		return x;
+	}
+	
+	
 	public int testnum() {
 		int x =3 ;
 		return x;
