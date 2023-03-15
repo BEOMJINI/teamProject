@@ -37,8 +37,8 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
 </head>
-<body>
-
+<body >
+	<div class="fixed-top ">
 	<nav
 		class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block"
 		id="templatemo_nav_top">
@@ -67,7 +67,7 @@
 
 
 	<!-- Header -->
-	<nav class="navbar navbar-expand-lg navbar-light shadow">
+	<nav class="navbar navbar-expand-lg navbar-light shadow bg-white">
 		<div
 			class="container d-flex justify-content-between align-items-center">
 
@@ -126,3 +126,11 @@
 
 		</div>
 	</nav>
+	</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+	
