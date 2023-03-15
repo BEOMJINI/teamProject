@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>책방</title>
 <script
 	src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <link
@@ -57,8 +57,15 @@
 					<a class="text-light" href="https://www.instagram.com/"
 						target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
 					<a class="text-light" href="https://twitter.com/" target="_blank"><i
-						class="fab fa-twitter fa-sm fa-fw me-2"></i></a> <a class="text-light"
-						href="#">회원가입</a> <a class="text-light" href="#">로그인</a>
+						class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+
+					<c:if test="${id eq null}">
+						<a class="text-light" href="#">회원가입</a>
+						<a class="text-light" href="${ctx }/login.do">로그인</a>
+					</c:if>
+					<c:if test="${id ne null}">
+						<a class="text-light" href="${ctx }/logout.do">로그아웃</a>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -89,13 +96,13 @@
 						class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
 						<li class="nav-item"><a class="nav-link" href="${ctx }/main.do">Home</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="about.html">베스트셀러</a>
+						<li class="nav-item"><a class="nav-link" href="${ctx }/bookList.do?best=true">베스트셀러</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="${ctx }/bookList.do">책
 								구매</a></li>
 						<li class="nav-item"><a class="nav-link" href="${ctx }/shopMain.do">지점
 								안내</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">이벤트</a>
+						<li class="nav-item"><a class="nav-link" href="${ctx }/eventMain.do">이벤트</a>
 						</li>
 					</ul>
 				</div>

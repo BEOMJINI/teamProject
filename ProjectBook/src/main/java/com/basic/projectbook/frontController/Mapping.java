@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.basic.projectbook.controller.book.BookListController;
+import com.basic.projectbook.controller.event.EventMainController;
+import com.basic.projectbook.controller.member.LogInController;
+import com.basic.projectbook.controller.member.LogOutController;
 import com.basic.projectbook.controller.shop.ShopMainController;
 
 public class Mapping {
@@ -15,6 +18,8 @@ public class Mapping {
 		mapping.put("/main.do", new MainController());
 		
 		// member controller
+		mapping.put("/login.do", new LogInController());
+		mapping.put("/logout.do", new LogOutController());
 		
 		// book controller
 		mapping.put("/bookList.do", new BookListController());
@@ -22,6 +27,8 @@ public class Mapping {
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());
 		
+		// event controller
+		mapping.put("/eventMain.do", new EventMainController());
 	}
 	
 	public Controller getController(String key) {
