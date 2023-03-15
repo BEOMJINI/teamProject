@@ -21,6 +21,9 @@ public class LogInController implements Controller{
 		
 		
 		String id = request.getParameter("id");
+		if(id == null) {
+			return "member/login";
+		}
 		String pw = request.getParameter("pw");
 		
 		MemberVO vo = new MemberVO();
@@ -32,7 +35,7 @@ public class LogInController implements Controller{
 		
 		HttpSession session = request.getSession();
 		if(x != null) {
-			session.setAttribute("logId", x);
+			session.setAttribute("id", x);
 			
 		}
 		response.getWriter().print(x);
