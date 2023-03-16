@@ -12,7 +12,7 @@
 
 			<div id="view_login">
 				<div id="title" class="mt-3 mb-3">
-					<font size="30px" style="font-weight: bold;" color="#00BFFF">Login</font>
+					<font size="30px" style="font-weight: bold;" color="#00BFFF">로그인</font>
 				</div>
 				<div class="form-floating mb-3">
 					<input type="text" class="form-control" id="id" placeholder="ID"
