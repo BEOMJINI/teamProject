@@ -8,7 +8,7 @@ public class MemberVO {
 	private String pw;
 	private String email;
 	private String phone;
-	private String genre;
+	private String interest;
 	private String address;
 	private int mileage;
 	public int getNo() {
@@ -47,11 +47,11 @@ public class MemberVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getGenre() {
-		return genre;
+	public String getInterest() {
+		return interest;
 	}
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setInterest(String interest) {
+		this.interest = interest;
 	}
 	public String getAddress() {
 		return address;

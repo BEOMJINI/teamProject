@@ -12,7 +12,7 @@
 		<result property="pw" column="pw" />
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
-		<result property="genre" column="genre" />
+		<result property="interest" column="interest" />
 		<result property="address" column="address" />
 		<result property="mileage" column="mileage" />
 	</resultMap>
@@ -29,4 +29,9 @@
 	<select id="memberLogin" parameterType="member" resultType="String">
 		select id from member where id=#{id} and pw=#{pw}
 	</select>
+	
+	<insert id="memberInsert" parameterType="member">
+		insert into member (name, id, pw, email, phone, interest, address) values(#{name}, #{id}, #{pw}, #{email}, #{phone}, #{interest}, #{address})
+	</insert>
+	
 </mapper>

@@ -34,6 +34,13 @@ public class MemberDAO {
 	}
 	
 	
+	public int memberJoin(MemberVO vo) {
+		SqlSession ss = MybatisConfig.getInstance().openSession(true);
+		int y = ss.insert("mapper.member.memberInsert", vo);
+		ss.close();
+		return y;
+	}
+	
 	public int testnum() {
 		int x =3 ;
 		return x;

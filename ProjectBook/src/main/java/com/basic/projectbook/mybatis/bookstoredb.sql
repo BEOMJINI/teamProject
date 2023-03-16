@@ -9,13 +9,13 @@ id varchar(30) unique key not null,
 pw varchar(30) not null,
 email varchar(30) not null,
 phone varchar(30) not null,
-genre varchar(30) not null,
+interest varchar(30),
 address varchar(50) not null,
 mileage int not null default 0
 );
 
 
-INSERT INTO member (name, id, pw, email, phone, genre, address) VALUES
+INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
 ('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
 ('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
 ('관리자', 'admin', 'admin', 'admin@admin.com','010-1111-1111', '관리자', '관리자');
@@ -23,6 +23,7 @@ INSERT INTO member (name, id, pw, email, phone, genre, address) VALUES
 select * from member;
 delete from member;
 drop table member;
+
 delete from book;
 
 
@@ -83,3 +84,4 @@ INSERT INTO book (name, price, genre, qty, country, sale, img, writer, info, pub
 
 select * from book;
 drop table book;
+delete from book;
