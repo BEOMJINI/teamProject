@@ -47,8 +47,9 @@
 				<div>
 					<i class="fa fa-envelope mx-2"></i> <a
 						class="navbar-sm-brand text-light text-decoration-none"
-						href="https://www.naver.com/" target="_blank">BOOK@naver.com</a> <i
-						class="fa fa-phone mx-2"></i> <a
+						href="https://www.naver.com/" target="_blank">BOOK@naver.com</a> 
+							&nbsp;&nbsp;&nbsp;&nbsp;
+						<i class="fa fa-phone mx-2"></i> <a
 						class="navbar-sm-brand text-light text-decoration-none">1544-1234</a>
 				</div>
 				<div>
@@ -58,13 +59,16 @@
 						target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
 					<a class="text-light" href="https://twitter.com/" target="_blank"><i
 						class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-
+						&nbsp;&nbsp;&nbsp;&nbsp;
 					<c:if test="${id eq null}">
-						<a class="text-light" href="#">회원가입</a>
-						<a class="text-light" href="${ctx }/login.do">로그인</a>
+						<a class="text-light" href="${ctx }/join.do" style="text-decoration: none;">회원가입</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="text-light" href="${ctx }/login.do" style="text-decoration: none;">로그인</a>
 					</c:if>
 					<c:if test="${id ne null}">
-						<a class="text-light" href="${ctx }/logout.do">로그아웃</a>
+					<a class="text-light" href="${ctx }/memberUpdate.do" style="text-decoration: none;">회원정보</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="text-light" href="${ctx }/logout.do" style="text-decoration: none;">로그아웃</a>
 					</c:if>
 				</div>
 			</div>
@@ -79,7 +83,7 @@
 			class="container d-flex justify-content-between align-items-center">
 
 			<a class="navbar-brand text-success logo h1 align-self-center"
-				href="${ctx }/main.do"> BOOK </a>
+				href="${ctx }/main.do"> <b>책방</b> </a>
 
 			<button class="navbar-toggler border-0" type="button"
 				data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav"
@@ -94,7 +98,7 @@
 				<div class="flex-fill">
 					<ul
 						class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-						<li class="nav-item"><a class="nav-link" href="${ctx }/main.do">Home</a>
+						<li class="nav-item"><a class="nav-link" href="${ctx }/main.do">홈</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="${ctx }/bookList.do?best=true">베스트셀러</a>
 						</li>
