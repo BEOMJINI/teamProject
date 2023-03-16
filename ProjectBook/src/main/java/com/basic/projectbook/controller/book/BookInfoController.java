@@ -11,33 +11,30 @@ import com.basic.projectbook.dao.BookDAO;
 import com.basic.projectbook.frontController.Controller;
 import com.basic.projectbook.vo.BookVO;
 
-public class BookListController implements Controller{
+public class BookInfoController	implements Controller {
 
 	@Override
 	public String service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		// header 에서 베스트셀러 눌렀을 때
-		boolean best = Boolean.parseBoolean(request.getParameter("best"));
+		int bookno=Integer.parseInt(request.getParameter("bookno"));
 		List<BookVO>list=BookDAO.getInstance().getAllBook();
-		request.setAttribute("list", list);
-		
-		if(best == true) {
-			best = false;
-			
-			
-			return "book/bookListBest";
-		}
-		
-		
-		System.out.println("listsize:"+list.size());
+		System.out.println("bookno:"+bookno);
+		int mileage=0;
+		int discPrice=0;
 		for(int i=0;i<list.size();i++) {
-			System.out.println(list.get(i).getName());
+			if(list.get(i).getNo()==bookno) {
+				request.setAttribute("BookVO", list.get(i));
+				mileage=list.get(i).getPrice()/10;
+				request.setAttribute("mileage", mileage);
+				discPrice=list.get(i).getPrice()*(100-list.get(i).getDiscount())/100;
+				request.setAttribute("discPrice", discPrice);
+				break;
+			}
+			
 		}
+		return "book/bookInfo";
 		
 		
-		
-		return "book/bookListAll";
 	}
 
 }

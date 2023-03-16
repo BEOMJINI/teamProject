@@ -6,6 +6,7 @@
   <properties resource="com/basic/projectbook/mybatis/db.properties"/> 
   <typeAliases>
       <typeAlias type="com.basic.projectbook.vo.MemberVO" alias="member"/>
+      <typeAlias type="com.basic.projectbook.vo.BookVO" alias="book"/>
 
   </typeAliases> 
   
@@ -23,6 +24,6 @@
   
   <mappers>
     <mapper resource="com/basic/projectbook/mybatis/MemberMapper.xml"/>
-   
+   	<mapper resource="com/basic/projectbook/mybatis/BookMapper.xml"/>
   </mappers>
 </configuration>
