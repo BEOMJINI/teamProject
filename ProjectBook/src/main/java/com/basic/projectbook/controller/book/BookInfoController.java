@@ -24,9 +24,9 @@ public class BookInfoController	implements Controller {
 		for(int i=0;i<list.size();i++) {
 			if(list.get(i).getNo()==bookno) {
 				request.setAttribute("BookVO", list.get(i));
-				mileage=list.get(i).getPrice()/10;
+				mileage=list.get(i).getDiscount()/10;
 				request.setAttribute("mileage", mileage);
-				discPrice=list.get(i).getPrice()*(100-list.get(i).getDiscount())/100;
+				discPrice=list.get(i).getDiscount()*(100-list.get(i).getDiscount())/100;
 				request.setAttribute("discPrice", discPrice);
 				break;
 			}
