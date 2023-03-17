@@ -23,6 +23,15 @@
 	<select id="getAllBook" resultMap="book">
 		select * from book
 	</select>
+	<select id="getGenreBook" parameterType="String" resultMap="book">
+		select * from book where genre=#{genre}
+	</select>
+	<select id="getCountryBook" parameterType="String" resultMap="book">
+		select * from book where country=#{country}
+	</select>
+	<select id="getPublisherBook" parameterType="String" resultMap="book">
+		select * from book where publisher=#{publisher}
+	</select>
 
 	<insert id="bookInsert" parameterType="book">
 		insert into book (title, image, author, discount, publisher, pubdate, isbn, description, genre, country) values(#{title}, #{image}, #{author}, #{discount}, #{publisher}, #{pubdate}, #{isbn}, #{description}, #{genre}, #{country})

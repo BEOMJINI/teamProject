@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />    
 <%@ include file="../header.jsp" %>
+
+<h1> ${list.size()}</h1>
 <script type="text/javascript" src="script/booklist.js" defer></script>
 
 <!-- Modal -->
@@ -40,7 +42,7 @@
                         </a>
                         <ul class="collapse show list-unstyled pl-3">
                         <c:forEach var="BookVO" items="${genreList}" varStatus="st">
-                        <li><a class="text-decoration-none" onclick="genre(this)">${BookVO.genre}</a></li>
+                        <li><a class="text-decoration-none" onclick="category(this,'genre')">${BookVO.genre}</a></li>
                         </c:forEach>
                             
                             
@@ -53,7 +55,7 @@
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
                         <c:forEach var="BookVO" items="${countryList}" varStatus="st">
-                        <li><a class="text-decoration-none" onclick="country(this)">${BookVO.country}</a></li>
+                        <li><a class="text-decoration-none" onclick="category(this,'country')">${BookVO.country}</a></li>
                         </c:forEach>
                         </ul>
                     </li>
@@ -63,8 +65,8 @@
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                        <c:forEach var="BookVO" items="${companyList}" varStatus="st">
-                        <li><a class="text-decoration-none" onclick="company(this)">${BookVO.company}</a></li>
+                        <c:forEach var="BookVO" items="${publisherList}" varStatus="st">
+                        <li><a class="text-decoration-none" onclick="category(this,'publisher')">${BookVO.publisher}</a></li>
                         </c:forEach>
                         </ul>
                     </li>
@@ -76,7 +78,7 @@
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">All</a>
+                                <a class="h3 text-dark text-decoration-none mr-3" href="#">모두보기</a>
                             </li>
                             <li class="list-inline-item">
                                 <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
@@ -98,9 +100,11 @@
                 </div>
                 <div class="row">
                 
-                   
-                    <c:forEach var="BookVO" items="${list}" varStatus="st">
+                   	
                     
+                   	
+                    <c:forEach var="BookVO" items="${list}" varStatus="st">
+                   	
                     <div class="col-md-4 ">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
@@ -114,9 +118,9 @@
                                 </div>
                             </div>
                             <div class="card-body text-center mb-0">
-                                <a href="shop-single.html" class="h3 text-decoration-none">${BookVO.name}</a>
+                                <a href="${ctx}/bookinfo.do?bookno=${BookVO.no}" class="h3 text-decoration-none">${BookVO.title}</a>
                                 <ul class="w-100 list-unstyled  mb-0 text-center mb-0">
-                                    <li >${BookVO.writer}</li>
+                                    <li >${BookVO.author}</li>
                                     <li class="pt-2">
                                         <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
                                         <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
@@ -134,11 +138,14 @@
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">${BookVO.company}</p>
+                                <p class="text-center mb-0">${BookVO.publisher}</p>
                             </div>
                         </div>
                     </div>
+                    
                     </c:forEach>
+                    
+                    
                     
                 </div>
                 <div div="row">

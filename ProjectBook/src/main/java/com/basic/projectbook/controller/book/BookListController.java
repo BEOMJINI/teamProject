@@ -21,7 +21,8 @@ public class BookListController implements Controller{
 		// header 에서 베스트셀러 눌렀을 때
 		boolean best = Boolean.parseBoolean(request.getParameter("best"));
 		List<BookVO>list=BookDAO.getInstance().getAllBook();
-		request.setAttribute("list", list);
+		
+		
 		
 		List<BookVO>genreList=new ArrayList<BookVO>();
 		for(int i=0;i<list.size();i++) {
@@ -43,15 +44,35 @@ public class BookListController implements Controller{
 		}
 		request.setAttribute("genreList", genreList);
 		
-		List<BookVO>countryList=new ArrayList<BookVO>();
+		List<BookVO>publisherList=new ArrayList<BookVO>();
 for(int i=0;i<list.size();i++) {
+			
+			if(i==0) {
+				publisherList.add(list.get(i));
+			}
+			boolean check=false;
+			for(int j=0;j<publisherList.size();j++) {
+				if(list.get(i).getPublisher().equals(publisherList.get(j).getPublisher())) {
+					
+					break;
+				}
+				if(j==publisherList.size()-1) {
+					
+					publisherList.add(list.get(i));
+				}
+			}
+		}
+		request.setAttribute("publisherList", publisherList);
+		
+		List<BookVO>countryList=new ArrayList<BookVO>();
+		for(int i=0;i<list.size();i++) {
 			
 			if(i==0) {
 				countryList.add(list.get(i));
 			}
 			boolean check=false;
 			for(int j=0;j<countryList.size();j++) {
-				if(list.get(i).getCountry()==(countryList.get(j).getCountry())) {
+				if(list.get(i).getCountry().equals(countryList.get(j).getCountry())) {
 					
 					break;
 				}
@@ -61,26 +82,9 @@ for(int i=0;i<list.size();i++) {
 				}
 			}
 		}
-request.setAttribute("countryList", countryList);
-List<BookVO>publisherList=new ArrayList<BookVO>();
-for(int i=0;i<list.size();i++) {
-	
-	if(i==0) {
-		publisherList.add(list.get(i));
-	}
-	boolean check=false;
-	for(int j=0;j<publisherList.size();j++) {
-		if(list.get(i).getPublisher().equals(publisherList.get(j).getPublisher())) {
-			
-			break;
-		}
-		if(j==publisherList.size()-1) {
-			
-			publisherList.add(list.get(i));
-		}
-	}
-}
-request.setAttribute("publisherList", publisherList);
+		request.setAttribute("countryList", countryList);
+
+
 		
 		
 		if(best == true) {
@@ -89,12 +93,36 @@ request.setAttribute("publisherList", publisherList);
 			
 			return "book/bookListBest";
 		}
-		
-		
-		System.out.println("listsize:"+list.size());
-		for(int i=0;i<list.size();i++) {
-			System.out.println(list.get(i).getTitle());
+		String cate=null;
+		String key=null;
+		if(request.getParameter("cate")!=null) {
+		 cate=request.getParameter("cate");
 		}
+		if(request.getParameter("key")!=null) {
+			key=request.getParameter("key");
+		}
+		
+		for(int i=0;i<list.size();i++) {
+			
+		}
+		
+		if(cate.equals("country")) {
+			
+			list=BookDAO.getInstance().getCountryBook(key);
+			
+		}
+		else if(cate.equals("publisher")) {
+			
+			list=BookDAO.getInstance().getPublisherBook(key);
+		}
+		else if(cate.equals("genre")) {
+			
+			list=BookDAO.getInstance().getGenreBook(key);
+		}
+		
+		request.setAttribute("list", list);
+		
+		
 		
 		
 		
