@@ -32,10 +32,8 @@ no int auto_increment primary key,
 name varchar(50) not null,
 price int not null,
 genre varchar(30) not null,
-qty int not null,
-store1 int not null default 5,	
-store2 int not null default 3,
-store3 int not null default 4,
+\
+\stroeId
 country int not null,
 sale int not null,
 img varchar(50) not null,
