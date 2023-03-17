@@ -9,11 +9,7 @@ id varchar(30) unique key not null,
 pw varchar(30) not null,
 email varchar(30) not null,
 phone varchar(30) not null,
-<<<<<<< HEAD
-interest varchar(30),
-=======
 interest varchar(30), 
->>>>>>> yjh_dev
 address varchar(50) not null,
 mileage int not null default 0
 );
@@ -28,8 +24,7 @@ foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 }
 
-<<<<<<< HEAD
-=======
+
 create table order{
 no int,
 receive int,
@@ -45,7 +40,6 @@ qty int
 
 }
 
->>>>>>> yjh_dev
 INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
 ('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
 ('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
@@ -55,28 +49,29 @@ select * from member;
 delete from member;
 drop table member;
 
-delete from book;
+
 
 
 create table book(
 no int auto_increment primary key,
 title varchar(50) not null,
-image varchar(50) not null,
+image varchar(2000) not null,
 author varchar(30) not null,
-discount int not null,
+discount varchar(50) not null,
 publisher varchar(30) not null,
-pubdate datetime not null,
+pubdate varchar(50) not null,
 isbn varchar(50) not null ,
-description varchar(1000) not null,
+description varchar(5000) not null,
 genre varchar(30) not null,
-country varchar(30) not null,
-
-
-
-
-
+country varchar(30) not null
 
 );
+
+select * from book;
+delete from book;
+drop table book;
+
+
 create table bookstock{
 no int auto_increment primary key,
 storeid varchar(50),
@@ -90,7 +85,7 @@ create table store{
  no int auto_increment primary key,
  storename varchar(50),
  storeid int,
- foreign key(storeid)references bookstock(storeid) on update cascade on delete cascade
+ foreign key(storeid)references bookstock(storeid) on delete cascade
 }
 
 

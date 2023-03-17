@@ -64,6 +64,8 @@
 						<a class="text-light" href="${ctx }/join.do" style="text-decoration: none;">회원가입</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="text-light" href="${ctx }/login.do" style="text-decoration: none;">로그인</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="text-light" href="${ctx }/api.do" style="text-decoration: none;">api</a>
 					</c:if>
 					<c:if test="${id ne null}">
 					<a class="text-light" href="${ctx }/memberUpdate.do" style="text-decoration: none;">회원정보</a>

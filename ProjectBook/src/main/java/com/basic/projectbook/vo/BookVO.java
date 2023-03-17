@@ -5,7 +5,7 @@ private int no;
 private String title;
 private String image;
 private String author;
-private int discount;
+private String discount;
 private String publisher;
 private String pubdate;
 private String isbn;
@@ -36,10 +36,10 @@ public String getAuthor() {
 public void setAuthor(String author) {
 	this.author = author;
 }
-public int getDiscount() {
+public String getDiscount() {
 	return discount;
 }
-public void setDiscount(int discount) {
+public void setDiscount(String discount) {
 	this.discount = discount;
 }
 public String getPublisher() {
