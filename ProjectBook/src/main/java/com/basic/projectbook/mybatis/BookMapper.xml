@@ -24,6 +24,8 @@
 		select * from book
 	</select>
 
-	
+	<insert id="bookInsert" parameterType="book">
+		insert into book (title, image, author, discount, publisher, pubdate, isbn, description, genre, country) values(#{title}, #{image}, #{author}, #{discount}, #{publisher}, #{pubdate}, #{isbn}, #{description}, #{genre}, #{country})
+	</insert>
 
 </mapper>

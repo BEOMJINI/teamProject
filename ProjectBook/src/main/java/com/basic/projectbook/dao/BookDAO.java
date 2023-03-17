@@ -20,4 +20,10 @@ public class BookDAO {
 		return list;
 	}
 
+	public int insertBook(BookVO vo) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		int x = session.insert("mapper.book.bookInsert", vo);
+		session.close();
+		return x;
+	}
 }

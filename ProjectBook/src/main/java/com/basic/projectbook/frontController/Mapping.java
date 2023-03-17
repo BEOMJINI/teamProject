@@ -11,6 +11,8 @@ import com.basic.projectbook.controller.member.LogInController;
 import com.basic.projectbook.controller.member.LogOutController;
 import com.basic.projectbook.controller.member.MemberUpdateController;
 import com.basic.projectbook.controller.shop.ShopMainController;
+import com.basic.projectbook.util.SearchAPI;
+import com.basic.projectbook.util.saveAPI;
 
 public class Mapping {
 	private Map<String,	Controller> mapping;
@@ -19,6 +21,9 @@ public class Mapping {
 		mapping = new HashMap<>();
 		
 		mapping.put("/main.do", new MainController());
+		mapping.put("/api.do", new ApiController());
+		mapping.put("/searchBook.do", new SearchAPI());
+		mapping.put("/saveBook.do", new saveAPI());
 		
 		// member controller
 		mapping.put("/login.do", new LogInController());
