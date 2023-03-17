@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />    
 <%@ include file="../header.jsp" %>
+<script type="text/javascript" src="script/booklist.js" defer></script>
 
 <!-- Modal -->
 
@@ -38,8 +39,11 @@
                             <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul class="collapse show list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Men</a></li>
-                            <li><a class="text-decoration-none" href="#">Women</a></li>
+                        <c:forEach var="BookVO" items="${genreList}" varStatus="st">
+                        <li><a class="text-decoration-none" onclick="genre(this)">${BookVO.genre}</a></li>
+                        </c:forEach>
+                            
+                            
                         </ul>
                     </li>
                     <li class="pb-3">
@@ -48,8 +52,9 @@
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Sport</a></li>
-                            <li><a class="text-decoration-none" href="#">Luxury</a></li>
+                        <c:forEach var="BookVO" items="${countryList}" varStatus="st">
+                        <li><a class="text-decoration-none" onclick="country(this)">${BookVO.country}</a></li>
+                        </c:forEach>
                         </ul>
                     </li>
                     <li class="pb-3">
@@ -58,9 +63,9 @@
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Bag</a></li>
-                            <li><a class="text-decoration-none" href="#">Sweather</a></li>
-                            <li><a class="text-decoration-none" href="#">Sunglass</a></li>
+                        <c:forEach var="BookVO" items="${companyList}" varStatus="st">
+                        <li><a class="text-decoration-none" onclick="company(this)">${BookVO.company}</a></li>
+                        </c:forEach>
                         </ul>
                     </li>
                 </ul>

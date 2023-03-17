@@ -12,7 +12,7 @@
 		<result property="pw" column="pw" />
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
-		<result property="genre" column="genre" />
+		<result property="intereset" column="intereset" />
 		<result property="address" column="address" />
 		<result property="mileage" column="mileage" />
 	</resultMap>
