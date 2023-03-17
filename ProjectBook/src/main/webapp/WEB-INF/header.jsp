@@ -102,7 +102,7 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="${ctx }/bookList.do?best=true">베스트셀러</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="${ctx }/bookList.do">책
+						<li class="nav-item"><a class="nav-link" href="${ctx }/bookList.do?cate=all">책
 								구매</a></li>
 						<li class="nav-item"><a class="nav-link" href="${ctx }/shopMain.do">지점
 								안내</a></li>

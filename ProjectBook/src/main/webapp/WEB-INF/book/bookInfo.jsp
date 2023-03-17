@@ -14,7 +14,7 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">${BookVO.name}</h1>
+                            <h1 class="h2">${BookVO.title}</h1>
                             <span class="list-inline-item text-dark">평점:</span>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
@@ -26,7 +26,7 @@
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>가격:<span style="text-decoration:line-through; color:#999999; ">${BookVO.price}원</span> → ${discPrice}원</h6>
+                                    <h6>가격:<span style="text-decoration:line-through; color:#999999; ">${BookVO.discount}원</span> → ${discPrice}원</h6>
                                 </li>
                                 
                                 
@@ -36,15 +36,15 @@
                             <br>
                                 
                             <h6>책소개</h6>
-                            <p>${BookVO.info}</p>
+                            <p>${BookVO.description}</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>저자:${BookVO.writer}</h6>
+                                    <h6>저자:${BookVO.author}</h6>
                                 </li>
                                 
                             </ul>
 
-                            <h6>출판사:${BookVO.company}</h6>
+                            <h6>출판사:${BookVO.publisher}</h6>
                             
 
                             <form action="" method="GET">

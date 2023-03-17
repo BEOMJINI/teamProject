@@ -23,6 +23,15 @@
 	<select id="getAllBook" resultMap="book">
 		select * from book
 	</select>
+	<select id="getGenreBook" parameterType="String" resultMap="book">
+		select * from book where genre=#{genre}
+	</select>
+	<select id="getCountryBook" parameterType="String" resultMap="book">
+		select * from book where country=#{country}
+	</select>
+	<select id="getPublisherBook" parameterType="String" resultMap="book">
+		select * from book where publisher=#{publisher}
+	</select>
 
 	
 
