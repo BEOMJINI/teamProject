@@ -44,7 +44,7 @@
 		<div class="row mb-3">
 			<label for="inputEmail3" class="col-sm-2 col-form-label">전화번호</label>
 			<div class="col-sm-10">
-				<input type="tel" class="form-control" id="idbox" name="phone"
+				<input type="tel" class="form-control" id="idbox" name="phone" formtarget=""
 					required>
 			</div>
 		</div>
