@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import com.basic.projectbook.frontController.Controller;
 import com.basic.projectbook.vo.BookVO;
 import com.google.gson.JsonObject;
@@ -20,8 +23,8 @@ public class saveAPI implements Controller{
 		String bookJson = request.getParameter("bookJson"); // jsonString 타입
 		BookVO vo = new BookVO();
 		try {
-		JsonParser jp = new JSONParser(); // json 데이터 객체로 해석해주는 클래스 객체 
-		JsonObject jb = (JSONObject) jp.parse(bookJson); // // json 객체 타입
+		JSONParser jp = new JSONParser(); // json 데이터 객체로 해석해주는 클래스 객체 
+		JSONObject jb = (JSONObject) jp.parse(bookJson); // // json 객체 타입
 		// {id:"test7",passwd:"1234", name:"테스트7", address:"사당", tel:"010-111-1234"};
 		
 		System.out.println(jb);

@@ -24,17 +24,6 @@ foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 )
 
-<<<<<<< HEAD
-
-create table order{
-no int,
-receive int,
-id varchar(50),
-isbn varchar(50),
-cqty int
-=======
->>>>>>> yjh_dev
-
 create table order(
 no int primary key,
 receive int not null,
@@ -43,6 +32,7 @@ isbn varchar(50) not null,
 cqty int not null
 
 );
+
 create table sale(
 no int,
 isbn varchar(50),

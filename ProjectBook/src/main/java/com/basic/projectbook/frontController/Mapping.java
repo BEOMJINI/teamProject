@@ -7,6 +7,7 @@ import com.basic.projectbook.controller.book.BookCategoryController;
 import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
 import com.basic.projectbook.controller.event.EventMainController;
+import com.basic.projectbook.controller.member.ValidIdController;
 import com.basic.projectbook.controller.member.JoinController;
 import com.basic.projectbook.controller.member.LogInController;
 import com.basic.projectbook.controller.member.LogOutController;
@@ -31,6 +32,7 @@ public class Mapping {
 		mapping.put("/logout.do", new LogOutController());
 		mapping.put("/join.do", new JoinController());
 		mapping.put("/memberUpdate.do", new MemberUpdateController());
+		mapping.put("/validId.do", new ValidIdController());
 		
 		// book controller
 		mapping.put("/bookList.do", new BookListController());
