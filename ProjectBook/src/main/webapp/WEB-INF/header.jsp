@@ -108,7 +108,12 @@
 								구매</a></li>
 						<li class="nav-item"><a class="nav-link" href="${ctx }/shopMain.do">지점
 								안내</a></li>
+								<c:if test="${id eq 'admin'}">
+								<li class="nav-item"><a class="nav-link" href="${ctx }/bookStockManage.do">재고관리</a>
+								</c:if>
+								<c:if test="${id ne 'admin'}">
 						<li class="nav-item"><a class="nav-link" href="${ctx }/eventMain.do">이벤트</a>
+								</c:if>
 						</li>
 					</ul>
 				</div>

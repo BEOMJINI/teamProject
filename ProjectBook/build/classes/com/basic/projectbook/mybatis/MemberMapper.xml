@@ -12,13 +12,11 @@
 		<result property="pw" column="pw" />
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
-<<<<<<< HEAD
-		<result property="intereset" column="intereset" />
-=======
+
 
 		<result property="intereset" column="intereset" />
 
->>>>>>> yjh_dev
+
 		<result property="address" column="address" />
 		<result property="mileage" column="mileage" />
 	</resultMap>

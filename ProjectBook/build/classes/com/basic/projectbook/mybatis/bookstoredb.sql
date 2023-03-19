@@ -24,16 +24,9 @@ foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 )
 
-<<<<<<< HEAD
 
-create table order{
-no int,
-receive int,
-id varchar(50),
-isbn varchar(50),
-cqty int
-=======
->>>>>>> yjh_dev
+
+
 
 create table order(
 no int primary key,
@@ -66,36 +59,31 @@ drop table member;
 
 create table book(
 no int auto_increment primary key,
-title varchar(50) not null,
+title varchar(500) not null,
 image varchar(2000) not null,
 author varchar(30) not null,
 discount varchar(50) not null,
 publisher varchar(30) not null,
-<<<<<<< HEAD
+
 pubdate varchar(50) not null,
-=======
-pubdate varchar(30) not null,
->>>>>>> yjh_dev
-isbn varchar(50) not null ,
+
+isbn varchar(50) not null unique ,
 description varchar(5000) not null,
 genre varchar(30) not null,
 country varchar(30) not null
-<<<<<<< HEAD
+
 
 );
 
 select * from book;
 delete from book;
 drop table book;
+drop table bookstock;
 
 
-create table bookstock{
-=======
-);
 
 
 create table bookstock(
->>>>>>> yjh_dev
 no int auto_increment primary key,
 storeid varchar(50),
 qty varchar(50),
@@ -108,13 +96,11 @@ create table store(
  no int auto_increment primary key,
  storename varchar(50),
  storeid int,
-<<<<<<< HEAD
+
  foreign key(storeid)references bookstock(storeid) on delete cascade
-}
-=======
- foreign key(storeid)references bookstock(storeid) on update cascade on delete cascade
 )
->>>>>>> yjh_dev
+
+
 
 INSERT INTO book(title,image,author,discount,publisher,pubdate,isbn,description,genre,country) VALUES
 ('호밀밭의 파수꾼', 'image1.jpg', 'J.D. 샐린저', 10000, '한국문학', '1951-07-16', '978-89-453-1254-4', '청춘의 아픔과 혼란을 그린 소설', '소설', '미국'),

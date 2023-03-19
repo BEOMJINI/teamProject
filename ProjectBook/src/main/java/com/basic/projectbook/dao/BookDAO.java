@@ -13,6 +13,7 @@ public class BookDAO {
 	public static BookDAO getInstance() {
 		return instance;
 	}
+	
 	public List<BookVO> getAllBook(){
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		List<BookVO> list=session.selectList("mapper.book.getAllBook");
@@ -41,4 +42,8 @@ public class BookDAO {
 		session.close();
 		return x;
 	}
+//	public List<BookVO> getAllBookStock(){
+//		SqlSession session = MybatisConfig.getInstance().openSession(true);
+//		List<BookVO>
+//	}
 }

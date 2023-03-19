@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="assets/img1/1.jpg" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="${BookVO.image}" alt="Card image cap" id="product-detail">
                     </div>
                     
                 </div>
@@ -48,14 +48,14 @@
                             
 
                             <form action="" method="GET">
-                                <input type="hidden" name="product-title" value="Activewear">
+                                <input type="hidden" name="isbn" value="${BookVO.isbn}">
                                 <div class="row">
                                     
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 구매수량
-                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                                <input type="hidden" name="qty" id="qty" value="1">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">바로구매</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy" >바로구매</button>
                                     </div>
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">장바구니</button>

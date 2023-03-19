@@ -3,6 +3,7 @@ package com.basic.projectbook.util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -21,8 +22,9 @@ public class BookJsonTest {
 		
 		System.out.println("test:" + jsonString );
 		List<BookVO> list = new ArrayList<>();
-		
-		
+		Random rd=new Random();
+		String[]genreList= {"공포","추리","판타지","로맨스","과학","자기계발"};
+		String[]countryList= {"한국","일본","중국","미국","프랑스","독일"};		
 	    // loop array
 		try {
 			JSONParser jp = new JSONParser();
@@ -35,6 +37,8 @@ public class BookJsonTest {
  
   
         	    for (Object object : items) {
+        	    	String genre=genreList[rd.nextInt(6)];
+        	    	String country=countryList[rd.nextInt(6)];
 
         	        JSONObject book = (JSONObject)jp.parse(object.toString());
         	        
@@ -52,8 +56,8 @@ public class BookJsonTest {
         	        vo.setPubdate((String) book.get("pubdate"));
         	        vo.setIsbn((String) book.get("isbn"));
         	        vo.setDescription((String) book.get("description"));
-        	        vo.setGenre("기술");
-        	        vo.setCountry("국내");
+        	        vo.setGenre(genre);
+        	        vo.setCountry(country);
         	        
         	        BookDAO.getInstance().insertBook(vo);
         	    }
