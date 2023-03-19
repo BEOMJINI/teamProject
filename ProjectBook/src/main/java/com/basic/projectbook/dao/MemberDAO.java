@@ -41,6 +41,13 @@ public class MemberDAO {
 		return y;
 	}
 	
+	public String validId(String id) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		String z = session.selectOne("mapper.member.validId", id);
+		return z;
+		
+	}
+	
 	public int testnum() {
 		int x =3 ;
 		return x;
