@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.store">
+
+	<resultMap id="store"
+		type="com.basic.projectbook.vo.StoreVO">
+		<id property="no" column="no" />
+		<result property="storename" column="storename" />
+		<result property="storeid" column="storeid" />
+		
+		
+	</resultMap>
+
+	<select id="getAllStore" resultMap="store">
+		select * from store
+	</select>
+	
+	
+
+</mapper>

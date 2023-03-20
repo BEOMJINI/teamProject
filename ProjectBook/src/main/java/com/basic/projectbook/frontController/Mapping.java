@@ -3,9 +3,11 @@ package com.basic.projectbook.frontController;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import com.basic.projectbook.controller.book.BookCategoryController;
 import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
+import com.basic.projectbook.controller.book.BookStockChangeController;
 import com.basic.projectbook.controller.book.BookStockManageController;
 import com.basic.projectbook.controller.event.EventMainController;
 import com.basic.projectbook.controller.member.ValidIdController;
@@ -40,6 +42,7 @@ public class Mapping {
 		mapping.put("/bookinfo.do", new BookInfoController());
 		mapping.put("/bookCategory.do", new BookCategoryController());
 		mapping.put("/bookStockManage.do", new BookStockManageController());
+		mapping.put("/bookStockChange.do", new BookStockChangeController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());

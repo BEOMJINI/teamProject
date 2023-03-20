@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.bookstock">
+
+	<resultMap id="book"
+		type="com.basic.projectbook.vo.BookStockVO">
+		<id property="no" column="no" />
+		<result property="storeid" column="storeid" />
+		<result property="qty" column="qty" />
+		<result property="isbn" column="isbn" />
+		
+		
+	</resultMap>
+
+	
+	<insert id="bookStockDummy" parameterType="bookstock">
+		insert into bookstock (storeid,isbn,qty)
+		select s.storeid, b.isbn, 10 from store s, book b;
+	</insert>
+	<select id="getAllBookStock" parameterType="bookstock" resultType="bookstock">
+		SELECT storeid, isbn, SUM(qty) as qty FROM bookstock GROUP BY storeid, isbn;
+	</select>
+	<select id="deleteAllBookStock" parameterType="bookstock">
+		delete from bookstock;
+	</select>
+
+</mapper>
