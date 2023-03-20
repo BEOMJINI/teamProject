@@ -7,8 +7,9 @@ import java.util.Map;
 import com.basic.projectbook.controller.book.BookCategoryController;
 import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
-import com.basic.projectbook.controller.book.BookStockChangeController;
-import com.basic.projectbook.controller.book.BookStockManageController;
+import com.basic.projectbook.controller.bookstock.BookStockChangeController;
+import com.basic.projectbook.controller.bookstock.BookStockManageController;
+import com.basic.projectbook.controller.bookstock.SelectStoreInsertBookStockController;
 import com.basic.projectbook.controller.event.EventMainController;
 import com.basic.projectbook.controller.member.JoinController;
 import com.basic.projectbook.controller.member.LogInController;
@@ -43,8 +44,10 @@ public class Mapping {
 		mapping.put("/bookList.do", new BookListController());
 		mapping.put("/bookinfo.do", new BookInfoController());
 		mapping.put("/bookCategory.do", new BookCategoryController());
+		// bookStock controller
 		mapping.put("/bookStockManage.do", new BookStockManageController());
 		mapping.put("/bookStockChange.do", new BookStockChangeController());
+		mapping.put("/selectStoreInsertBookStock.do", new SelectStoreInsertBookStockController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());

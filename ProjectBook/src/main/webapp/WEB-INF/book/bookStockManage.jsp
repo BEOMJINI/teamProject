@@ -41,7 +41,7 @@ ${BookStockVO.qty}
 
 
 </c:forEach>
-<td><input type="button" value="추가"></td>
+<td><input type="button" value="추가" onclick="showModal(${BookVO.isbn})"></td>
 <td><input type="button" value="삭제"></td>
 </tr>
 </c:forEach>
@@ -51,6 +51,19 @@ ${BookStockVO.qty}
 
 <button type="submit" name="submit" value="add" >재고채우기</button>
 <button type="submit" name="submit" value="delete">재고초기화</button>
+
+
 </form>
+<dialog>
+	<h2 style="text-align: center;">개인정보 취급 동의서</h2>
+	<hr style="border: solid 3px black;">
+	<pre>
+	
+	
+	</pre>
+	<menu id="specialtyMenu" style="display: flex; justify-content: center; align-items: center;">
+	<button value="cancel" onclick="closeModal()">돌아가기</button>
+	</menu>
+</dialog>
 
 <%@ include file="../footer.jsp" %>
