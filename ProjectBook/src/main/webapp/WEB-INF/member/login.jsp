@@ -27,6 +27,8 @@
 					<button id="login" class="btn btn-primary mb-3">로그인</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<button id="cancle" class="btn btn-primary mb-3">취소</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id="joinBtn" class="btn btn-primary mb-3">회원가입</button>
 				</div>
 
 			</div>

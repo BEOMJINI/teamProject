@@ -9,6 +9,7 @@ import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
 import com.basic.projectbook.controller.book.BookStockChangeController;
 import com.basic.projectbook.controller.book.BookStockManageController;
+import com.basic.projectbook.controller.cart.CartListController;
 import com.basic.projectbook.controller.event.EventMainController;
 import com.basic.projectbook.controller.member.JoinController;
 import com.basic.projectbook.controller.member.LogInController;
@@ -46,11 +47,16 @@ public class Mapping {
 		mapping.put("/bookStockManage.do", new BookStockManageController());
 		mapping.put("/bookStockChange.do", new BookStockChangeController());
 		
+		// cart controller
+		mapping.put("/cartList.do", new CartListController());
+			
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());
 		
 		// event controller
 		mapping.put("/eventMain.do", new EventMainController());
+		
+		
 	}
 	
 	public Controller getController(String key) {

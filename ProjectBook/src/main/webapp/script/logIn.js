@@ -15,9 +15,7 @@ $("#login").click(function() {
 			url: "login.do",
 			data: query,
 			success: function(x) {
-				alert(x);
 				if (x != "null") {
-					alert("로그인성공");
 					window.location.href = "main.do";
 				} else if (x == "null") {
 					alert("아이디와 패스워드를 확인해주세요.");
@@ -33,6 +31,10 @@ $("#login").click(function() {
 
 $("#cancle").click(function() {
 	window.location.href = "main.do";
+});
+
+$("#joinBtn").click(function() {
+	window.location.href = "join.do";
 });
 
 function checkIt() {
