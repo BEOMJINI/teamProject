@@ -5,7 +5,7 @@ use bookstoredb;
 create table member(
 no int auto_increment primary key,
 name varchar(30) not null,
-id varchar(30) unique key not null,
+id varchar(30) unique  not null,
 pw varchar(30) not null,
 email varchar(30) not null,
 phone varchar(30) not null,
@@ -22,14 +22,14 @@ status int not null,
 id varchar(50),
 foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
-)
+);
 
 
 
 
 
-create table order(
-no int primary key,
+create table orderlist(
+no int,
 receive int not null,
 id varchar(50) not null,
 isbn varchar(50) not null,
@@ -81,26 +81,39 @@ drop table book;
 drop table bookstock;
 
 
+create table store(
+ no int auto_increment primary key,
+ storename varchar(50),
+ storeid int unique
+
+ 
+);
+select* from store;
 
 
 create table bookstock(
 no int auto_increment primary key,
-storeid varchar(50),
-qty varchar(50),
+storeid int,
+qty int(50),
 isbn varchar(50),
-foreign key(isbn) references book(isbn) on update cascade on delete cascade
-)
+foreign key(isbn) references book(isbn) on update cascade on delete cascade,
+foreign key(storeid)references store(storeid) on delete cascade
+);
+insert into bookstock (storeid,qty,isbn)values
+(1,10,"9788969525307");
+select*from bookstock;
+
+SELECT storeid, isbn, SUM(qty) FROM bookstock GROUP BY storeid, isbn;
 
 
-create table store(
- no int auto_increment primary key,
- storename varchar(50),
- storeid int,
 
- foreign key(storeid)references bookstock(storeid) on delete cascade
-)
+INSERT INTO store(storename,storeid) VALUES
+('본점',0),
+('강남',1),
+('역삼',2),
+('선릉',3)
 
-
+select * from store;
 
 INSERT INTO book(title,image,author,discount,publisher,pubdate,isbn,description,genre,country) VALUES
 ('호밀밭의 파수꾼', 'image1.jpg', 'J.D. 샐린저', 10000, '한국문학', '1951-07-16', '978-89-453-1254-4', '청춘의 아픔과 혼란을 그린 소설', '소설', '미국'),
@@ -116,4 +129,8 @@ INSERT INTO book(title,image,author,discount,publisher,pubdate,isbn,description,
 
 select * from book;
 drop table book;
+drop table store;
+drop table bookstock;
+drop table cart;
+drop table order;
 delete from book;

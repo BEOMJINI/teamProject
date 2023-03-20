@@ -7,6 +7,8 @@
   <typeAliases>
       <typeAlias type="com.basic.projectbook.vo.MemberVO" alias="member"/>
       <typeAlias type="com.basic.projectbook.vo.BookVO" alias="book"/>
+      <typeAlias type="com.basic.projectbook.vo.StoreVO" alias="store"/>
+      <typeAlias type="com.basic.projectbook.vo.BookStockVO" alias="bookstock"/>
 
   </typeAliases> 
   
@@ -25,5 +27,7 @@
   <mappers>
     <mapper resource="com/basic/projectbook/mybatis/MemberMapper.xml"/>
    	<mapper resource="com/basic/projectbook/mybatis/BookMapper.xml"/>
+   	<mapper resource="com/basic/projectbook/mybatis/StoreMapper.xml"/>
+   	<mapper resource="com/basic/projectbook/mybatis/BookStockMapper.xml"/>
   </mappers>
 </configuration>
