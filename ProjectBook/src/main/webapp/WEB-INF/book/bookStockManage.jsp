@@ -10,7 +10,8 @@
 <td border="3">책이름</td>
 <td>isbn코드</td>
 <td>재고</td>
-<td>수정</td>
+<td>추가할 수량</td>
+<td>추가</td>
 <td>삭제</td>
 </tr>
 <c:forEach var="BookVO" items="${list}" varStatus="st">
@@ -18,7 +19,8 @@
 <td>${BookVO.title}</td>
 <td>${BookVO.isbn}</td>
 <td>0</td>
-<td><input type="button" value="수정"></td>
+<input type="number">
+<td><input type="button" value="추가"></td>
 <td><input type="button" value="삭제"></td>
 </tr>
 </c:forEach>

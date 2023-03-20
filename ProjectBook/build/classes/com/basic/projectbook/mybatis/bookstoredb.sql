@@ -24,13 +24,10 @@ foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 )
 
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> kbj_dev
 create table order(
 no int primary key,
 receive int not null,
@@ -39,7 +36,6 @@ isbn varchar(50) not null,
 cqty int not null
 
 );
-
 create table sale(
 no int,
 isbn varchar(50),
