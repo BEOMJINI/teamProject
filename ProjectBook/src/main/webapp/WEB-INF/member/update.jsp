@@ -4,92 +4,75 @@
 
 <div class="container py-5">
 
-	<div id="title" class="mt-3 mb-3">
-					<font size="30px" style="font-weight: bold;" color="#00BFFF">회원 정보 수정</font>
-				</div>
-<form>
+	<form action="${ctx }/memberUpdate.do?update=true" method="post">
+		<div id="title" class="mt-3 mb-3">
+			<font size="30px" style="font-weight: bold;" color="#00BFFF">회원 정보 </font>
+		</div>
 		<div class="row mb-3">
 			<label for="inputEmail3" class="col-sm-2 col-form-label">아이디</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="idbox" readonly
-					> <input type="button"
-					value="중복확인" style="margin-left: 20px;" />
+				<input type="text" class="form-control" name="id" id="id" value="${vo.id }"
+					readonly>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="idbox" >
+				<input type="text" class="form-control" name="pw" value="${vo.pw }"
+					id="pw">
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="inputEmail3" class="col-sm-2 col-form-label">이름</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="idbox" value="">
+				<input type="text" class="form-control" name="name" value="${vo.name }"
+					>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="inputEmail3" class="col-sm-2 col-form-label">이메일</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" id="idbox" value="">
+				<input type="email" class="form-control" name="email" placeholder="Example@com" value="${vo.email }"
+					>
 			</div>
 		</div>
 		<div class="row mb-3">
 			<label for="inputEmail3" class="col-sm-2 col-form-label">전화번호</label>
 			<div class="col-sm-10">
-				<input type="tel" class="form-control" id="idbox" value="">
+				<input type="tel" class="form-control" name="phone"  pattern="010-[0-9]{4}-[0-9]{4}" placeholder="010-1111-1234" value="${vo.phone }"
+					>
 			</div>
 		</div>
 		<fieldset class="row mb-3">
 			<legend class="col-form-label col-sm-2 pt-0">주소</legend>
 			<div class="col-sm-10">
 
-				<select class="form-select" id="idbox"}>
-					<option selected disabled value="">Choose...</option>
-					<option>...</option>
-<!--  					
-<option value="0" if(변수.equal("0")){%>selected="selected"}%>>전체조회</option>
-<option value="1" if(변수.equal("1")){%>selected="selected"}%>>전체공지</option>
-<option value="2" if(변수.equal("2")){%>selected="selected"}%>>자유게시판</option>
--->		
+				<select class="form-select" name="address" >
+					<option selected value="${vo.address }">${vo.address }</option>
+					<option value="서울">서울</option>
+					<option value="경기도">경기도</option>
+					<option value="제주도">제주도</option>
+
+
 				</select>
 			</div>
 		</fieldset>
 		
-<!--  
-		<fieldset class="row mb-3">
-			<legend class="col-form-label col-sm-2 pt-0">radios</legend>
-			<div class="col-sm-10">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="gridRadios"
-						id="gridRadios1" value="option1" checked> <label
-						class="form-check-label" for="gridRadios1"> First radio </label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="gridRadios"
-						id="gridRadios2" value="option2"> <label
-						class="form-check-label" for="gridRadios2"> Second radio </label>
-				</div>
-				<div class="form-check disabled">
-					<input class="form-check-input" type="radio" name="gridRadios"
-						id="gridRadios3" value="option3" disabled> <label
-						class="form-check-label" for="gridRadios3"> Third disabled
-						radio </label>
-				</div>
-			</div>
-		</fieldset>
--->
 		<br>
-		<div class="row mb-3" style="align-items: center;">
+		<div class="row mb-3">
 			
-		
-		<div class="col-sm-10 offset-sm-6">
-		
-		<button type="submit" class="btn btn-primary">수정완료</button>
-		
+			<div class="col-sm-10"  style="text-align: center; margin: 0 auto;">
+			<p>${updateMsg }</p>
+				<br>
+					  <input type="submit" value="수정하기"/>
+					  &nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="탈퇴하기" id="leaveBtn"/>
+			</div>
 		</div>
-		</div>
+
+
 	</form>
+
 
 </div>
 

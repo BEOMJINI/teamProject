@@ -41,11 +41,21 @@ public class MemberDAO {
 		return y;
 	}
 	
-	public String validId(String id) {
+	public int validId(String id) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		String z = session.selectOne("mapper.member.validId", id);
+		int z = session.selectOne("mapper.member.validId", id);
 		return z;
 		
+	}
+	
+	public void memberDelete(String id) {
+		SqlSession ss = MybatisConfig.getInstance().openSession(true);
+		ss.delete("mapper.member.memberDelete", id);
+	}
+	
+	public void memberupdate(MemberVO vo) {
+		SqlSession ss = MybatisConfig.getInstance().openSession(true);
+		ss.update("mapper.member.memberUpdate", vo);
 	}
 	
 	public int testnum() {

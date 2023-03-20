@@ -1,0 +1,1 @@
+$("#leaveBtn").click()

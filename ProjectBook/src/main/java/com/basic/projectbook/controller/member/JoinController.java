@@ -24,6 +24,16 @@ public class JoinController implements Controller {
 
 		// 회원가입 정보 입력 완료
 		String id = request.getParameter("id");
+		
+		int z = MemberDAO.getInstance().validId(id);
+		if(z != 0) {
+			request.setAttribute("idMsg", "이미 사용중인 아이디 입니다.");
+			return "member/join";
+		}
+		
+		
+		
+		
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");

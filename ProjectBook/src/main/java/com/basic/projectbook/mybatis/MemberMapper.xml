@@ -18,8 +18,17 @@
 	</resultMap>
 
 	<select id="getAllMember" resultMap="member">
+	
 		select * from member
+	
+		<bind name="ids" value="testid"/>
+		<where>
+		<if test="testid != null">id=#{ids}</if>
+		</where>
+		
+		
 	</select>
+
 
 	<select id="getOneMember" parameterType="String" resultMap="member">
 		select * from member where id=#{id}
@@ -33,8 +42,15 @@
 		insert into member (name, id, pw, email, phone, interest, address) values(#{name}, #{id}, #{pw}, #{email}, #{phone}, #{interest}, #{address})
 	</insert>
 	
-	<select id="validId" parameterType="String" resultType="String" >
-		select id from member where id=#{id}
+	<select id="validId" parameterType="String" resultType="Integer" >
+		select count(id) from member where id=#{id}
 	</select>
 	
+	<delete id="memberDelete" parameterType="String">
+		delete from member where id=#{id}
+	</delete>
+	
+	<update id="memberUpdate" parameterType="member">
+		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone}, address=#{address} where id=#{id}
+	</update>
 </mapper>

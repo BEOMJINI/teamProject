@@ -36,12 +36,12 @@ isbn varchar(50) not null,
 cqty int not null
 
 );
+
 create table sale(
 no int,
 isbn varchar(50),
 qty int
-
-)
+);
 
 
 INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES

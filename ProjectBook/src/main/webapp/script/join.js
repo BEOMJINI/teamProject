@@ -1,52 +1,30 @@
-let check = 0;
+// 약관보기 
+const dialog = document.querySelector('dialog');
+const cancel = document.querySelector('#cancelBtn');
 
-function validId(){
-	 if($.trim($("#id").val())==''){
-		 alert("아이디를 입력하세요.");
-		 $("#id").focus();
-		 return
-	 }
-	 let id=$("#id").val();
-	 $.ajax({ 
-		 url : "validId.do",
-		 type : "POST",
-		 data : {"id" : id},
-		 success : getResult  		 
-	 });
-}  
+$("#specialty").click(function () {
 
-function getResult(z){	
-	 if(z == "null"){
-		 alert("사용 가능한 id 입니다.");
-		 $("#pw").focus();
-		 check = 1;
-	 }else{
-		 alert("사용 중인 id 입니다.");
-		 $("#id").val("");
-		 $("#id").focus();
-		 check = -1;
-	 } 	 
-}
-
-$("#joinBtn").click(function(){
-	console.log("eest");
-
+    dialog.showModal();
 });
 
-	$("#id").keyup(function(e) {
-		 if(e.keyCode=='8'){
-			 check =0;
-		 }
-	  $("#id").css("border", "");
-	});
-	
-	let inputs =  document.querySelectorAll("input"); 
-    inputs.forEach((input)=>{
-        input.onchange = function(){
-            $("#msg").html("");
-        };
-    })
-	
-	
+$("#cancelBtn").click(function () {
+    dialog.close();
+});
 
-	
+// 체크박스 선택 개수 제한
+let max = 3;
+let count = 0;
+
+function checkCount(c) {
+    if (c.checked) {
+        count += 1;
+    } else {
+		count -= 1;
+	}
+
+    if (count > max) {
+        c.checked = false;
+        count -= 1;
+        alert("최대 3개 까지만 가능합니다.");
+    }
+};

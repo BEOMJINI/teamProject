@@ -8,10 +8,11 @@ import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
 import com.basic.projectbook.controller.book.BookStockManageController;
 import com.basic.projectbook.controller.event.EventMainController;
-import com.basic.projectbook.controller.member.ValidIdController;
 import com.basic.projectbook.controller.member.JoinController;
 import com.basic.projectbook.controller.member.LogInController;
 import com.basic.projectbook.controller.member.LogOutController;
+import com.basic.projectbook.controller.member.MemberDeleteController;
+import com.basic.projectbook.controller.member.MemberListController;
 import com.basic.projectbook.controller.member.MemberUpdateController;
 import com.basic.projectbook.controller.shop.ShopMainController;
 import com.basic.projectbook.util.SearchAPI;
@@ -33,7 +34,8 @@ public class Mapping {
 		mapping.put("/logout.do", new LogOutController());
 		mapping.put("/join.do", new JoinController());
 		mapping.put("/memberUpdate.do", new MemberUpdateController());
-		mapping.put("/validId.do", new ValidIdController());
+		mapping.put("/memberList.do", new MemberListController());
+		mapping.put("/memberDelete.do", new MemberDeleteController());
 		
 		// book controller
 		mapping.put("/bookList.do", new BookListController());
