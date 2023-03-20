@@ -1,9 +1,9 @@
-let ctx = window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+let ctx = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
 let status = true;
 
 $("#login").click(function() {
-	
-	
+
+
 	if (checkIt() == true) {
 		let query = {
 			id: $("#id").val(),
@@ -33,21 +33,17 @@ $("#cancle").click(function() {
 	window.location.href = "main.do";
 });
 
-$("#joinBtn").click(function() {
-	window.location.href = "join.do";
-});
-
 function checkIt() {
-	
+
 	if (!$.trim($("#id").val())) {
 		alert("아이디를 입력하세요.");
 		$("#id").focus();
-		
+
 		return false;
 	} else if (!$.trim($("#pw").val())) {
 		alert("비밀번호를 입력하세요.");
 		$("#pw").focus();
-		
+
 		return false;
 	}
 	return true;

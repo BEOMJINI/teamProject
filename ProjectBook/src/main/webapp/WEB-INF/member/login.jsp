@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<<script defer type="text/javascript" src="script/logIn.js">
+<script defer type="text/javascript" src="script/logIn.js">
 
 </script>
 <div class="container py-5">
@@ -41,7 +41,11 @@
 
 	</div>
 </div>
-
+<script>
+$("#joinBtn").click(function () {
+    window.location.href = "join.do"
+});
+</script>
 
 
 <%@ include file="../footer.jsp"%>

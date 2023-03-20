@@ -22,3 +22,25 @@ menu #specialtyMenu{
 	align-items: center;
 	
 }
+
+.cart_info_wrap{
+    top: 191px;
+    position: fixed;
+    right: 100px;
+    width: 15%;
+    background-color: red;
+    height: 500px;
+}
+
+.cart_body_inner{
+    width: 80%;
+    background-color: blue;
+    height: 2000px;
+}
+
+.cart_body{
+    position: relative;
+    z-index: 1;
+    
+}
+

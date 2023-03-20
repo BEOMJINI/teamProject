@@ -30,8 +30,8 @@
 	href="assets/img/favicon.ico">
 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="assets/css/templatemo.css">
 
 <!-- Load fonts style after rendering the layout styles -->
 <link rel="stylesheet"
