@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.cart">
+
+	<resultMap id="cart"
+		type="com.basic.projectbook.vo.CartVO">
+		<id property="no" column="no" />
+		<result property="isbn" column="isbn" />
+		<result property="cqty" column="cqty" />
+		<result property="status" column="status" />
+		<result property="id" column="id" />
+		<collection property="com.basic.projectbook.vo.BookVo" resultMap="book"></collection>
+	</resultMap>
+	
+
+
+
+	<insert id="cartInsert" parameterType="cart">
+		insert into cart (isbn, cqty, id) values(#{isbn}, #{cqty}, #{id})
+	</insert>
+	
+	<select id="validIsbn" parameterType="cart" resultType="Integer" >
+		select count(isbn) from cart where id=#{id} and isbn=#{isbn}
+	</select>
+
+	
+	<select id="getOneCartList" parameterType="String" resultType="com.basic.projectbook.vo.CartListViewBean">
+  SELECT b.image as img, b.title as title, b.author as author, c.cqty as cqty 
+  FROM cart c 
+  JOIN book b ON c.isbn = b.isbn 
+  WHERE c.id = #{id}
+</select>
+	
+	
+	
+</mapper>

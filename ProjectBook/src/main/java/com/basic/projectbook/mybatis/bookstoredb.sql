@@ -19,10 +19,7 @@ no int auto_increment primary key,
 isbn varchar(50),
 cqty int not null,
 status int not null default 1,
-id varchar(50),
-cart_img varchar(2000),
-cart_title varchar(100),
-cart_author varchar(100),
+id varchar(50)
 foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 );
@@ -30,6 +27,16 @@ foreign key(isbn) references book (isbn) on update cascade on delete cascade
 select * from cart;
 drop table cart;
 select count(isbn) from cart where id='1' and isbn='23';
+
+
+SELECT b.title AS title, b.isbn AS isbn, s.storename AS storename, s.storeid AS storeid, SUM(bs.qty) AS qty
+FROM book AS b
+INNER JOIN bookstock AS bs ON b.isbn = bs.isbn
+INNER JOIN store AS s ON bs.storeid = s.storeid
+GROUP BY b.title, b.isbn, s.storename
+HAVING qty = 0
+
+
 
 
 create table orderlist(
@@ -92,6 +99,14 @@ create table store(
 );
 select* from store;
 
+SELECT DISTINCT b.title, b.isbn, s.storeid, b.author, b.publisher
+FROM book AS b, store AS s
+WHERE NOT EXISTS (
+  SELECT *
+  FROM bookstock AS bs
+  WHERE bs.isbn = b.isbn AND bs.storeid = s.storeid
+);
+
 
 create table bookstock(
 no int auto_increment primary key,
@@ -101,6 +116,19 @@ isbn varchar(50),
 foreign key(isbn) references book(isbn) on update cascade on delete cascade,
 foreign key(storeid)references store(storeid) on delete cascade
 );
+
+create table applyrestock(
+no int auto_increment primary key,
+title varchar(500) not null,
+isbn varchar(50) not null,
+author varchar(30) not null,
+publisher varchar(30) not null,
+storename varchar(50) not null,
+storeid int not null,
+foreign key(isbn) references book(isbn) on update cascade on delete cascade,
+foreign key(storeid) references store(storeid) on delete cascade
+)
+drop table applyrestock;
 insert into bookstock (storeid,qty,isbn)values
 (1,10,"9788969525307");
 select*from bookstock;
