@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+<script type="text/javascript" src="script/cartAdd.js" defer></script>
 <section class="bg-light">
         <div class="container pb-5">
             <div class="row">
@@ -68,7 +69,7 @@
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy" >바로구매</button>
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">장바구니</button>
+                                        <button type="button" class="btn btn-success btn-lg" name="submit" value="addtocard" onclick="cartAdds(${BookVO.isbn})">장바구니</button>
                                     </div>
                                 </div>
                             </form>

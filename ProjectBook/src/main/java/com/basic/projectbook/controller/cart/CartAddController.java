@@ -1,7 +1,6 @@
 package com.basic.projectbook.controller.cart;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.projectbook.dao.CartDAO;
 import com.basic.projectbook.frontController.Controller;
-import com.basic.projectbook.vo.CartListViewBean;
+import com.basic.projectbook.vo.CartVO;
 
-
-public class CartListController implements Controller{
+public class CartAddController implements Controller{
 
 	@Override
 	public String service(HttpServletRequest request, HttpServletResponse response)
@@ -27,15 +25,28 @@ public class CartListController implements Controller{
 			return "login.do";
 		}
 		
-		List<CartListViewBean> list = CartDAO.getInstance().getOneCartList(id);
-		request.setAttribute("list", list);
-		System.out.println("list=" + list);
+		String isbn = request.getParameter("isbn");
+		String cqty = request.getParameter("cqty");
 		
-		for(CartListViewBean b : list) {
-			System.out.println(b);
-		}
+		System.out.println(id + " " + isbn+ " "+ cqty);
 		
-		return "cart/cartMain";
+		CartVO vo = new CartVO();
+		vo.setIsbn(isbn);
+		vo.setCqty(Integer.parseInt(cqty));
+		vo.setId(id);
+				
+		
+		
+		int x = CartDAO.getInstance().validIsbn(vo);
+		System.out.println("x ==== "+ x);
+		if(x == 0) {
+			CartDAO.getInstance().cartAdd(vo);
+		} 
+		
+		response.getWriter().print(x);
+		
+		
+		return null;
 	}
 
 }
