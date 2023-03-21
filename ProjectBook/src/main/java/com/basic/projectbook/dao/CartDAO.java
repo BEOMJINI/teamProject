@@ -36,5 +36,9 @@ public class CartDAO {
 		return list;
 	}
 	
-	
+	public int cartDelete(CartVO vo) {
+		SqlSession ss = MybatisConfig.getInstance().openSession(true);
+		int x = ss.delete("mapper.cart.cartDelete", vo);
+		return x;
+	}	
 }

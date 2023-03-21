@@ -27,12 +27,24 @@
 
 	
 	<select id="getOneCartList" parameterType="String" resultType="com.basic.projectbook.vo.CartListViewBean">
-  SELECT b.image as img, b.title as title, b.author as author, c.cqty as cqty 
+  SELECT b.image as img, b.title as title, b.author as author, c.cqty as cqty, b.discount as discount, c.status as status, c.isbn as isbn
   FROM cart c 
   JOIN book b ON c.isbn = b.isbn 
   WHERE c.id = #{id}
 </select>
 	
+	<delete id="cartDelete" parameterType="cart">
+		delete from cart where id=#{id}
+		<if test="#{isbn} != null">
+		and isbn=#{isbn}
+		</if>
+	</delete>
 	
+	<delete id="test" parameterType="cart">
+		delete from cart where id=#{id}
+		<if test="#{isbn} != null">
+		and isbn=#{isbn}
+		</if>
+	</delete>
 	
 </mapper>

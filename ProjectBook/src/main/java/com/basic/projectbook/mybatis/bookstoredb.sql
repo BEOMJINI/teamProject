@@ -19,10 +19,7 @@ no int auto_increment primary key,
 isbn varchar(50),
 cqty int not null,
 status int not null default 1,
-id varchar(50),
-cart_img varchar(2000),
-cart_title varchar(100),
-cart_author varchar(100),
+id varchar(50)
 foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 );

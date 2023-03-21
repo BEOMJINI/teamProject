@@ -1,6 +1,8 @@
 package com.basic.projectbook.controller.cart;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,9 +33,13 @@ public class CartListController implements Controller{
 		request.setAttribute("list", list);
 		System.out.println("list=" + list);
 		
+		DecimalFormat df = new DecimalFormat("###,###,### 원");
+		ArrayList<String> moneyData = new ArrayList<>();
+		
 		for(CartListViewBean b : list) {
-			System.out.println(b);
+			moneyData.add(df.format(Integer.parseInt(b.getDiscount())));
 		}
+		request.setAttribute("moneyData", moneyData);
 		
 		return "cart/cartMain";
 	}

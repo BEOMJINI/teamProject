@@ -29,12 +29,12 @@ menu #specialtyMenu{
     right: 100px;
     width: 15%;
     background-color: red;
-    height: 500px;
+    height: 200px;
 }
 
 .cart_body_inner{
     width: 80%;
-    height: 2000px;
+    
 }
 
 .cart_body{
