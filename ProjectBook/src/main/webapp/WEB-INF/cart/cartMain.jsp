@@ -8,17 +8,31 @@
 		</div>
 		<div class="cart_body">
 			<div class="cart_body_inner">
-				<table style="width: 100%;">
+				<table style="width: 100%; border: 1px solid black;">
 					<tr>
-						<td>체크박스</td>
-						<td>이미지</td>
-						<td><pre>
-				이름
-				가격
-				수량
-				</pre></td>
-
+					<th>체크박스</th>
+					<th>이미지</th>
+					<th>책정보</th>
+					<th>수량</th>
+					<th>삭제버튼</th>
 					</tr>
+				
+					<c:forEach var="bean" items="${list}" varStatus="i">
+							
+				 
+						<tr>
+						<td><input type="checkbox"/></td>
+						<td><img src="${bean.img }"></td>
+						<td>
+						<h5>${bean.title}</h5>
+						<p>${bean.author}</p>
+						</td>
+						<td><input type="number" min="0" max="99" value="${bean.cqty }"/></td>
+						<td><a><i></i></a></td>
+						</tr>
+				
+					</c:forEach>
+		
 				</table>
 				
 				

@@ -6,6 +6,7 @@
 
 <h1> ${list.size()}</h1>
 <script type="text/javascript" src="script/booklist.js" defer></script>
+<script type="text/javascript" src="script/cartAdd.js" defer></script>
 
 <!-- Modal -->
 
@@ -99,55 +100,63 @@
                     </div>
                 </div>
                 <div class="row">
-                
-                   	
-                    
-                   	
-                    <c:forEach var="BookVO" items="${list}" varStatus="st">
-                   	
-                    <div class="col-md-4 ">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img  src="${BookVO.image}" height="200">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="${ctx}/bookinfo.do?bookno=${BookVO.no}"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body text-center mb-0">
-                                <a href="${ctx}/bookinfo.do?bookno=${BookVO.no}" class="h3 text-decoration-none">${BookVO.title}</a>
-                                <ul class="w-100 list-unstyled  mb-0 text-center mb-0">
-                                    <li >${BookVO.author}</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">${BookVO.publisher}</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    </c:forEach>
-                    
-                    
-                    
-                </div>
+
+
+
+
+					<c:forEach var="BookVO" items="${list}" varStatus="st">
+						
+							<div class="col-md-4 ">
+								<div class="card mb-4 product-wap rounded-0">
+									<div class="card rounded-0">
+										<img src="${BookVO.image}" height="200">
+										<div
+											class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+											<ul class="list-unstyled">
+												<li><a class="btn btn-success text-white"
+													href="shop-single.html"><i class="far fa-heart"></i></a></li>
+												<li><a class="btn btn-success text-white mt-2"
+													href="${ctx}/bookinfo.do?bookno=${BookVO.no}"><i
+														class="far fa-eye"></i></a></li>
+												<li><a class="btn btn-success text-white mt-2"
+													href="#" onclick="cartAdd(${BookVO.isbn})" id="cartAddBtn"><i class="fas fa-cart-plus"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="card-body text-center mb-0">
+										<a href="${ctx}/bookinfo.do?bookno=${BookVO.no}"
+											class="h3 text-decoration-none">${BookVO.title}</a>
+										<ul class="w-100 list-unstyled  mb-0 text-center mb-0">
+											<li>${BookVO.author}</li>
+											<li class="pt-2"><span
+												class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+												<span
+												class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+												<span
+												class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+												<span
+												class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+												<span
+												class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+												</li>
+										</ul>
+										<ul class="list-unstyled d-flex justify-content-center mb-1">
+											<li><i class="text-warning fa fa-star"></i> <i
+												class="text-warning fa fa-star"></i> <i
+												class="text-warning fa fa-star"></i> <i
+												class="text-muted fa fa-star"></i> <i
+												class="text-muted fa fa-star"></i></li>
+										</ul>
+										<p class="text-center mb-0">${BookVO.publisher}</p>
+									</div>
+								</div>
+							</div>
+							<input type="hidden" value="${BookVo.isbn }" id="getIsbn"/>
+					</c:forEach>
+
+
+
+				</div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item disabled">

@@ -14,21 +14,23 @@ address varchar(50) not null,
 mileage int not null default 0
 );
 
-
-
 create table cart(
 no int auto_increment primary key,
 isbn varchar(50),
 cqty int not null,
-status int not null,
+status int not null default 1,
 id varchar(50),
+cart_img varchar(2000),
+cart_title varchar(100),
+cart_author varchar(100),
 foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 );
 
+select * from cart;
+drop table cart;
+select count(isbn) from cart where id='1' and isbn='23';
 
-SELECT storeid, isbn, SUM(qty) as qty FROM bookstock where isbn="9788962605815" GROUP BY storeid ;
-delete from book where isbn="9788962605815";
 
 create table orderlist(
 no int,
@@ -66,10 +68,8 @@ image varchar(2000) not null,
 author varchar(30) not null,
 discount varchar(50) not null,
 publisher varchar(30) not null,
-
 pubdate varchar(50) not null,
-
-isbn varchar(50) not null unique ,
+isbn varchar(50) unique not null,
 description varchar(5000) not null,
 genre varchar(30) not null,
 country varchar(30) not null
@@ -90,27 +90,9 @@ create table store(
 
  
 );
-
-create table restock(
-no int auto_increment primary key,
-title varchar(500) not null,
-isbn varchar(50),
-foreign key(isbn) references book(isbn) on update cascade on delete cascade,
-foreign key(title) references book(title) on update cascade on delete cascade
-
-
-)
-
-
-
 select* from store;
 
-SELECT book.*, bookstock.qty, store.storename
-    FROM book
-    INNER JOIN bookstock ON book.isbn = bookstock.isbn
-    INNER JOIN store ON bookstock.storeid = store.storeid
-    
-    
+
 create table bookstock(
 no int auto_increment primary key,
 storeid int,

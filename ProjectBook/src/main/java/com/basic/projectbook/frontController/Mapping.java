@@ -7,12 +7,10 @@ import java.util.Map;
 import com.basic.projectbook.controller.book.BookCategoryController;
 import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
-import com.basic.projectbook.controller.bookstock.AddBookStockController;
-import com.basic.projectbook.controller.bookstock.AddBookStockProController;
-import com.basic.projectbook.controller.bookstock.ApplyRestockController;
-import com.basic.projectbook.controller.bookstock.BookStockChangeController;
-import com.basic.projectbook.controller.bookstock.BookStockManageController;
-import com.basic.projectbook.controller.bookstock.SelectStoreInsertBookStockController;
+import com.basic.projectbook.controller.book.BookStockChangeController;
+import com.basic.projectbook.controller.book.BookStockManageController;
+import com.basic.projectbook.controller.cart.CartAddController;
+import com.basic.projectbook.controller.cart.CartListController;
 import com.basic.projectbook.controller.event.EventMainController;
 import com.basic.projectbook.controller.member.JoinController;
 import com.basic.projectbook.controller.member.LogInController;
@@ -47,19 +45,20 @@ public class Mapping {
 		mapping.put("/bookList.do", new BookListController());
 		mapping.put("/bookinfo.do", new BookInfoController());
 		mapping.put("/bookCategory.do", new BookCategoryController());
-		// bookStock controller
 		mapping.put("/bookStockManage.do", new BookStockManageController());
 		mapping.put("/bookStockChange.do", new BookStockChangeController());
-		mapping.put("/selectStoreInsertBookStock.do", new SelectStoreInsertBookStockController());
-		mapping.put("/addBookStock.do", new AddBookStockController());
-		mapping.put("/addBookStockPro.do", new AddBookStockProController());
-		mapping.put("/applyRestock.do", new ApplyRestockController());
+		
+		// cart controller
+		mapping.put("/cartList.do", new CartListController());
+		mapping.put("/cartAdd.do", new CartAddController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());
 		
 		// event controller
 		mapping.put("/eventMain.do", new EventMainController());
+		
+		
 	}
 	
 	public Controller getController(String key) {
