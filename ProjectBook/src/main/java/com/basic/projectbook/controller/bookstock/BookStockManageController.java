@@ -13,6 +13,7 @@ import com.basic.projectbook.dao.BookDAO;
 import com.basic.projectbook.dao.BookStockDAO;
 import com.basic.projectbook.dao.StoreDAO;
 import com.basic.projectbook.frontController.Controller;
+import com.basic.projectbook.vo.BookStockManageBean;
 import com.basic.projectbook.vo.BookStockVO;
 import com.basic.projectbook.vo.BookVO;
 import com.basic.projectbook.vo.StoreVO;
@@ -30,6 +31,8 @@ public class BookStockManageController	implements Controller {
 		request.setAttribute("list", list);
 		request.setAttribute("storeList", storeList);
 		request.setAttribute("bookStockList", bookStockList);
+		
+		
 		
 		return "book/bookStockManage";
 	}
