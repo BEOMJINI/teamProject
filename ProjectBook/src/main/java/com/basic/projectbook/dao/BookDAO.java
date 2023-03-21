@@ -1,6 +1,7 @@
 package com.basic.projectbook.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -42,8 +43,28 @@ public class BookDAO {
 		session.close();
 		return x;
 	}
-//	public List<BookVO> getAllBookStock(){
-//		SqlSession session = MybatisConfig.getInstance().openSession(true);
-//		List<BookVO>
-//	}
+	public BookVO getBookInfo(String isbn) {
+		System.out.println("isbn:"+isbn);
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		BookVO vo=session.selectOne("mapper.book.getBookInfo",isbn);
+		session.close();
+		
+		return vo ;
+	}
+	public void deleteBook(String isbn) {
+		
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.delete("mapper.book.deleteBook",isbn);
+		session.close();
+		
+		return ;
+	}
+	public List<Map<String, Object>> selectBookWithStockAndStore() {
+	    SqlSession session = MybatisConfig.getInstance().openSession();
+	    try {
+	        return session.selectList("selectBookWithStockAndStore");
+	    } finally {
+	        session.close();
+	    }
+	}
 }

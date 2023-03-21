@@ -14,6 +14,8 @@ address varchar(50) not null,
 mileage int not null default 0
 );
 
+
+
 create table cart(
 no int auto_increment primary key,
 isbn varchar(50),
@@ -25,8 +27,8 @@ foreign key(isbn) references book (isbn) on update cascade on delete cascade
 );
 
 
-
-
+SELECT storeid, isbn, SUM(qty) as qty FROM bookstock where isbn="9788962605815" GROUP BY storeid ;
+delete from book where isbn="9788962605815";
 
 create table orderlist(
 no int,
@@ -88,9 +90,27 @@ create table store(
 
  
 );
+
+create table restock(
+no int auto_increment primary key,
+title varchar(500) not null,
+isbn varchar(50),
+foreign key(isbn) references book(isbn) on update cascade on delete cascade,
+foreign key(title) references book(title) on update cascade on delete cascade
+
+
+)
+
+
+
 select* from store;
 
-
+SELECT book.*, bookstock.qty, store.storename
+    FROM book
+    INNER JOIN bookstock ON book.isbn = bookstock.isbn
+    INNER JOIN store ON bookstock.storeid = store.storeid
+    
+    
 create table bookstock(
 no int auto_increment primary key,
 storeid int,

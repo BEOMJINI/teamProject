@@ -36,5 +36,12 @@
 	<insert id="bookInsert" parameterType="book">
 		insert into book (title, image, author, discount, publisher, pubdate, isbn, description, genre, country) values(#{title}, #{image}, #{author}, #{discount}, #{publisher}, #{pubdate}, #{isbn}, #{description}, #{genre}, #{country})
 	</insert>
+	
+	<select id="getBookInfo" parameterType="String" resultMap="book">
+		select * from book where isbn=#{isbn}
+	</select>
+	<delete id="deleteBook" parameterType="book">
+		delete from book where isbn=#{isbn}
+	</delete>
 
 </mapper>

@@ -41,8 +41,10 @@ ${BookStockVO.qty}
 
 
 </c:forEach>
-<td><input type="button" value="추가"></td>
-<td><input type="button" value="삭제"></td>
+<td><input type="button" value="추가" onclick="location.href='addBookStock.do?isbn=${BookVO.isbn}'"></td>
+<form action="${ctx}/bookStockChange.do" method="post">
+<td><button type="submit" name="submit" value="${BookVO.isbn}" >삭제</button></td>
+</form>
 </tr>
 </c:forEach>
 
@@ -50,7 +52,10 @@ ${BookStockVO.qty}
 <form action="${ctx}/bookStockChange.do" method="post">
 
 <button type="submit" name="submit" value="add" >재고채우기</button>
-<button type="submit" name="submit" value="delete">재고초기화</button>
+<button type="submit" name="submit" value="reset">재고초기화</button>
+
+
 </form>
+
 
 <%@ include file="../footer.jsp" %>

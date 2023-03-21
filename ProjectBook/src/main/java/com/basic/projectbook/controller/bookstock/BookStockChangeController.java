@@ -1,4 +1,5 @@
-package com.basic.projectbook.controller.book;
+package com.basic.projectbook.controller.bookstock;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -15,16 +16,26 @@ import com.basic.projectbook.vo.BookStockVO;
 import com.basic.projectbook.vo.BookVO;
 import com.basic.projectbook.vo.StoreVO;
 
-public class BookStockManageController	implements Controller {
+
+public class BookStockChangeController implements Controller{
 
 	@Override
 	public String service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("여기들어옴");
+		if(request.getParameter("submit").equals("add")) {
+		BookStockDAO.getInstance().bookStockDummy();}
+		else if(request.getParameter("submit").equals("reset")) {
+		BookStockDAO.getInstance().deleteAllBookStock();
+		}
+		else {
+			String isbn=request.getParameter("submit");
+			BookDAO.getInstance().deleteBook(isbn);
+			
+		}
 		List<BookVO>list=BookDAO.getInstance().getAllBook();
 		List<StoreVO>storeList=StoreDAO.getInstance().getAllStore();
 		List<BookStockVO>bookStockList=BookStockDAO.getInstance().getAllBookStock();
-		System.out.println("listsize:"+bookStockList.size());
 		request.setAttribute("list", list);
 		request.setAttribute("storeList", storeList);
 		request.setAttribute("bookStockList", bookStockList);
