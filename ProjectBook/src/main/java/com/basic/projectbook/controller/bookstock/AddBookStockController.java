@@ -1,6 +1,5 @@
 package com.basic.projectbook.controller.bookstock;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -16,31 +15,23 @@ import com.basic.projectbook.vo.BookStockVO;
 import com.basic.projectbook.vo.BookVO;
 import com.basic.projectbook.vo.StoreVO;
 
-
-public class BookStockChangeController implements Controller{
+public class AddBookStockController implements Controller{
 
 	@Override
 	public String service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("여기들어옴");
-		if(request.getParameter("submit").equals("add")) {
-		BookStockDAO.getInstance().bookStockDummy();}
-		else if(request.getParameter("submit").equals("reset")) {
-		BookStockDAO.getInstance().deleteAllBookStock();
-		}
-		else {
-			String isbn=request.getParameter("submit");
-			BookDAO.getInstance().deleteBook(isbn);
-			
-		}
-		List<BookVO>list=BookDAO.getInstance().getAllBook();
+		String isbn=request.getParameter("isbn");
 		List<StoreVO>storeList=StoreDAO.getInstance().getAllStore();
-		List<BookStockVO>bookStockList=BookStockDAO.getInstance().getAllBookStock();
-		request.setAttribute("list", list);
-		request.setAttribute("storeList", storeList);
+		for(int i=0;i<storeList.size();i++) {
+			System.out.println(storeList.get(i).getStoreid());
+			System.out.println(storeList.get(i).getStorename());
+		}
+		List<BookStockVO>bookStockList=BookStockDAO.getInstance().getBookStock(isbn);
+		BookVO bookVO=BookDAO.getInstance().getBookInfo(isbn);
+		request.setAttribute("storeList",storeList );
 		request.setAttribute("bookStockList", bookStockList);
-		
-		return "book/bookStockManage";
+		request.setAttribute("bookVO", bookVO);
+		return "book/addBookStock";
 	}
 
 }

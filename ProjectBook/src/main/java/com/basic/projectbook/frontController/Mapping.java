@@ -7,6 +7,9 @@ import java.util.Map;
 import com.basic.projectbook.controller.book.BookCategoryController;
 import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
+import com.basic.projectbook.controller.bookstock.AddBookStockController;
+import com.basic.projectbook.controller.bookstock.AddBookStockProController;
+import com.basic.projectbook.controller.bookstock.ApplyRestockController;
 import com.basic.projectbook.controller.bookstock.BookStockChangeController;
 import com.basic.projectbook.controller.bookstock.BookStockManageController;
 import com.basic.projectbook.controller.bookstock.SelectStoreInsertBookStockController;
@@ -48,6 +51,9 @@ public class Mapping {
 		mapping.put("/bookStockManage.do", new BookStockManageController());
 		mapping.put("/bookStockChange.do", new BookStockChangeController());
 		mapping.put("/selectStoreInsertBookStock.do", new SelectStoreInsertBookStockController());
+		mapping.put("/addBookStock.do", new AddBookStockController());
+		mapping.put("/addBookStockPro.do", new AddBookStockProController());
+		mapping.put("/applyRestock.do", new ApplyRestockController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());

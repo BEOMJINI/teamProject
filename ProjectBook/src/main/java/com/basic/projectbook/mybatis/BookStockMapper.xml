@@ -25,5 +25,14 @@
 	<select id="deleteAllBookStock" parameterType="bookstock">
 		delete from bookstock;
 	</select>
+	<select id="getBookStock" parameterType="String" resultType="bookstock">
+		SELECT storeid, isbn, SUM(qty) as qty FROM bookstock where isbn=#{isbn} GROUP BY storeid ;
+	</select>
+	<insert id="addBookStock" parameterType="bookstock">
+	insert into bookstock (storeid,isbn,qty) values(#{storeid},#{isbn},#{qty})
+	</insert>
+	<select id="getAllZeroStock()" parameterType="bookstock">
+	SELECT storeid, isbn, SUM(qty) as qty FROM bookstock where Sum(qty)=0 GROUP BY storeid ;
+	</select>
 
 </mapper>

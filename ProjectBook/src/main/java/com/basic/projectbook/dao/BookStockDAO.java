@@ -33,6 +33,24 @@ public class BookStockDAO {
 		session.close();
 		return list;
 	}
+	public List<BookStockVO> getBookStock(String isbn){
+		SqlSession session=MybatisConfig.getInstance().openSession(true);
+		List<BookStockVO>list=session.selectList("mapper.bookstock.getBookStock");
+		session.close();
+		return list;
+	}
+	public void addBookStock(BookStockVO vo) {
+		SqlSession session=MybatisConfig.getInstance().openSession(true);
+		session.insert("mapper.bookstock.addBookStock",vo);
+		session.close();
+		return;
+	}
+	public List<BookStockVO> getAllZeroStock(){
+		SqlSession session=MybatisConfig.getInstance().openSession(true);
+		List<BookStockVO>list=session.selectList("mapper.bookstock.getAllZeroStock");
+		session.close();
+		return list;
+	}
 	
 
 }

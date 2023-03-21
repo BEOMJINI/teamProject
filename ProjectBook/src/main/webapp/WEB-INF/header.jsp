@@ -146,7 +146,7 @@
 							</c:if>
 							<c:if test="${id ne 'admin'}">
 								<li class="nav-item"><a class="nav-link"
-									href="${ctx }/eventMain.do">이벤트</a>
+									href="${ctx }/applyRestock.do">재입고신청</a>
 							</c:if>
 							
 						</ul>
