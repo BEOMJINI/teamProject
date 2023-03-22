@@ -14,15 +14,25 @@ address varchar(50) not null,
 mileage int not null default 0
 );
 
+<<<<<<< HEAD
 select * from member;
 delete from member;
 drop table member;
+=======
+>>>>>>> kbj_dev
 
 INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
 ('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
 ('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
 ('관리자', 'admin', 'admin', 'admin@admin.com','010-1111-1111', '관리자', '관리자');
 
+<<<<<<< HEAD
+=======
+select * from member;
+delete from member;
+drop table member;
+
+>>>>>>> kbj_dev
 create table cart(
 no int auto_increment primary key,
 isbn varchar(50),
@@ -60,7 +70,10 @@ select * from sale;
 delete from sale;
 drop table sale;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> kbj_dev
 
 
 

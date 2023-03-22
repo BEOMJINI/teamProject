@@ -14,8 +14,11 @@ function cartAdd(isbn) {
                 alert("장바구니에 추가되었습니다.");
             } else if (x > 0) {
                 alert("이미 장바구니에 담겨있는 책입니다.");
-            }
-        }
+            } else if (x == -1){
+				window.location.href = "login.do"
+			}
+        },
+        error: console.log('err')
     });
 };
 
@@ -35,7 +38,9 @@ function cartAdds(isbn) {
                 alert("장바구니에 추가되었습니다.")
             } else if (x > 0) {
                 alert("이미 장바구니에 담겨있는 책입니다.")
-            }
+            }  else if (x == -1){
+				window.location.href = "login.do"
+			}
         }
     });
 };

@@ -31,13 +31,14 @@ public class CartListController implements Controller{
 		
 		List<CartListViewBean> list = CartDAO.getInstance().getOneCartList(id);
 		request.setAttribute("list", list);
-		System.out.println("list=" + list);
+		//System.out.println("list=" + list);
 		
 		DecimalFormat df = new DecimalFormat("###,###,### 원");
 		ArrayList<String> moneyData = new ArrayList<>();
 		
 		for(CartListViewBean b : list) {
 			moneyData.add(df.format(Integer.parseInt(b.getDiscount())));
+			
 		}
 		request.setAttribute("moneyData", moneyData);
 		

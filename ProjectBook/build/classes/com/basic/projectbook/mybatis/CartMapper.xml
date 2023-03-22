@@ -35,6 +35,7 @@
 	
 	<delete id="cartDelete" parameterType="cart">
 		delete from cart where id=#{id}
+<<<<<<< HEAD
 		<if test="#{isbn} != null">
 		and isbn=#{isbn}
 		</if>
@@ -47,4 +48,14 @@
 		</if>
 	</delete>
 	
+=======
+		<if test="isbn != null">
+		and isbn=#{isbn}
+		</if>
+	</delete>
+
+	<update id="cartUpdate" parameterType="cart">
+		update cart set cqty=#{cqty} where id=#{id} and isbn=#{isbn}
+	</update>
+>>>>>>> kbj_dev
 </mapper>

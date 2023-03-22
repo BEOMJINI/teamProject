@@ -37,6 +37,7 @@ public class LogInController implements Controller{
 		if(x != null) {
 			session.setAttribute("id", x);
 			
+			
 		}
 		response.getWriter().print(x);
 		
