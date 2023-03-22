@@ -25,17 +25,14 @@
 
 <c:forEach var="StoreVO" items="${storeList}" varStatus="st">
 <td>${StoreVO.storename}&nbsp;/&nbsp;${StoreVO.storeid}</td>
-<c:if test="${bookStockList.size() eq 0}">
-<td>0</td>
-</c:if>
-<c:forEach var="BookStockVO" items="${bookStockList}" varStatus="st">
-<c:if test="${BookVO.isbn eq BookStockVO.isbn && StoreVO.storeid eq BookStockVO.storeid}">
-<td>
-${BookStockVO.qty}
-</td>
-</c:if>
-
+<c:set var="stockQty" value="0" />
+<c:forEach var="stock" items="${bookStockList}">
+    <c:if test="${BookVO.isbn eq stock.isbn && StoreVO.storeid eq stock.storeid}">
+        <c:set var="stockQty" value="${stock.qty}" />
+    </c:if>
 </c:forEach>
+<td>${stockQty}</td>
+
 
 
 
@@ -55,7 +52,8 @@ ${BookStockVO.qty}
 <button type="submit" name="submit" value="reset">재고초기화</button>
 
 
-</form>
 
+</form>
+<button onclick="location.href='${ctx}/applyRestockList.do'">재입고신청리스트</button>
 
 <%@ include file="../footer.jsp" %>

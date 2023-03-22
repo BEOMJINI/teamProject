@@ -23,6 +23,12 @@
 	<select id="getAllBook" resultMap="book">
 		select * from book
 	</select>
+	<select id="getAllBookLatest" resultMap="book">
+	SELECT * FROM book ORDER BY pubdate DESC;
+	</select>
+	<select id="getAllBookLetter" resultMap="book">
+	SELECT * FROM book ORDER BY title ASC;
+	</select>
 	<select id="getGenreBook" parameterType="String" resultMap="book">
 		select * from book where genre=#{genre}
 	</select>

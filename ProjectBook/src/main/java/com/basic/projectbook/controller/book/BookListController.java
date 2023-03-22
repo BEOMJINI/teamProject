@@ -20,7 +20,15 @@ public class BookListController implements Controller{
 		
 		// header 에서 베스트셀러 눌렀을 때
 		boolean best = Boolean.parseBoolean(request.getParameter("best"));
-		List<BookVO>list=BookDAO.getInstance().getAllBook();
+		List<BookVO> list = new ArrayList<BookVO>();
+		if(request.getParameter("show").equals("letter")) {
+		list=BookDAO.getInstance().getAllBookLetter();	
+		}
+		else if(request.getParameter("show").equals("latest")) {
+		list=BookDAO.getInstance().getAllBookLatest();	
+		}
+		else {
+		list=BookDAO.getInstance().getAllBook();}
 		
 		
 		

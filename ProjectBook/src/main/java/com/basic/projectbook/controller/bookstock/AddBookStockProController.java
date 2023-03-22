@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.basic.projectbook.dao.ApplyRestockDAO;
 import com.basic.projectbook.dao.BookStockDAO;
 import com.basic.projectbook.frontController.Controller;
 import com.basic.projectbook.vo.BookStockVO;
@@ -27,6 +28,7 @@ public class AddBookStockProController implements Controller{
 		vo.setQty(qty);
 		vo.setStoreid(storeid);
 		BookStockDAO.getInstance().addBookStock(vo);
+		ApplyRestockDAO.getInstance().deleteOneApply(vo);
 		return null;
 	}
 

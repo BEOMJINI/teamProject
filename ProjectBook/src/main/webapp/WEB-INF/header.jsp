@@ -132,7 +132,7 @@
 							<li class="nav-item"><a class="nav-link"
 								href="${ctx }/bookList.do?best=true">베스트셀러</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="${ctx }/bookList.do?cate=all">책 구매</a></li>
+								href="${ctx }/bookList.do?cate=all&&show=all">책 구매</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="${ctx }/shopMain.do">지점 안내</a></li>
 							<c:if test="${id eq 'admin'}">
@@ -140,7 +140,8 @@
 									href="${ctx }/bookStockManage.do">재고관리</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="${ctx }/memberList.do">회원관리</a></li>
-														
+								
+										
 					
 									
 							</c:if>

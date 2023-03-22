@@ -10,6 +10,7 @@
       <typeAlias type="com.basic.projectbook.vo.StoreVO" alias="store"/>
       <typeAlias type="com.basic.projectbook.vo.BookStockVO" alias="bookstock"/>
 	  <typeAlias type="com.basic.projectbook.vo.CartVO" alias="cart"/>
+	  <typeAlias type="com.basic.projectbook.vo.ApplyRestockVO" alias="applyrestock"/>
   </typeAliases> 
   
   <environments default="development">
@@ -30,5 +31,6 @@
    	<mapper resource="com/basic/projectbook/mybatis/StoreMapper.xml"/>
    	<mapper resource="com/basic/projectbook/mybatis/BookStockMapper.xml"/>
    	<mapper resource="com/basic/projectbook/mybatis/CartMapper.xml"/>
+   	<mapper resource="com/basic/projectbook/mybatis/ApplyRestock.xml"/>
   </mappers>
 </configuration>

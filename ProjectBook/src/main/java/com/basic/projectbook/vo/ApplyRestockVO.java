@@ -1,6 +1,6 @@
 package com.basic.projectbook.vo;
 
-public class BookStockZeroBean {
+public class ApplyRestockVO {
 private String title;
 private String isbn;
 private String author;

@@ -46,6 +46,7 @@
                             </ul>
 
                             <h6>출판사:${BookVO.publisher}</h6>
+                            <h6>출간일:${BookVO.pubdate}</h6>
                             
 
                             <form action="" method="GET">
