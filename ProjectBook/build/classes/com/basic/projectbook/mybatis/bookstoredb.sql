@@ -14,12 +14,22 @@ address varchar(50) not null,
 mileage int not null default 0
 );
 
+
+INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
+('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
+('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
+('관리자', 'admin', 'admin', 'admin@admin.com','010-1111-1111', '관리자', '관리자');
+
+select * from member;
+delete from member;
+drop table member;
+
 create table cart(
 no int auto_increment primary key,
 isbn varchar(50),
 cqty int not null,
 status int not null default 1,
-id varchar(50)
+id varchar(50),
 foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 );
@@ -55,14 +65,6 @@ qty int
 );
 
 
-INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
-('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
-('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
-('관리자', 'admin', 'admin', 'admin@admin.com','010-1111-1111', '관리자', '관리자');
-
-select * from member;
-delete from member;
-drop table member;
 
 
 

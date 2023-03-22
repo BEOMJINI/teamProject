@@ -13,7 +13,11 @@ import com.basic.projectbook.controller.bookstock.ApplyRestockController;
 import com.basic.projectbook.controller.bookstock.BookStockChangeController;
 import com.basic.projectbook.controller.bookstock.BookStockManageController;
 import com.basic.projectbook.controller.cart.CartAddController;
+import com.basic.projectbook.controller.cart.CartCountController;
+import com.basic.projectbook.controller.cart.CartDeleteAllController;
+import com.basic.projectbook.controller.cart.CartDeleteController;
 import com.basic.projectbook.controller.cart.CartListController;
+import com.basic.projectbook.controller.cart.CartUpdateController;
 import com.basic.projectbook.controller.event.EventMainController;
 import com.basic.projectbook.controller.member.JoinController;
 import com.basic.projectbook.controller.member.LogInController;
@@ -57,6 +61,10 @@ public class Mapping {
 		// cart controller
 		mapping.put("/cartList.do", new CartListController());
 		mapping.put("/cartAdd.do", new CartAddController());
+		mapping.put("/cartDelete.do", new CartDeleteController());
+		mapping.put("/cartDeleteAll.do", new CartDeleteAllController());
+		mapping.put("/cartCount.do", new CartCountController());
+		mapping.put("/cartUpdate.do", new CartUpdateController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());

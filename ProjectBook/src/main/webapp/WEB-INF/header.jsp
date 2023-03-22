@@ -80,6 +80,8 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="text-light" href="${ctx }/logout.do"
 								style="text-decoration: none;">로그아웃</a>
+						
+						<input type="hidden" value="${id }" id="idid"/>		
 						</c:if>
 						
 						<c:if test="${id eq 'admin'}">
@@ -168,7 +170,7 @@
 						</a> <a class="nav-icon position-relative text-decoration-none"
 							href="${ctx }/cartList.do"> <i
 							class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i> <span
-							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" id="cart-count"></span>
 						</a> <a class="nav-icon position-relative text-decoration-none"
 							href="#"> <i class="fa fa-fw fa-user text-dark mr-3"></i> <span
 							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
@@ -184,3 +186,24 @@
 	<br>
 	<br>
 	<br>
+	
+	<script>
+	$(document).ready(function () {
+		let idid = $('#idid').val();
+		console.log("idid = " + idid);
+		
+		$.ajax({
+			type: "post",
+			url: "cartCount.do",
+			data: {"idid" : idid},
+			success: function(cartCount) {
+				if(cartCount != 0){
+					$('#cart-count').text(cartCount);	
+				}
+				
+			},
+			error: console.log('err')
+		});
+		})
+		
+	</script>
