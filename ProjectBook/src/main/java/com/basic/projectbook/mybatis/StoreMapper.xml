@@ -16,6 +16,9 @@
 	<select id="getAllStore" resultMap="store">
 		select * from store
 	</select>
+	<select id="getStoreInfo" parameterType="int" resultMap="store">
+		select * from store where storeid=#{storeid}
+	</select>
 	
 	
 

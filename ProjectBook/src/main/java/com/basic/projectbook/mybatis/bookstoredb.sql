@@ -14,29 +14,27 @@ address varchar(50) not null,
 mileage int not null default 0
 );
 
+select * from member;
+delete from member;
+drop table member;
+
+INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
+('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
+('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
+('관리자', 'admin', 'admin', 'admin@admin.com','010-1111-1111', '관리자', '관리자');
+
 create table cart(
 no int auto_increment primary key,
 isbn varchar(50),
 cqty int not null,
 status int not null default 1,
-id varchar(50)
+id varchar(50),
 foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 );
-
 select * from cart;
+delete from cart;
 drop table cart;
-select count(isbn) from cart where id='1' and isbn='23';
-
-
-SELECT b.title AS title, b.isbn AS isbn, s.storename AS storename, s.storeid AS storeid, SUM(bs.qty) AS qty
-FROM book AS b
-INNER JOIN bookstock AS bs ON b.isbn = bs.isbn
-INNER JOIN store AS s ON bs.storeid = s.storeid
-GROUP BY b.title, b.isbn, s.storename
-HAVING qty = 0
-
-
 
 
 create table orderlist(
@@ -48,21 +46,21 @@ cqty int not null
 
 );
 
+select * from orderlist;
+delete from orderlist;
+drop table orderlist;
+
 create table sale(
 no int,
 isbn varchar(50),
 qty int
 );
 
+select * from sale;
+delete from sale;
+drop table sale;
 
-INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
-('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
-('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
-('관리자', 'admin', 'admin', 'admin@admin.com','010-1111-1111', '관리자', '관리자');
 
-select * from member;
-delete from member;
-drop table member;
 
 
 
@@ -87,7 +85,6 @@ country varchar(30) not null
 select * from book;
 delete from book;
 drop table book;
-drop table bookstock;
 
 
 create table store(
@@ -97,15 +94,18 @@ create table store(
 
  
 );
-select* from store;
 
-SELECT DISTINCT b.title, b.isbn, s.storeid, b.author, b.publisher
-FROM book AS b, store AS s
-WHERE NOT EXISTS (
-  SELECT *
-  FROM bookstock AS bs
-  WHERE bs.isbn = b.isbn AND bs.storeid = s.storeid
-);
+select * from store;
+delete from store;
+drop table store;
+
+INSERT INTO store(storename,storeid) VALUES
+('본점',0),
+('강남',1),
+('역삼',2),
+('선릉',3)
+
+
 
 
 create table bookstock(
@@ -116,6 +116,10 @@ isbn varchar(50),
 foreign key(isbn) references book(isbn) on update cascade on delete cascade,
 foreign key(storeid)references store(storeid) on delete cascade
 );
+
+select * from bookstock;
+delete from bookstock;
+drop table bookstock;
 
 create table applyrestock(
 no int auto_increment primary key,
@@ -128,39 +132,22 @@ storeid int not null,
 foreign key(isbn) references book(isbn) on update cascade on delete cascade,
 foreign key(storeid) references store(storeid) on delete cascade
 )
+
+select * from applyrestock;
+delete from applyrestock;
 drop table applyrestock;
-insert into bookstock (storeid,qty,isbn)values
-(1,10,"9788969525307");
-select*from bookstock;
-
-SELECT storeid, isbn, SUM(qty) FROM bookstock GROUP BY storeid, isbn;
-
-
-
-INSERT INTO store(storename,storeid) VALUES
-('본점',0),
-('강남',1),
-('역삼',2),
-('선릉',3)
-
-select * from store;
-
-INSERT INTO book(title,image,author,discount,publisher,pubdate,isbn,description,genre,country) VALUES
-('호밀밭의 파수꾼', 'image1.jpg', 'J.D. 샐린저', 10000, '한국문학', '1951-07-16', '978-89-453-1254-4', '청춘의 아픔과 혼란을 그린 소설', '소설', '미국'),
-('마토인', 'image2.jpg', '한강', 20000, '창비', '2021-02-22', '978-89-387-0145-9', '현대사회의 각종 문제들을 논하고 해결책 제시', '인문학', '한국'),
-('파우스트', 'image3.jpg', '조한 월페', 15000, '세종서적', '1808-01-01', '978-89-7354-987-8', '인생의 목적을 찾아가는 과정을 그린 문학 작품', '소설', '독일'),
-('어린왕자', 'image4.jpg', '생텍쥐페리', 5000, '민음사', '1943-04-06', '978-89-372-0895-5', '인간관계, 자아성찰 등을 다룬 소설', '소설', '프랑스'),
-('책은 도끼다', 'image5.jpg', '박웅현', 10000, '북라이프', '2020-06-29', '979-11-970738-4-4', '책의 중요성과 책을 읽는 방법에 대한 고찰', '자기계발', '한국'),
-('나미야 잡화점의 기적', 'image6.jpg', '히가시노 게이고', 10000, '재인', '2009-02-19', '978-89-7026-446-6', '인간관계와 우정에 대한 이야기를 그린 소설', '소설', '일본'),
-('노르웨이의 숲', 'image7.jpg', '문학 도서관', 25000, '문학동네', '1987-08-28', '978-89-453-7256-1', '청춘의 삶과 사랑, 죽음을 그린 소설', '소설', '일본')
 
 
 
 
-select * from book;
+
+
+drop table member;
+drop table cart;
+drop table orderlist;
+drop table sale;
+drop table sale;
 drop table book;
 drop table store;
 drop table bookstock;
-drop table cart;
-drop table order;
-delete from book;
+drop table applyrestock;

@@ -21,5 +21,12 @@ public class StoreDAO {
 		session.close();
 		return list;
 	}
+	public StoreVO getStoreInfo(int storeid) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		StoreVO vo=session.selectOne("mapper.store.getStoreInfo",storeid);
+		session.close();
+		
+		return vo ;
+	}
 	
 }

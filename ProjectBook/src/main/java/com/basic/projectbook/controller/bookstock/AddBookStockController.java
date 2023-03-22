@@ -31,7 +31,7 @@ public class AddBookStockController implements Controller{
 		request.setAttribute("storeList",storeList );
 		request.setAttribute("bookStockList", bookStockList);
 		request.setAttribute("bookVO", bookVO);
-		return "book/addBookStock";
+		return "bookstock/addBookStock";
 	}
 
 }

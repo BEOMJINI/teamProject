@@ -34,7 +34,7 @@ public class BookStockManageController	implements Controller {
 		
 		
 		
-		return "book/bookStockManage";
+		return "bookstock/bookStockManage";
 	}
 
 }

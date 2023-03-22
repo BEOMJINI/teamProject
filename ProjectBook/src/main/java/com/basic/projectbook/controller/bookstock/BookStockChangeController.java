@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.basic.projectbook.dao.ApplyRestockDAO;
 import com.basic.projectbook.dao.BookDAO;
 import com.basic.projectbook.dao.BookStockDAO;
 import com.basic.projectbook.dao.StoreDAO;
@@ -24,7 +25,9 @@ public class BookStockChangeController implements Controller{
 			throws ServletException, IOException {
 		System.out.println("여기들어옴");
 		if(request.getParameter("submit").equals("add")) {
-		BookStockDAO.getInstance().bookStockDummy();}
+		BookStockDAO.getInstance().bookStockDummy();
+		ApplyRestockDAO.getInstance().deleteAllApply();
+		}
 		else if(request.getParameter("submit").equals("reset")) {
 		BookStockDAO.getInstance().deleteAllBookStock();
 		}
@@ -40,7 +43,7 @@ public class BookStockChangeController implements Controller{
 		request.setAttribute("storeList", storeList);
 		request.setAttribute("bookStockList", bookStockList);
 		
-		return "book/bookStockManage";
+		return "bookstock/bookStockManage";
 	}
 
 }

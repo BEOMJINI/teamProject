@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.basic.projectbook.util.MybatisConfig;
 import com.basic.projectbook.vo.BookStockManageBean;
 import com.basic.projectbook.vo.BookStockVO;
-import com.basic.projectbook.vo.BookStockZeroBean;
+import com.basic.projectbook.vo.ApplyRestockVO;
 import com.basic.projectbook.vo.BookVO;
 import com.basic.projectbook.vo.StoreVO;
 
@@ -48,12 +48,13 @@ public class BookStockDAO {
 		session.close();
 		return;
 	}
-	public List<BookStockZeroBean> getAllZeroStock(){
+	public List<ApplyRestockVO> getAllZeroStock(){
 		SqlSession session=MybatisConfig.getInstance().openSession(true);
-		List<BookStockZeroBean>list=session.selectList("mapper.bookstock.getAllZeroStock");
+		List<ApplyRestockVO>list=session.selectList("mapper.bookstock.getAllZeroStock");
 		session.close();
 		return list;
 	}
+	
 	
 
 }
