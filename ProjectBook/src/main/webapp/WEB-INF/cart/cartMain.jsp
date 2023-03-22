@@ -31,6 +31,33 @@ function cartDeleteAll() {
     });
 }
 
+let b = 0;
+let a = 0;
+function test(price) {
+	$("input[name=cqtyTest]").each(function(index) {
+		console.log(index +" "+$(this).val());
+		console.log(price);
+		a = 0;
+		a = ( ( $(this).val() * price ) * 1 );
+		console.log(a);
+		$("#sum").html(a);
+	});
+	$("#sum").html(a);
+	console.log("a = " + a);
+	
+	console.log($('#cqty').val());
+	
+	console.log($("input[name=cqtyTest]").val());
+}
+
+function sumsum(price, cqty) {
+		
+		let text = (price * cqty) * 1;
+		$(".total").text(text);
+	
+
+}
+/*
 function cartUpdate(isbn) {
 	
 	let query = {
@@ -49,10 +76,10 @@ function cartUpdate(isbn) {
 		}
     });
 }
+*/
 
-$("#cqty").click(function() {
-	console.log("cqtyclickevent = " + $("#cqty").val());
-});
+
+
 </script>
 
 <section>
@@ -100,7 +127,9 @@ $("#cqty").click(function() {
 						${moneyData.get(i.index) }
 						</p>
 						</td>
-						<td><input type="number" min="0" max="99" value="${bean.cqty }" id="cqty" name="cqtyTest"/></td>
+						<td><input type="number" min="0" max="99" value="${bean.cqty }" id="cqty" name="cqtyTest" oninput="sumsum(${bean.discount }, this.value)"/>
+						<p class="total"></p>
+						</td>
 						<td style="text-align: center; vertical-align: middle;"><a onclick="cartDelete(${bean.isbn})"><i class="fa-solid fa-x"></i></a></td>
 						</tr>
 				
@@ -118,9 +147,11 @@ $("#cqty").click(function() {
 								<th scope="col">주문 내역</th>
 							
 							</tr>
+							<c:forEach var="bean" items="${list}" varStatus="i">
 							<tr>
-							<td id="sum"></td>
+							<td id="sum">${bean.discount * bean.cqty}</td>
 							</tr>
+							</c:forEach>
 						</thead>
 				</table>
 			

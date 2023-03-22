@@ -1,10 +1,13 @@
+let sum = 0;
+
+
 $("#check-all").click(function() {
 	if ($("#check-all").is(":checked")) {
 		$("input[name=check]").prop("checked", true);
 	} else {
 		$("input[name=check]").prop("checked", false);
 	}
-	price();
+	
 });
 
 $("input[name=check]").click(function() {
@@ -16,9 +19,9 @@ $("input[name=check]").click(function() {
 	} else {
 		$("#check-all").prop("checked", false);
 	}
-	price();
+	
 });
-let sum = 0;
+
 $(document).ready(function() {
 	$("#check-all").prop("checked", true);
 	$("input[name=check]").prop("checked", true);
@@ -41,7 +44,7 @@ $(document).ready(function() {
 	
 
 });
-
+/*
 function price() {
 
 
@@ -58,10 +61,6 @@ function price() {
 	});
 	
 };
-let saveQty = 0;
-function saveQty2(){
-	saveQty = $("input[name=cqtyTest]").val();
-	console.log("sss = " + saveQty); 
-}
 
-$("input[name=cqtyTest]").oninput = saveQty2
+*/
+
