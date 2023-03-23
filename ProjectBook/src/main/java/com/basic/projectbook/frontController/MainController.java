@@ -36,13 +36,20 @@ public class MainController implements Controller{
 		}
 		HttpSession session = request.getSession();
 		String id=null;
-		if(session.getAttribute(id)!=null&&(String)session.getAttribute(id)!="admin"){
-		id=(String)session.getAttribute("id");	
+		if(session.getAttribute("id")!=null) {
+			id=(String)session.getAttribute("id");
 		}
+		
+		
+		System.out.println("현재 로그인 아이디:"+id);
 		MemberVO memberInfo=null;
-				if(id!=null) {MemberDAO.getInstance().getOneMember(id);}
 		String genre=null;
-				if(genre!=null) {genre=memberInfo.getInterest();}
+				if(id!=null&&id!="admin") {memberInfo=MemberDAO.getInstance().getOneMember(id);
+				genre=memberInfo.getInterest();
+				}
+		
+				
+				System.out.println("회원가입장르:"+genre);
 		List<BookVO>recommendList=new ArrayList<BookVO>();
 		if(genre==null) {
 			recommendList=latestThreeBookList;
