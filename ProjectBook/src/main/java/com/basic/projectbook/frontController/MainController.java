@@ -23,10 +23,6 @@ public class MainController implements Controller{
 		request.setAttribute("test", vo);
 		
 		
-		int x = MemberDAO.getInstance().testnum();
-		request.setAttribute("x", x);
-		
-		
 		return "main";
 		
 		

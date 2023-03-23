@@ -73,7 +73,7 @@
 				</div>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox"
-						id="inlineCheckbox2" value="과학" name="interest" onclick="checkCount(this)"> <label
+						id="inlineCheckbox2" value="추리" name="interest" onclick="checkCount(this)"> <label
 						class="form-check-label" for="inlineCheckbox2">추리</label>
 				</div>
 				<div class="form-check form-check-inline">

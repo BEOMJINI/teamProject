@@ -31,32 +31,7 @@ function cartDeleteAll() {
     });
 }
 
-let b = 0;
-let a = 0;
-function test(price) {
-	$("input[name=cqtyTest]").each(function(index) {
-		console.log(index +" "+$(this).val());
-		console.log(price);
-		a = 0;
-		a = ( ( $(this).val() * price ) * 1 );
-		console.log(a);
-		$("#sum").html(a);
-	});
-	$("#sum").html(a);
-	console.log("a = " + a);
-	
-	console.log($('#cqty').val());
-	
-	console.log($("input[name=cqtyTest]").val());
-}
 
-function sumsum(price, cqty) {
-		
-		let text = (price * cqty) * 1;
-		$(".total").text(text);
-	
-
-}
 /*
 function cartUpdate(isbn) {
 	
@@ -88,10 +63,10 @@ function cartUpdate(isbn) {
 			<h1 id="카운트되서 html 출력하게">장바구니</h1>
 		</div>
 		<div class="cart_body">
+				<form action="${ctx }/payMain.do" method="post">
 			<div class="cart_body_inner">
 				
 				<div class="table-responsive" id="">
-
 					<table class="table">
 						<thead style="text-align: center; font-size: 15px;">
 							<tr>
@@ -114,24 +89,25 @@ function cartUpdate(isbn) {
 								</c:if>
 							<c:forEach var="bean" items="${list}" varStatus="i">
 							
-				 
-						<tr>
-						<td><input type="checkbox" name="check" value="${bean.discount }"/></td>
-						<td><img src="${bean.img }" style="width: 100px; height: 150px;"></td>
-						<td>
-						<h5>${bean.title}</h5>
-						<p>
-						${bean.author}
-						</p>
-						<p>
-						${moneyData.get(i.index) }
-						</p>
-						</td>
-						<td><input type="number" min="0" max="99" value="${bean.cqty }" id="cqty" name="cqtyTest" oninput="sumsum(${bean.discount }, this.value)"/>
-						<p class="total"></p>
-						</td>
-						<td style="text-align: center; vertical-align: middle;"><a onclick="cartDelete(${bean.isbn})"><i class="fa-solid fa-x"></i></a></td>
-						</tr>
+						 
+								<tr>
+								<td><input type="checkbox" name="check" value="${bean.discount }"/>
+								<input type="hidden" name="cart_check" value="1" id="cart_ck${i.index}"/></td>
+								<td><img src="${bean.img }" style="width: 100px; height: 150px;"></td>
+								<td>
+								<h5>${bean.title}</h5>
+								<p>
+								${bean.author}
+								</p>
+								<p>
+								${moneyData.get(i.index) }
+								</p>
+								</td>
+								<td><input type="number" min="0" max="99" value="${bean.cqty}" id="cqty" name="cart_qty" oninput="sumsum(${bean.discount } ,${i.index}, this.value)"/>
+								<p class="total${i.index}"></p>
+								</td>
+								<td style="text-align: center; vertical-align: middle;"><a onclick="cartDelete(${bean.isbn})"><i class="fa-solid fa-x"></i></a></td>
+								</tr>
 				
 					</c:forEach>
 						</tbody>
@@ -144,18 +120,31 @@ function cartUpdate(isbn) {
 				<table class="table">
 				<thead style="text-align: center; font-size: 15px;">
 							<tr>
-								<th scope="col">주문 내역</th>
+								<th scope="col">결제 예정 금액</th>
 							
 							</tr>
 							<c:forEach var="bean" items="${list}" varStatus="i">
 							<tr>
-							<td id="sum">${bean.discount * bean.cqty}</td>
+							<td><p class="total${i.index}" id="shark"></p></td>
 							</tr>
+							<input type="hidden" name="cart_isbn" value="${bean.isbn }"/>
+							<input type="hidden" name="cart_img" value="${bean.img }"/>
+							<input type="hidden" name="cart_title" value="${bean.title }"/> 
 							</c:forEach>
+							<tr>
+							<td><p class="sumsumsum"></p></td>
+							</tr>
+							<tr>
+							<td>
+							<input type="submit" value="직접수령" id="pickupBtn" onclick="javascript: form.action='${ctx}/main.do';"/>
+							<input type="submit" value="배송주문"/>
+							</td>
+							</tr>
 						</thead>
 				</table>
 			
 			</div>
+			</form>
 		</div>
 
 

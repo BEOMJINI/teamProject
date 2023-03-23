@@ -28,6 +28,8 @@ import com.basic.projectbook.controller.member.LogOutController;
 import com.basic.projectbook.controller.member.MemberDeleteController;
 import com.basic.projectbook.controller.member.MemberListController;
 import com.basic.projectbook.controller.member.MemberUpdateController;
+import com.basic.projectbook.controller.pay.PayMainController;
+import com.basic.projectbook.controller.pay.payResultController;
 import com.basic.projectbook.controller.shop.ShopMainController;
 import com.basic.projectbook.util.SearchAPI;
 import com.basic.projectbook.util.saveAPI;
@@ -77,6 +79,10 @@ public class Mapping {
 		mapping.put("/cartDeleteAll.do", new CartDeleteAllController());
 		mapping.put("/cartCount.do", new CartCountController());
 		mapping.put("/cartUpdate.do", new CartUpdateController());
+		
+		// pay controller
+		mapping.put("/payMain.do", new PayMainController());
+		mapping.put("/payResult.do", new payResultController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());

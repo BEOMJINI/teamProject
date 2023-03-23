@@ -23,7 +23,7 @@ $("input[name=check]").click(function() {
 });
 
 $(document).ready(function() {
-	$("#check-all").prop("checked", true);
+		$("#check-all").prop("checked", true);
 	$("input[name=check]").prop("checked", true);
 	let arr = $("input[name=check]").filter(":checked").val();
 	console.log("arr ==  " + arr);
@@ -39,11 +39,68 @@ $(document).ready(function() {
 	});
 	console.log("arr2 == " + arr2);
 	console.log(sum);
-	$("#sum").html(sum);
+	$(".sumsumsum").text(sum);
+	
+		
+
 	
 	
 
 });
+
+let arr = [];
+function sumsum(price, idx , cqty) {
+	console.log("tttt = " ,$("input[name=check]").length);
+	
+	$("input[name=check]").each(function() {
+		if ($(this).is(":checked")){
+			
+		console.log("cqty= " , cqty );
+		let name = ".total"+idx;
+		console.log($(name));
+		
+		let text = (price * cqty) * 1;
+		console.log("test = " , (price * cqty) * 1)
+		$(name).text(text);
+		
+		
+		arr[idx] = text;
+		console.log("arr = ", arr);
+		
+		const result = arr.reduce(function add(sum, currValue) {
+			  return sum + currValue;
+			}, 0);
+		console.log("r = ", result);
+		$(".sumsumsum").text(result);
+		
+		let ss = 0;
+		ss += text;
+		console.log("sss" , ss);
+	
+	} else {
+		console.log("cqty= " , cqty );
+		let name = ".total"+idx;
+		console.log($(name));
+		
+		let text = 0;
+		console.log("test = " , (price * cqty) * 1)
+		$(name).text(text);
+		
+		
+		arr[idx] = text;
+		console.log("arr = ", arr);
+		
+		const result = arr.reduce(function add(sum, currValue) {
+			  return sum + currValue;
+			}, 0);
+		console.log("r = ", result);
+		$(".sumsumsum").text(result);
+		$("#cart_ck"+idx).attr("value", "0");
+	}
+	});
+}	
+
+
 /*
 function price() {
 

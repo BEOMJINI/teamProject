@@ -22,7 +22,7 @@ public class BookListController implements Controller{
 		boolean best = Boolean.parseBoolean(request.getParameter("best"));
 		List<BookVO> list = new ArrayList<BookVO>();
 		if(request.getParameter("show").equals("letter")) {
-		list=BookDAO.getInstance().getAllBookLetter();	
+		list=BookDAO.getInstance().getAllBookLetter();		
 		}
 		else if(request.getParameter("show").equals("latest")) {
 		list=BookDAO.getInstance().getAllBookLatest();	
