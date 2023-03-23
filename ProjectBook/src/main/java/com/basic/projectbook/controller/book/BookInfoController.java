@@ -16,13 +16,13 @@ public class BookInfoController	implements Controller {
 	@Override
 	public String service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int bookno=Integer.parseInt(request.getParameter("bookno"));
+		String isbn=request.getParameter("isbn");
 		List<BookVO>list=BookDAO.getInstance().getAllBook();
-		System.out.println("bookno:"+bookno);
+		
 		int mileage=0;
-		int discPrice=0;
+	
 		for(int i=0;i<list.size();i++) {
-			if(list.get(i).getNo()==bookno) {
+			if(list.get(i).getIsbn().equals(isbn)) {
 				request.setAttribute("BookVO", list.get(i));
 				mileage=Integer.parseInt(list.get(i).getDiscount())/10;
 				request.setAttribute("mileage", mileage);

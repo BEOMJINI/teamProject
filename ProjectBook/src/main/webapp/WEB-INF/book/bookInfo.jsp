@@ -27,7 +27,7 @@
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>가격:<span style="text-decoration:line-through; color:#999999; ">${BookVO.discount}원</span> → ${discPrice}원</h6>
+                                    <h6>가격: &nbsp; ${BookVO.discount}원</h6>
                                 </li>
                                 
                                 

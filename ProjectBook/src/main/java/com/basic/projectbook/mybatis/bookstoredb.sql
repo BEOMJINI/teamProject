@@ -14,20 +14,18 @@ address varchar(50) not null,
 mileage int not null default 0
 );
 
-<<<<<<< HEAD
+
 select * from member;
 delete from member;
 drop table member;
-=======
->>>>>>> kbj_dev
+
 
 INSERT INTO member (name, id, pw, email, phone, interest, address) VALUES
 ('qwer', 1, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
 ('test', 2, 3, 'a@a.com','010-1111-1111', '추리', '경기도'),
 ('관리자', 'admin', 'admin', 'admin@admin.com','010-1111-1111', '관리자', '관리자');
 
-<<<<<<< HEAD
-=======
+
 select * from member;
 delete from member;
 drop table member;
@@ -70,10 +68,7 @@ select * from sale;
 delete from sale;
 drop table sale;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> kbj_dev
 
 
 
@@ -102,8 +97,9 @@ drop table book;
 
 create table store(
  no int auto_increment primary key,
- storename varchar(50),
+ storename varchar(50) unique,
  storeid int unique
+ 
 
  
 );
@@ -113,10 +109,29 @@ delete from store;
 drop table store;
 
 INSERT INTO store(storename,storeid) VALUES
-('본점',0),
-('강남',1),
-('역삼',2),
-('선릉',3)
+('책방 강남점(본점)',0),
+('책방 잠실점',1),
+('책방 목동점',2),
+('책방 영등포점',3)
+
+create table storemap(
+no int auto_increment primary key,
+storeid int,
+storename varchar(50),
+location1 double,
+location2 double,
+img varchar(500),
+address varchar(100),
+foreign key(storeid) references store (storeid) on update cascade on delete cascade,
+foreign key(storename) references store (storename) on update cascade on delete cascade
+)
+insert into storemap(storeid,storename,location1,location2,img,address) values
+(0,'책방 강남점(본점)',37.503715,127.024135,'https://lh3.googleusercontent.com/p/AF1QipOs80RMKkMbTOJhnm1XWgYXd5jjLOEeC5ILvIdP=s680-w680-h510','서울특별시 서초구 강남대로 465'),
+(1,'책방 잠실점',37.514255,127.101273,'https://lh3.googleusercontent.com/p/AF1QipNDsHnEuwO-kzpkwGHphDIM5CJB8XOZI-S31gfy=s680-w680-h510','서울특별시 송파구 올림픽로 269 롯데캐슬골드 B1F'),
+(2,'책방 목동점',37.528240,126.874982,'https://lh3.googleusercontent.com/p/AF1QipPJADbMLjnhjmTpQGs10W6_VA6MrNsVzAuB3Nv2=s680-w680-h510','서울특별시 양천구 목동서로 159-1'),
+(3,'책방 영등포점',37.517014,126.904143,'https://lh3.googleusercontent.com/p/AF1QipPrfQJGDPn2ZbKihgFHd9Hpwajm6rO4v6cI3D8j=s680-w680-h510','서울특별시 영등포구 영중로 15')
+delete from storemap;
+drop table storemap;
 
 
 

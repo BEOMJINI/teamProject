@@ -49,5 +49,14 @@
 	<delete id="deleteBook" parameterType="book">
 		delete from book where isbn=#{isbn}
 	</delete>
+	<select id="getLatestThreeBook" resultMap="book">
+		SELECT * FROM book ORDER BY pubdate DESC LIMIT 3;
+	</select>
+	<select id="getOneBookGenre" parameterType="String" resultMap="book">
+		select * from book where genre=#{genre} limit 1
+	</select>
+	<select id="getBookListGenre" parameterType="String" resultMap="book">
+		select * from book where genre=#{genre} limit 3
+	</select>
 
 </mapper>

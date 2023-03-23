@@ -68,7 +68,7 @@
 			<div class="col-sm-10">
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox"
-						id="inlineCheckbox1" value="소설" name="interest" onclick="checkCount(this)"> <label
+						id="inlineCheckbox1" value="공포" name="interest" onclick="checkCount(this)"> <label
 						class="form-check-label" for="inlineCheckbox1">공포</label>
 				</div>
 				<div class="form-check form-check-inline">
@@ -78,22 +78,22 @@
 				</div>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox"
-						id="inlineCheckbox3" value="자기계발" name="interest" onclick="checkCount(this)"> <label
+						id="inlineCheckbox3" value="판타지" name="interest" onclick="checkCount(this)"> <label
 						class="form-check-label" for="inlineCheckbox3">판타지 </label>
 				</div>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox"
-						id="inlineCheckbox1" value="추리소설" name="interest" onclick="checkCount(this)"> <label
+						id="inlineCheckbox1" value="로맨스" name="interest" onclick="checkCount(this)"> <label
 						class="form-check-label" for="inlineCheckbox1">로맨스</label>
 				</div>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox"
-						id="inlineCheckbox2" value="컴퓨터" name="interest" onclick="checkCount(this)"> <label
+						id="inlineCheckbox2" value="과학" name="interest" onclick="checkCount(this)"> <label
 						class="form-check-label" for="inlineCheckbox2">과학</label>
 				</div>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox"
-						id="inlineCheckbox3" value="육아" name="interest" onclick="checkCount(this)"> <label
+						id="inlineCheckbox3" value="자기계발" name="interest" onclick="checkCount(this)"> <label
 						class="form-check-label" for="inlineCheckbox3">자기계발 </label>
 				</div>
 			</div>

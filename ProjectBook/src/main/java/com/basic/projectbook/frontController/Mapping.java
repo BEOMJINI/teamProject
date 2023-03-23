@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-import com.basic.projectbook.controller.book.BookCategoryController;
+
 import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
 
@@ -31,6 +31,8 @@ import com.basic.projectbook.controller.member.MemberUpdateController;
 import com.basic.projectbook.controller.pay.PayMainController;
 import com.basic.projectbook.controller.pay.payResultController;
 import com.basic.projectbook.controller.shop.ShopMainController;
+import com.basic.projectbook.controller.store.StoreInfoController;
+import com.basic.projectbook.controller.store.StoreMapController;
 import com.basic.projectbook.util.SearchAPI;
 import com.basic.projectbook.util.saveAPI;
 
@@ -56,7 +58,7 @@ public class Mapping {
 		// book controller
 		mapping.put("/bookList.do", new BookListController());
 		mapping.put("/bookinfo.do", new BookInfoController());
-		mapping.put("/bookCategory.do", new BookCategoryController());
+		
 		
 		
 		
@@ -71,6 +73,10 @@ public class Mapping {
 		mapping.put("/applyRestock.do", new ApplyRestockController());
 		mapping.put("/applyRestockPro.do", new ApplyRestockProController() );
 		mapping.put("/applyRestockList.do", new ApplyRestockListController());
+		
+		// store controller
+		mapping.put("/storeInfo.do", new StoreInfoController());
+		mapping.put("/storeMap.do", new StoreMapController());
 		
 		// cart controller
 		mapping.put("/cartList.do", new CartListController());
