@@ -79,4 +79,25 @@ public class BookDAO {
 	        session.close();
 	    }
 	}
+	public List<BookVO>getLatestThreeBook(){
+		
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookVO>list=session.selectList("mapper.book.getLatestThreeBook");
+		session.close();
+		
+		return list ;
+	}
+	public BookVO getOneBookGenre(String genre){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		BookVO vo=session.selectOne("mapper.book.getOneBookGenre",genre);
+		session.close();
+		
+		return vo ;
+	}
+	public List<BookVO> getBookListGenre (String genre) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookVO> list=session.selectList("mapper.book.getBookListGenre",genre);
+		session.close();
+		return list;
+	}
 }

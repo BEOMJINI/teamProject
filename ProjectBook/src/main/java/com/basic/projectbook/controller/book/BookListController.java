@@ -18,20 +18,13 @@ public class BookListController implements Controller{
 	public String service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// header 에서 베스트셀러 눌렀을 때
-		boolean best = Boolean.parseBoolean(request.getParameter("best"));
-		List<BookVO> list = new ArrayList<BookVO>();
-		if(request.getParameter("show").equals("letter")) {
-		list=BookDAO.getInstance().getAllBookLetter();	
-		}
-		else if(request.getParameter("show").equals("latest")) {
-		list=BookDAO.getInstance().getAllBookLatest();	
-		}
-		else {
-		list=BookDAO.getInstance().getAllBook();}
+		
+		List<BookVO> list = BookDAO.getInstance().getAllBook();
+		//최신순 글자순 선택
 		
 		
 		
+		//옆 카테고리 목록
 		List<BookVO>genreList=new ArrayList<BookVO>();
 		for(int i=0;i<list.size();i++) {
 			
@@ -53,7 +46,7 @@ public class BookListController implements Controller{
 		request.setAttribute("genreList", genreList);
 		
 		List<BookVO>publisherList=new ArrayList<BookVO>();
-for(int i=0;i<list.size();i++) {
+		for(int i=0;i<list.size();i++) {
 			
 			if(i==0) {
 				publisherList.add(list.get(i));
@@ -91,42 +84,34 @@ for(int i=0;i<list.size();i++) {
 			}
 		}
 		request.setAttribute("countryList", countryList);
-
-
+		if(request.getParameter("show")!=null) {
+		if(request.getParameter("show").equals("latest")) {
+		list=BookDAO.getInstance().getAllBookLatest();	
+		}
+		else if(request.getParameter("show").equals("letter")) {
+		list=BookDAO.getInstance().getAllBookLetter();	
+		}}
 		
-		
-		if(best == true) {
-			best = false;
-			
-			
-			return "book/bookListBest";
-		}
-		String cate=null;
-		String key=null;
-		if(request.getParameter("cate")!=null) {
-		 cate=request.getParameter("cate");
-		}
-		if(request.getParameter("key")!=null) {
-			key=request.getParameter("key");
-		}
-		
-		for(int i=0;i<list.size();i++) {
-			
-		}
-		
-		if(cate.equals("country")) {
-			
-			list=BookDAO.getInstance().getCountryBook(key);
-			
-		}
-		else if(cate.equals("publisher")) {
-			
-			list=BookDAO.getInstance().getPublisherBook(key);
-		}
-		else if(cate.equals("genre")) {
-			
+		if(request.getParameter("cate")!=null&&request.getParameter("key")!=null) {
+		String cate=request.getParameter("cate");
+		String key=request.getParameter("key");
+		if(cate.equals("genre")) {
 			list=BookDAO.getInstance().getGenreBook(key);
 		}
+		else if(cate.equals("country")) {
+			list=BookDAO.getInstance().getCountryBook(key);
+		}
+		else {
+			list=BookDAO.getInstance().getPublisherBook(key);
+		}
+			
+		}
+		
+
+
+		
+		
+		//옆 카테고리 눌렀을시 리스트 재설정
 		
 		request.setAttribute("list", list);
 		

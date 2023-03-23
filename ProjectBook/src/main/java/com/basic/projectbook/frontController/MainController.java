@@ -1,13 +1,17 @@
 package com.basic.projectbook.frontController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.basic.projectbook.dao.BookDAO;
 import com.basic.projectbook.dao.MemberDAO;
+import com.basic.projectbook.vo.BookVO;
 import com.basic.projectbook.vo.MemberVO;
 
 public class MainController implements Controller{
@@ -21,10 +25,43 @@ public class MainController implements Controller{
 		
 		MemberVO vo = MemberDAO.getInstance().getOneMember("1");
 		request.setAttribute("test", vo);
-		
-		
-		int x = MemberDAO.getInstance().testnum();
-		request.setAttribute("x", x);
+			
+		List<BookVO>latestThreeBookList=BookDAO.getInstance().getLatestThreeBook();
+		for(int i=0;i<latestThreeBookList.size();i++) {
+			if(latestThreeBookList.get(i).getDescription().length()>100) {
+				String description=latestThreeBookList.get(i).getDescription().substring(0, 100)+"...";
+				latestThreeBookList.get(i).setDescription(description);
+				
+			}
+		}
+		HttpSession session = request.getSession();
+		String id=null;
+		if(session.getAttribute(id)!=null&&(String)session.getAttribute(id)!="admin"){
+		id=(String)session.getAttribute("id");	
+		}
+		MemberVO memberInfo=null;
+				if(id!=null) {MemberDAO.getInstance().getOneMember(id);}
+		String genre=null;
+				if(genre!=null) {genre=memberInfo.getInterest();}
+		List<BookVO>recommendList=new ArrayList<BookVO>();
+		if(genre==null) {
+			recommendList=latestThreeBookList;
+		}
+		else {
+		if(genre.contains("/")) {
+			String arr[]=genre.split("/");
+			for(int i=0;i<arr.length;i++) {
+				BookVO genreVO=BookDAO.getInstance().getOneBookGenre(arr[i]);
+				recommendList.add(genreVO);
+			}
+		}
+		else {
+			recommendList=BookDAO.getInstance().getBookListGenre(genre);
+		}
+		}
+		System.out.println("size:"+latestThreeBookList.size());
+		request.setAttribute("threebook", latestThreeBookList);
+		request.setAttribute("recommendList", recommendList);
 		
 		
 		return "main";

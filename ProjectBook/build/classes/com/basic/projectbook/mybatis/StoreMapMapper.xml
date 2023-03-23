@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.storemap">
+
+	<resultMap id="storemap"
+		type="com.basic.projectbook.vo.StoreMapVO">
+		<id property="no" column="no" />
+		<result property="storeid" column="storeid" />
+		<result property="storename" column="storename"/>
+		<result property="location1" column="location1" />
+		<result property="location2" column="location2" />
+		<result property="img" column="img"/>
+		<result property="address" column="address" />
+		
+		
+	</resultMap>
+	<select id="getStoreMapInfo" parameterType="int" resultMap="storemap">
+		select * from storemap where storeid=#{storeid}
+	</select>
+	<select id="getAllMap" resultMap="storemap">
+		select * from storemap
+	</select>
+	
+
+</mapper>

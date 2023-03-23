@@ -5,7 +5,6 @@
 <%@ include file="../header.jsp" %>
 
 <h1> ${list.size()}</h1>
-<script type="text/javascript" src="script/booklist.js" defer></script>
 <script type="text/javascript" src="script/cartAdd.js" defer></script>
 
 <!-- Modal -->
@@ -43,7 +42,7 @@
                         </a>
                         <ul class="collapse show list-unstyled pl-3">
                         <c:forEach var="BookVO" items="${genreList}" varStatus="st">
-                        <li><a class="text-decoration-none" onclick="category(this,'genre')">${BookVO.genre}</a></li>
+                        <li><a class="text-decoration-none" href="${ctx}/bookList.do?cate=genre&key=${BookVO.genre}">${BookVO.genre}</a></li>
                         </c:forEach>
                             
                             
@@ -56,7 +55,7 @@
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
                         <c:forEach var="BookVO" items="${countryList}" varStatus="st">
-                        <li><a class="text-decoration-none" onclick="category(this,'country')">${BookVO.country}</a></li>
+                        <li><a class="text-decoration-none" href="${ctx}/bookList.do?cate=country&key=${BookVO.country}">${BookVO.country}</a></li>
                         </c:forEach>
                         </ul>
                     </li>
@@ -67,7 +66,7 @@
                         </a>
                         <ul id="collapseThree" class="collapse list-unstyled pl-3">
                         <c:forEach var="BookVO" items="${publisherList}" varStatus="st">
-                        <li><a class="text-decoration-none" onclick="category(this,'publisher')">${BookVO.publisher}</a></li>
+                        <li><a class="text-decoration-none" href="${ctx}/bookList.do?cate=publisher&key=${BookVO.publisher}">${BookVO.publisher}</a></li>
                         </c:forEach>
                         </ul>
                     </li>
@@ -79,23 +78,18 @@
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="${ctx}/bookList.do?show=letter&&cate=all">글자순</a>
+                                <a class="h3 text-dark text-decoration-none mr-3" href="${ctx}/bookList.do?show=letter">글자순</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="${ctx}/bookList.do?show=latest&&cate=all">최신순</a>
+                                <a class="h3 text-dark text-decoration-none mr-3" href="${ctx}/bookList.do?show=latest">최신순</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="h3 text-dark text-decoration-none mr-3" href="${ctx}/bookList.do?show=sale">판매순</a>
                             </li>
                            
                         </ul>
                     </div>
-                    <div class="col-md-6 pb-4">
-                        <div class="d-flex">
-                            <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row">
 
@@ -114,7 +108,7 @@
 												<li><a class="btn btn-success text-white"
 													href="shop-single.html"><i class="far fa-heart"></i></a></li>
 												<li><a class="btn btn-success text-white mt-2"
-													href="${ctx}/bookinfo.do?bookno=${BookVO.no}"><i
+													href="${ctx}/bookinfo.do?isbn=${BookVO.isbn}"><i
 														class="far fa-eye"></i></a></li>
 												<li><a class="btn btn-success text-white mt-2"
 													href="#" onclick="cartAdd(${BookVO.isbn})" id="cartAddBtn"><i class="fas fa-cart-plus"></i></a></li>
@@ -122,7 +116,7 @@
 										</div>
 									</div>
 									<div class="card-body text-center mb-0">
-										<a href="${ctx}/bookinfo.do?bookno=${BookVO.no}"
+										<a href="${ctx}/bookinfo.do?isbn=${BookVO.isbn}"
 											class="h3 text-decoration-none">${BookVO.title}</a>
 										<ul class="w-100 list-unstyled  mb-0 text-center mb-0">
 											<li>${BookVO.author}</li>

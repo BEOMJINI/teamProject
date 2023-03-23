@@ -55,6 +55,15 @@ public class BookJsonTest {
         	        vo.setPublisher((String) book.get("publisher"));
         	        vo.setPubdate((String) book.get("pubdate"));
         	        vo.setIsbn((String) book.get("isbn"));
+        	        List<BookVO>bookList=BookDAO.getInstance().getAllBook();
+        	        if(bookList.size()!=0) {
+        	        boolean check=true;
+        	        for(int i=0;i<bookList.size();i++) {
+        	        	if(bookList.get(i).getIsbn().equals((String)book.get("isbn"))) {
+        	        		check=false;break;
+        	        	}
+        	        }
+        	        if(!check) {continue;}}
         	        vo.setDescription((String) book.get("description"));
         	        vo.setGenre(genre);
         	        vo.setCountry(country);
