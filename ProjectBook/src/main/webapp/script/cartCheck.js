@@ -10,6 +10,14 @@ $("#check-all").click(function() {
 	
 });
 
+let checks = document.querySelectorAll("input[name=check]");
+
+checks.forEach((tag)=>{
+	tag.addEventListener("change",()=>{
+		
+	}) 
+})
+
 $("input[name=check]").click(function() {
 	let max = $("input[name=check]").length;
 	let count = $("input[name=check]:checked").length;

@@ -124,12 +124,15 @@ img varchar(500),
 address varchar(100),
 foreign key(storeid) references store (storeid) on update cascade on delete cascade,
 foreign key(storename) references store (storename) on update cascade on delete cascade
-)
+);
+
 insert into storemap(storeid,storename,location1,location2,img,address) values
 (0,'책방 강남점(본점)',37.503715,127.024135,'https://lh3.googleusercontent.com/p/AF1QipOs80RMKkMbTOJhnm1XWgYXd5jjLOEeC5ILvIdP=s680-w680-h510','서울특별시 서초구 강남대로 465'),
 (1,'책방 잠실점',37.514255,127.101273,'https://lh3.googleusercontent.com/p/AF1QipNDsHnEuwO-kzpkwGHphDIM5CJB8XOZI-S31gfy=s680-w680-h510','서울특별시 송파구 올림픽로 269 롯데캐슬골드 B1F'),
 (2,'책방 목동점',37.528240,126.874982,'https://lh3.googleusercontent.com/p/AF1QipPJADbMLjnhjmTpQGs10W6_VA6MrNsVzAuB3Nv2=s680-w680-h510','서울특별시 양천구 목동서로 159-1'),
 (3,'책방 영등포점',37.517014,126.904143,'https://lh3.googleusercontent.com/p/AF1QipPrfQJGDPn2ZbKihgFHd9Hpwajm6rO4v6cI3D8j=s680-w680-h510','서울특별시 영등포구 영중로 15')
+
+select * from storemap;
 delete from storemap;
 drop table storemap;
 
