@@ -106,6 +106,18 @@ public class BookListController implements Controller{
 		}
 			
 		}
+		if(request.getParameter("keyword")!=null) {
+			if(request.getParameter("search").equals("title")) {
+				
+			}
+			else if(request.getParameter("search").equals("author")) {
+				
+			}
+			else {
+				
+			}
+			
+		}
 		
 
 
