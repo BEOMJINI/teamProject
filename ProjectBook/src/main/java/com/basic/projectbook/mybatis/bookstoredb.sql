@@ -135,6 +135,8 @@ insert into storemap(storeid,storename,location1,location2,img,address) values
 select * from storemap;
 delete from storemap;
 drop table storemap;
+SELECT * FROM book
+WHERE title LIKE BINARY '%메이플%';
 
 
 
@@ -176,7 +178,6 @@ drop table applyrestock;
 drop table member;
 drop table cart;
 drop table orderlist;
-drop table sale;
 drop table sale;
 drop table book;
 drop table store;

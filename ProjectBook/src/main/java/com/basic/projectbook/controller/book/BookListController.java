@@ -118,7 +118,20 @@ public class BookListController implements Controller{
 			}
 			
 		}
-		
+		if(request.getParameter("search")!=null) {
+			String search=request.getParameter("search");
+			String keyword=request.getParameter("keyword");
+			if(search.equals("title")) {
+			list=BookDAO.getInstance().getAllBookTitle(keyword);
+			System.out.println("타이틀리스트사이즈:"+list.size());
+			}
+			else if(search.equals("description")) {
+			list=BookDAO.getInstance().getAllBookDescription(keyword);	
+			}
+			else {
+				list=BookDAO.getInstance().getAllBookAuthor(keyword);		
+			}
+		}
 
 
 		

@@ -100,4 +100,22 @@ public class BookDAO {
 		session.close();
 		return list;
 	}
+	public List<BookVO> getAllBookTitle(String keyword){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookVO> list=session.selectList("mapper.book.getAllBookTitle",keyword);
+		session.close();
+		return list;
+	}
+	public List<BookVO> getAllBookDescription(String keyword){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookVO> list=session.selectList("mapper.book.getAllBookDescription",keyword);
+		session.close();
+		return list;
+	}
+	public List<BookVO> getAllBookAuthor(String keyword){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookVO> list=session.selectList("mapper.book.getAllBookAuthor",keyword);
+		session.close();
+		return list;
+	}
 }
