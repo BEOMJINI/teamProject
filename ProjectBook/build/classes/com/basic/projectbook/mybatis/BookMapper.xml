@@ -58,5 +58,14 @@
 	<select id="getBookListGenre" parameterType="String" resultMap="book">
 		select * from book where genre=#{genre} limit 3
 	</select>
+	<select id="getAllBookTitle" parameterType="String" resultMap="book">
+		SELECT * FROM book WHERE title LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+	<select id="getAllBookDescription" parameterType="String" resultMap="book">
+		SELECT * FROM book WHERE description LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+	<select id="getAllBookAuthor" parameterType="String" resultMap="book">
+		SELECT * FROM book WHERE author LIKE CONCAT('%', #{keyword}, '%')
+	</select>
 
 </mapper>

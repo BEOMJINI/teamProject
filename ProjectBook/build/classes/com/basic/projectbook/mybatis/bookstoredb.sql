@@ -132,6 +132,8 @@ insert into storemap(storeid,storename,location1,location2,img,address) values
 (3,'책방 영등포점',37.517014,126.904143,'https://lh3.googleusercontent.com/p/AF1QipPrfQJGDPn2ZbKihgFHd9Hpwajm6rO4v6cI3D8j=s680-w680-h510','서울특별시 영등포구 영중로 15')
 delete from storemap;
 drop table storemap;
+SELECT * FROM book
+WHERE title LIKE BINARY '%메이플%';
 
 
 
@@ -173,7 +175,6 @@ drop table applyrestock;
 drop table member;
 drop table cart;
 drop table orderlist;
-drop table sale;
 drop table sale;
 drop table book;
 drop table store;
