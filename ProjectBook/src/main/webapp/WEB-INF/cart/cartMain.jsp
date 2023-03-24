@@ -31,30 +31,26 @@ function cartDeleteAll() {
     });
 }
 
-
-/*
-function cartUpdate(isbn) {
+function itemTotal() {
+	let list = document.querySelectorAll("input[name=check]");
+	let totalList = document.querySelectorAll(".result-price");
 	
-	let query = {
-        isbn: isbn,
-        cqty: $("#cqty").val()
-    };
-	
-    $.ajax({
-        type: "post",
-        url: "cartUpdate.do",
-        data: query,
-        success: function(x) {
-			if(x > 0){
-				window.location.href = "cartList.do";
-			}
+	var total = 0;
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			total += Number(removeComma(totalList[i].textContent));		
 		}
-    });
+	}
+	$("#total").html(total);
 }
-*/
 
 
 
+
+function testnums() {
+	var index = $(".testid").index(this);
+	console.log("testindex= ", index);
+}
 </script>
 
 <section>
@@ -100,15 +96,16 @@ function cartUpdate(isbn) {
 								${bean.author}
 								</p>
 								<p>
+								<input type="hidden" value="${bean.discount }" class="cart_discount"/>
 								${moneyData.get(i.index) }
 								</p>
 								</td>
-								<td><input type="number" min="0" max="99" value="${bean.cqty}" id="cqty" name="cart_qty" oninput="sumsum(${bean.discount } ,${i.index}, this.value)"/>
-								<p class="total${i.index}"></p>
+								<td><div class="qty_div"><input type="number" min="0" max="99" value="${bean.cqty}" id="cqty" name="cart_qty" class="cart_qtyBtn"/>
+								</div><p class="total${i.index}"></p>
 								</td>
 								<td style="text-align: center; vertical-align: middle;"><a onclick="cartDelete(${bean.isbn})"><i class="fa-solid fa-x"></i></a></td>
 								</tr>
-				
+								<td><button type="button" class="testid" onclick="testnums()"></button></td>
 					</c:forEach>
 						</tbody>
 					</table>
@@ -124,8 +121,10 @@ function cartUpdate(isbn) {
 							
 							</tr>
 							<c:forEach var="bean" items="${list}" varStatus="i">
-							<tr>
-							<td><p class="total${i.index}" id="shark"></p></td>
+							<tr id="costtr">
+						<!--  -->
+							<td><span class="cost"></span>원</td>
+						<!--  -->
 							</tr>
 							<input type="hidden" name="cart_isbn" value="${bean.isbn }"/>
 							<input type="hidden" name="cart_img" value="${bean.img }"/>

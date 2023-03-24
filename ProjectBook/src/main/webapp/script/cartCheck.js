@@ -30,102 +30,49 @@ $("input[name=check]").click(function() {
 	
 });
 
-$(document).ready(function() {
-		$("#check-all").prop("checked", true);
-	$("input[name=check]").prop("checked", true);
-	let arr = $("input[name=check]").filter(":checked").val();
-	console.log("arr ==  " + arr);
-	let arr2 = [];
 
-	$("input[name=check]").each(function() {
-		if ($(this).is(":checked")) {
-			console.log($(this).val());
-			arr2.push($(this).val());
-			sum += $(this).val() * 1;
+list = document.querySelectorAll("input[name=cart_qty]");
+for (let i = 0; i < list.length; i++) {
+	list[i].addEventListener("click", changeQty);
+}
 
-		}
-	});
-	console.log("arr2 == " + arr2);
-	console.log(sum);
-	$(".sumsumsum").text(sum);
-	
-		
 
-	
-	
-
-});
-
-let arr = [];
-function sumsum(price, idx , cqty) {
-	console.log("tttt = " ,$("input[name=check]").length);
-	
-	$("input[name=check]").each(function() {
-		if ($(this).is(":checked")){
+function changeQty() {
+	let checklist = document.querySelectorAll("input[name=check]");
+	for (let i = 0; i < checklist.length; i++) {
+		if (checklist[i].checked) {
 			
-		console.log("cqty= " , cqty );
-		let name = ".total"+idx;
-		console.log($(name));
-		
-		let text = (price * cqty) * 1;
-		console.log("test = " , (price * cqty) * 1)
-		$(name).text(text);
-		
-		
-		arr[idx] = text;
-		console.log("arr = ", arr);
-		
-		const result = arr.reduce(function add(sum, currValue) {
-			  return sum + currValue;
-			}, 0);
-		console.log("r = ", result);
-		$(".sumsumsum").text(result);
-		
-		let ss = 0;
-		ss += text;
-		console.log("sss" , ss);
-	
-	} else {
-		console.log("cqty= " , cqty );
-		let name = ".total"+idx;
-		console.log($(name));
-		
-		let text = 0;
-		console.log("test = " , (price * cqty) * 1)
-		$(name).text(text);
-		
-		
-		arr[idx] = text;
-		console.log("arr = ", arr);
-		
-		const result = arr.reduce(function add(sum, currValue) {
-			  return sum + currValue;
-			}, 0);
-		console.log("r = ", result);
-		$(".sumsumsum").text(result);
-		$("#cart_ck"+idx).attr("value", "0");
-	}
-	});
-}	
+			console.log(list);
+			let index = $("input[name=cart_qty]").index(this);
+			//var index = $(".qty_div").index(this);
+			console.log("index = ", index);
+			let buyCount = $(".cart_qtyBtn").eq(index).val();
 
+			let cost = $(".cart_discount").eq(index).val();				// 원가
 
-/*
-function price() {
+			let price = buyCount * cost;						// 총금액
+			price = price + "";
 
+			console.log(buyCount, cost, price);
+			$(".cost").eq(index).html(price);
+		} else {
+			console.log(list);
+			let index = $("input[name=cart_qty]").index(this);
+			//var index = $(".qty_div").index(this);
+			console.log("index = ", index);
+			let buyCount = $(".cart_qtyBtn").eq(index).val();
 
+			let cost = $(".cart_discount").eq(index).val();				// 원가
 
-	sum = 0;
-	let disco = 0;
-	let cqtycqty = 0;
-	$("input[name=check]").each(function() {
-		if ($(this).is(":checked")) {
-			$("input[name=cqtyTest]").oninput = alert($("input[name=cqtyTest]").val());
+			let price = buyCount * cost;						// 총금액
+			price = price + "";
 
-
+			console.log(buyCount, cost, price);
+			$(".cost").eq(index).html("");
 		}
-	});
+	}
 	
-};
-
-*/
-
+	
+	
+	
+}
