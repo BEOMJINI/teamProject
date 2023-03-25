@@ -119,7 +119,7 @@ function cartDeleteAll() {
 							</tr>
 							<tr>
 							<td>
-							<input type="submit" value="직접수령" id="pickupBtn" onclick="javascript: form.action='${ctx}/main.do';"/>
+							<input type="button" value="직접수령" name="pickupBtn"/>
 							<input type="button" value="배송주문" name="deliveryBtn"/>
 							</td>
 							</tr>

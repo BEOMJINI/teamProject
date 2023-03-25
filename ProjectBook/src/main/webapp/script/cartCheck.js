@@ -63,6 +63,24 @@ function addEvent() {
 			}
 		});
 	}
+	
+	let pickUp = document.querySelector("input[name=pickupBtn]");
+	if (pickUp != null) {
+		pickUp.addEventListener("click",()=>{
+			if($("input[name=check]:checked").length == 0){
+				Swal.fire(
+  '선택된 책이 없습니다',
+  '책을 선택한 후 진행해주세요',
+  'question'
+)
+				
+			} else {
+			let cartform = document.querySelector("#cart_form");
+			cartform.action="selectShop.do";
+			cartform.submit();
+			}
+		});
+	}
 }
 
 

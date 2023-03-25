@@ -54,7 +54,5 @@ public class BookStockDAO {
 		session.close();
 		return list;
 	}
-	
-	
 
 }

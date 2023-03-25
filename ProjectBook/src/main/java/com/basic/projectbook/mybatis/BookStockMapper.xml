@@ -48,5 +48,5 @@ WHERE NOT EXISTS (
 	<delete id="deleteBook" parameterType="bookstock">
 	delete from book where isbn=#{isbn}
 	</delete>
-
+	
 </mapper>
