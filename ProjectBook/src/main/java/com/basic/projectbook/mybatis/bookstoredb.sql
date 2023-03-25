@@ -13,7 +13,10 @@ interest varchar(30),
 address varchar(50) not null,
 mileage int not null default 0
 );
-
+SELECT o.no as no,o.receive as receive, o.id as id, o.isbn as isbn,o.cqty as cqty, b.title as title
+FROM orderlist o
+LEFT JOIN book b ON o.isbn = b.isbn
+WHERE o.id = '1';
 
 select * from member;
 delete from member;
@@ -83,6 +86,14 @@ FROM
     
     where o.id='2'
     
+    SELECT 
+    CASE WHEN r.id IS NOT NULL AND r.isbn = o.isbn THEN 'true' ELSE 'false' END AS written
+FROM 
+    orderlist o 
+    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
+WHERE 
+    o.id = '1';
+    
     
 SELECT 
     o.*, r.*, 
@@ -91,7 +102,7 @@ FROM
     orderlist o 
     LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
 WHERE 
-    o.id = '2';
+    o.id = '1';
 
 
 

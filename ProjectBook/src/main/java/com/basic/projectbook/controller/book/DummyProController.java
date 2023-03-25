@@ -6,7 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.basic.projectbook.dao.OrderListDAO;
+
+import com.basic.projectbook.dao.OrderlistDAO;
 import com.basic.projectbook.dao.ReviewDAO;
 import com.basic.projectbook.frontController.Controller;
 
@@ -16,7 +17,8 @@ public class DummyProController implements Controller{
 	public String service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		if(request.getParameter("dummy").equals("order")) {OrderListDAO.getInstance().addOrderDummy();}
+		if(request.getParameter("dummy").equals("order")) {
+			OrderlistDAO.getInstance().addOrderDummy();}
 		else {
 			ReviewDAO.getInstance().addReviewDummy();
 		}
