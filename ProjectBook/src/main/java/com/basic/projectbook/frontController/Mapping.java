@@ -27,10 +27,12 @@ import com.basic.projectbook.controller.member.JoinController;
 import com.basic.projectbook.controller.member.LogInController;
 import com.basic.projectbook.controller.member.LogOutController;
 import com.basic.projectbook.controller.member.MemberDeleteController;
+import com.basic.projectbook.controller.member.MemberInfoController;
 import com.basic.projectbook.controller.member.MemberListController;
 import com.basic.projectbook.controller.member.MemberUpdateController;
 import com.basic.projectbook.controller.orderlist.ShowMyOrderController;
 import com.basic.projectbook.controller.pay.PayMainController;
+import com.basic.projectbook.controller.pay.SelectShopController;
 import com.basic.projectbook.controller.pay.payResultController;
 import com.basic.projectbook.controller.review.ShowMyReviewController;
 import com.basic.projectbook.controller.review.WriteReviewController;
@@ -58,6 +60,7 @@ public class Mapping {
 		mapping.put("/memberUpdate.do", new MemberUpdateController());
 		mapping.put("/memberList.do", new MemberListController());
 		mapping.put("/memberDelete.do", new MemberDeleteController());
+		mapping.put("/memberInfo.do", new MemberInfoController());
 		
 		// book controller
 		mapping.put("/bookList.do", new BookListController());
@@ -93,6 +96,7 @@ public class Mapping {
 		// pay controller
 		mapping.put("/payMain.do", new PayMainController());
 		mapping.put("/payResult.do", new payResultController());
+		mapping.put("/selectShop.do", new SelectShopController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());

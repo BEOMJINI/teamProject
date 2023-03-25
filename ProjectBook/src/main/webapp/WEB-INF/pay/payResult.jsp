@@ -3,8 +3,16 @@
 <%@ include file="../header.jsp" %>
 <section>
 <div class="container">
-<h1> 주문이 완료되었습니다. 결제 내역은 내정보에서 확인 가능합니다.</h1>
-
+<div align="center">
+<h1> &lt; 주문 완료 &gt; </h1>
+<span> ${printDiscountData } 결제 되었습니다.</span>
+<span> 결제 내역은 내 정보에서도 확인 하실 수 있습니다.</span>
+<p>
+<button type="submit" class="btn btn-success btn-lg" name="" value="" onclick="location.href='${ctx}/main.do'">홈으로</button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="submit" class="btn btn-success btn-lg" name="" value="" >결제 내역 보기</button>
+</p>
+</div>
 </div>
 
 </section>

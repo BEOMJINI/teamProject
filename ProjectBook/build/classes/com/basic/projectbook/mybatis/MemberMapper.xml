@@ -53,4 +53,9 @@
 	<update id="memberUpdate" parameterType="member">
 		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone}, address=#{address} where id=#{id}
 	</update>
+	
+	<update id="memberMileageUpdate" parameterType="member">
+		update member set mileage=#{mileage} where id=#{id}
+	</update>
+	
 </mapper>

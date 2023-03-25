@@ -30,7 +30,7 @@ select * from member;
 delete from member;
 drop table member;
 
->>>>>>> kbj_dev
+
 create table cart(
 no int auto_increment primary key,
 isbn varchar(50),
@@ -61,6 +61,7 @@ INSERT INTO orderlist (no,receive,id,isbn,cqty) VALUES
 select * from orderlist;
 delete from orderlist;
 drop table orderlist;
+
 
 create table sale(
 no int,

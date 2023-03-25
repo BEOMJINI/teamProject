@@ -39,12 +39,14 @@ public class CartDAO {
 	public int cartDelete(CartVO vo) {
 		SqlSession ss = MybatisConfig.getInstance().openSession(true);
 		int x = ss.delete("mapper.cart.cartDelete", vo);
+		ss.close();
 		return x;
 	}
 	
 	public int cartUpdate(CartVO vo) {
 		SqlSession ss = MybatisConfig.getInstance().openSession(true);
 		int x = ss.update("mapper.cart.cartUpdate", vo);
+		ss.close();
 		return x;
 	}
 }

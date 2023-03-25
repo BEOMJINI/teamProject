@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.basic.projectbook.dao.CartDAO;
 import com.basic.projectbook.frontController.Controller;
+import com.basic.projectbook.vo.CartListViewBean;
 import com.basic.projectbook.vo.CartVO;
 
 public class CartUpdateController implements Controller{
@@ -23,16 +24,7 @@ public class CartUpdateController implements Controller{
 		if(id == null) {
 			return "login.do";
 		}
-		String isbn = request.getParameter("isbn");
-		String cqty = request.getParameter("cqty");
-		
-		CartVO vo = new CartVO();
-		vo.setId(id);
-		vo.setIsbn(isbn);
-		vo.setCqty(Integer.parseInt(cqty));
-		
-		int x = CartDAO.getInstance().cartUpdate(vo);
-		response.getWriter().print(x);
+	
 		return null;
 	}
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="mapper.sale">
+ 
+ <resultMap type="com.basic.projectbook.vo.SaleVO" id="sale">
+ <result property="no" column="no"/>
+ <result property="isbn" column="isbn"/>
+  <result property="qty" column="qty"/>
+ </resultMap>
+ 
+ <select id="getMaxNo" resultType="Integer" >
+ 	select ifnull(MAX(no),0) from sale
+ </select>
+ 
+ <insert id="saleInsert" parameterType="sale">
+ 	insert into sale (no, isbn, qty) values(#{no}, #{isbn}, #{qty})
+ </insert>
+ 
+ </mapper>
