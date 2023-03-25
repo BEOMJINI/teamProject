@@ -13,7 +13,7 @@
 	  <typeAlias type="com.basic.projectbook.vo.ApplyRestockVO" alias="applyrestock"/>
 	  <typeAlias type="com.basic.projectbook.vo.StoreMapVO" alias="storemap"/>
 
-
+	 
 	  <typeAlias type="com.basic.projectbook.vo.ReviewVO" alias="review"/>
 
 	  <typeAlias type="com.basic.projectbook.vo.OrderlistVO" alias="orderlist"/>
