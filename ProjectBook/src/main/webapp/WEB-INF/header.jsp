@@ -22,7 +22,7 @@
 	
 <script src="https://kit.fontawesome.com/116a85af51.js"
 	crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon" href="assets/img/apple-icon.png"> <!-- 파비콘 수정 -->
@@ -173,8 +173,8 @@
 							class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i> <span
 							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" id="cart-count"></span>
 						</a> <a class="nav-icon position-relative text-decoration-none"
-							href="#"> <i class="fa fa-fw fa-user text-dark mr-3"></i> <span
-							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+							href="${ctx }/memberInfo.do"> <i class="fa fa-fw fa-user text-dark mr-3"></i> <span
+							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
 						</a>
 					</div>
 				</div>

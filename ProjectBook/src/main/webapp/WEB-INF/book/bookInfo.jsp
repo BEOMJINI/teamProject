@@ -49,7 +49,7 @@
                             <h6>출간일:${BookVO.pubdate}</h6>
                             
 
-                            <form action="" method="GET">
+                            <form action="" method="post" id="bookinfo-form">
                                 <input type="hidden" name="isbn" value="${BookVO.isbn}">
                                 <div class="row">
                                     
@@ -67,12 +67,18 @@
                                 </div>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy" >바로구매</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="" value="buy" id="payDirect">바로구매</button>
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="button" class="btn btn-success btn-lg" name="submit" value="addtocard" onclick="cartAdds(${BookVO.isbn})">장바구니</button>
+                                        <button type="button" class="btn btn-success btn-lg" name="" value="addtocard" onclick="cartAdds(${BookVO.isbn})">장바구니</button>
                                     </div>
                                 </div>
+                                <input type="hidden" name="cart_discount" value="${BookVO.discount }"/>
+                                <input type="hidden" name="cart_img" value="${BookVO.image }"/>
+                                <input type="hidden" name="cart_qty" value=""/>
+                                <input type="hidden" name="cart_title" value="${BookVO.title }"/>  
+                                <input type="hidden" name="cart_isbn" value="${BookVO.isbn }"/>
+                                <input type="hidden" name="status" value="1"/>
                             </form>
 
                         </div>
@@ -81,4 +87,8 @@
             </div>
         </div>
     </section>
+    
+    <script>
+   
+    </script>
     <%@ include file="../footer.jsp" %>

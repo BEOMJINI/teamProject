@@ -18,7 +18,8 @@ $("#login").click(function() {
 				if (x != "null") {
 					window.location.href = "main.do";
 				} else if (x == "null") {
-					alert("아이디와 패스워드를 확인해주세요.");
+					Swal.fire('로그인 실패','아이디와 비밀번호를 확인해주세요','error')
+
 					$("#id").val("");
 					$("#pw").val("");
 				}
@@ -36,12 +37,13 @@ $("#cancle").click(function() {
 function checkIt() {
 
 	if (!$.trim($("#id").val())) {
-		alert("아이디를 입력하세요.");
-		$("#id").focus();
+		alert('아이디를 입력해주세요');
+		$("#id").focus()
+		
 
 		return false;
 	} else if (!$.trim($("#pw").val())) {
-		alert("비밀번호를 입력하세요.");
+		alert('비밀번호를 입력해주세요');
 		$("#pw").focus();
 
 		return false;

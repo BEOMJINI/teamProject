@@ -25,6 +25,6 @@ function checkCount(c) {
     if (count > max) {
         c.checked = false;
         count -= 1;
-        alert("최대 3개 까지만 가능합니다.");
+        Swal.fire("최대 3개 까지만 선택 가능합니다.")
     }
 };

@@ -48,7 +48,7 @@ public class JoinController implements Controller {
 		vo.setEmail(request.getParameter("email"));
 		vo.setPhone(request.getParameter("phone"));
 		vo.setAddress(request.getParameter("address"));
-
+		
 		String data = null;
 		if (test != null) {
 			for (String s : test) {

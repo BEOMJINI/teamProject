@@ -31,19 +31,14 @@ public class MemberUpdateController implements Controller{
 			String phone = request.getParameter("phone");
 			String address = request.getParameter("address");
 			
-//			System.out.println(pw);
-//			System.out.println(name);
-//			System.out.println(email);
-//			System.out.println(phone);
-//			System.out.println(address);
-				
+		
 			vo.setPw(pw);
 			vo.setName(name);
 			vo.setEmail(email);
 			vo.setPhone(phone);
 			vo.setAddress(address);
 			
-			MemberDAO.getInstance().memberupdate(vo);
+			MemberDAO.getInstance().memberUpdate(vo);
 			
 			request.setAttribute("updateMsg", "수정이 완료 되었습니다.");
 		}

@@ -1,78 +1,129 @@
-let sum = 0;
-
-
-$("#check-all").click(function() {
-	if ($("#check-all").is(":checked")) {
-		$("input[name=check]").prop("checked", true);
-	} else {
-		$("input[name=check]").prop("checked", false);
-	}
-	
-});
-
-let checks = document.querySelectorAll("input[name=check]");
-
-checks.forEach((tag)=>{
-	tag.addEventListener("change",()=>{
-		
-	}) 
-})
-
-$("input[name=check]").click(function() {
-	let max = $("input[name=check]").length;
-	let count = $("input[name=check]:checked").length;
-
-	if (max == count) {
-		$("#check-all").prop("checked", true);
-	} else {
-		$("#check-all").prop("checked", false);
-	}
-	
-});
-
-
-list = document.querySelectorAll("input[name=cart_qty]");
-for (let i = 0; i < list.length; i++) {
-	list[i].addEventListener("click", changeQty);
+function addComma(value) {
+	value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return value;
 }
 
 
-function changeQty() {
-	let checklist = document.querySelectorAll("input[name=check]");
-	for (let i = 0; i < checklist.length; i++) {
-		if (checklist[i].checked) {
-			
-			console.log(list);
-			let index = $("input[name=cart_qty]").index(this);
-			//var index = $(".qty_div").index(this);
-			console.log("index = ", index);
-			let buyCount = $(".cart_qtyBtn").eq(index).val();
+function removeComma(value) {
+	value = value.replace(/[^\d]+/g, '');
+	return value;
+}
 
-			let cost = $(".cart_discount").eq(index).val();				// 원가
-
-			let price = buyCount * cost;						// 총금액
-			price = price + "";
-
-			console.log(buyCount, cost, price);
-			$(".cost").eq(index).html(price);
-		} else {
-			console.log(list);
-			let index = $("input[name=cart_qty]").index(this);
-			//var index = $(".qty_div").index(this);
-			console.log("index = ", index);
-			let buyCount = $(".cart_qtyBtn").eq(index).val();
-
-			let cost = $(".cart_discount").eq(index).val();				// 원가
-
-			let price = buyCount * cost;						// 총금액
-			price = price + "";
-
-			console.log(buyCount, cost, price);
-			$(".cost").eq(index).html("");
+function itemTotal() {
+	let list = document.querySelectorAll("input[name=check]");
+	let totalList = document.querySelectorAll("input[name=cart_discount]");
+	let qtyList = document.querySelectorAll("input[name=cart_qty]");
+	
+	let total = 0;
+	for (let i = 0; i < list.length; i++) {
+		if (list[i].checked) {
+			total += ( totalList[i].value * qtyList[i].value ) * 1;
 		}
 	}
 	
-	
-	
-	
+	if(total != 0){
+		
+		total = addComma(total+"");
+	}
+	$("#sumsumsum").html(total);
 }
+
+function addEvent() {
+
+
+	let list = document.querySelectorAll("input[name=check]");
+	for (let i = 0; i < list.length; i++) {
+		list[i].addEventListener("click", checkBox);
+	}
+	
+	list = document.querySelectorAll("input[name=cart_qty]");
+	for (let i = 0; i < list.length; i++) {
+		list[i].addEventListener("click", qtyControll);
+	}
+
+	let allCheck = document.querySelector("input[name=check-all]");
+	if (allCheck != null) {
+		allCheck.addEventListener("click", checkAll);
+	}
+	
+	let delivery = document.querySelector("input[name=deliveryBtn]");
+	if (delivery != null) {
+		delivery.addEventListener("click",()=>{
+			if($("input[name=check]:checked").length == 0){
+				Swal.fire(
+  '선택된 책이 없습니다',
+  '책을 선택한 후 진행해주세요',
+  'question'
+)
+				
+			} else {
+			let cartform = document.querySelector("#cart_form");
+			cartform.action="payMain.do";
+			cartform.submit();
+			}
+		});
+	}
+}
+
+
+function qtyControll() {
+	let index = $("input[name=cart_qty]").index(this);
+	let buyCount = $("input[name=cart_qty]").eq(index).val();
+	
+	let cost = $("input[name=cart_discount]").eq(index).val();				
+	
+
+	let price = buyCount * 1 * cost * 1;						
+	price = price + "";
+	price = addComma(price);
+	$(".cost").eq(index).html(price + ' 원');
+
+	itemTotal();
+}
+
+function checkBox() {
+	let total = $("input[name=check]").length;
+	let checked = $("input[name=check]:checked").length;
+	
+	if (total != checked) {
+		$("input[name=check-all]").prop("checked", false);
+	} else {
+		$("input[name=check-all]").prop("checked", true);
+	}
+	itemTotal();
+}
+
+function checkAll() {
+	let list = document.querySelectorAll("input[name=check]");
+	for (let i = 0; i < list.length; i++) {
+		list[i].checked = this.checked;
+	}
+	itemTotal();
+}
+
+function statusControll(idx) {
+
+	let list = document.querySelectorAll("input[name=check]");
+	let statusList = document.querySelectorAll("input[name=status]");
+
+	if(list[idx].checked){
+		statusList[idx].value = 1;
+	} else {
+		statusList[idx].value = 2;
+	}
+}
+
+
+$(document).ready(function() {
+	let allCheck = document.querySelector("input[name=check-all]");
+	allCheck.checked = true;
+	let list = document.querySelectorAll("input[name=check]");
+	for (let i = 0; i < list.length; i++) {
+		list[i].checked = true;
+	}
+	itemTotal();
+	
+	addEvent();
+	
+
+});

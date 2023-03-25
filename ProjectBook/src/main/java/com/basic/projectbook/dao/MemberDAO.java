@@ -24,12 +24,14 @@ public class MemberDAO {
 	public MemberVO getOneMember(String id) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		MemberVO vo = session.selectOne("mapper.member.getOneMember", id);
+		session.close();
 		return vo;
 	}
 	
 	public String memberLogin(MemberVO vo) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		String x = session.selectOne("mapper.member.memberLogin", vo);
+		session.close();
 		return x;
 	}
 	
@@ -44,6 +46,7 @@ public class MemberDAO {
 	public int validId(String id) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		int z = session.selectOne("mapper.member.validId", id);
+		session.close();
 		return z;
 		
 	}
@@ -51,16 +54,19 @@ public class MemberDAO {
 	public void memberDelete(String id) {
 		SqlSession ss = MybatisConfig.getInstance().openSession(true);
 		ss.delete("mapper.member.memberDelete", id);
+		ss.close();
 	}
 	
-	public void memberupdate(MemberVO vo) {
+	public void memberUpdate(MemberVO vo) {
 		SqlSession ss = MybatisConfig.getInstance().openSession(true);
 		ss.update("mapper.member.memberUpdate", vo);
+		ss.close();
 	}
 	
-	public int testnum() {
-		int x =3 ;
-		return x;
+	public void memberMileageUpdate(MemberVO vo) {
+		SqlSession ss = MybatisConfig.getInstance().openSession(true);
+		ss.update("mapper.member.memberMileageUpdate", vo);
+		ss.close();
 	}
 	
 }

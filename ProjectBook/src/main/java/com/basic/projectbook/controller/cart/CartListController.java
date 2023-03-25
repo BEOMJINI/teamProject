@@ -31,7 +31,8 @@ public class CartListController implements Controller{
 		
 		List<CartListViewBean> list = CartDAO.getInstance().getOneCartList(id);
 		request.setAttribute("list", list);
-		//System.out.println("list=" + list);
+		request.setAttribute("loginId", id);
+		request.setAttribute("listSize", list.size());
 		
 		DecimalFormat df = new DecimalFormat("###,###,### 원");
 		ArrayList<String> moneyData = new ArrayList<>();

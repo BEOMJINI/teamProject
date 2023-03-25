@@ -30,7 +30,7 @@ select * from member;
 delete from member;
 drop table member;
 
->>>>>>> kbj_dev
+
 create table cart(
 no int auto_increment primary key,
 isbn varchar(50),
@@ -57,6 +57,7 @@ cqty int not null
 select * from orderlist;
 delete from orderlist;
 drop table orderlist;
+
 
 create table sale(
 no int,

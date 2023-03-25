@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="mapper.orderlist">
+ 
+ <resultMap type="com.basic.projectbook.vo.OrderlistVO" id="orderlist">
+ 	<result property="no" column="no"/>
+ 	<result property="receive" column="receive"/>
+ 	<result property="id" column="id"/>
+ 	<result property="isbn" column="isbn"/>
+ 	<result property="cqty" column="cqty"/>
+  </resultMap>
+ 
+ <select id="getMaxNo" resultType="Integer" >
+ 	select ifnull(MAX(no),0) from orderlist
+ </select>
+ 
+ <insert id="orderlistInsert" parameterType="orderlist">
+  	insert into orderlist (no, receive, id, isbn, cqty) values(#{no}, #{receive}, #{id}, #{isbn}, #{cqty})
+ </insert>
+ 
+ <select id="orderlistPrint" resultMap="orderlist">
+ 	select * from orderlist
+ </select>
+ 
+ <select id="orderlistMember" resultMap="orderlist" parameterType="String">
+ 	select * from orderlist where id=#{id}
+ </select>
+ 
+ </mapper> 

@@ -78,6 +78,12 @@ public String getCountry() {
 public void setCountry(String country) {
 	this.country = country;
 }
+@Override
+public String toString() {
+	return "BookVO [no=" + no + ", title=" + title + ", image=" + image + ", author=" + author + ", discount="
+			+ discount + ", publisher=" + publisher + ", pubdate=" + pubdate + ", isbn=" + isbn + ", description="
+			+ description + ", genre=" + genre + ", country=" + country + "]";
+}
 
 
 
