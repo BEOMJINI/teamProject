@@ -7,7 +7,8 @@ import java.util.Map;
 
 import com.basic.projectbook.controller.book.BookInfoController;
 import com.basic.projectbook.controller.book.BookListController;
-
+import com.basic.projectbook.controller.book.DummyController;
+import com.basic.projectbook.controller.book.DummyProController;
 import com.basic.projectbook.controller.bookstock.AddBookStockController;
 import com.basic.projectbook.controller.bookstock.AddBookStockProController;
 import com.basic.projectbook.controller.applyrestock.ApplyRestockController;
@@ -28,8 +29,11 @@ import com.basic.projectbook.controller.member.LogOutController;
 import com.basic.projectbook.controller.member.MemberDeleteController;
 import com.basic.projectbook.controller.member.MemberListController;
 import com.basic.projectbook.controller.member.MemberUpdateController;
+import com.basic.projectbook.controller.orderlist.ShowMyOrderController;
 import com.basic.projectbook.controller.pay.PayMainController;
 import com.basic.projectbook.controller.pay.payResultController;
+import com.basic.projectbook.controller.review.ShowMyReviewController;
+import com.basic.projectbook.controller.review.WriteReviewController;
 import com.basic.projectbook.controller.shop.ShopMainController;
 import com.basic.projectbook.controller.store.StoreInfoController;
 import com.basic.projectbook.controller.store.StoreMapController;
@@ -92,10 +96,17 @@ public class Mapping {
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());
+		//orderlist controller
+		mapping.put("/showMyOrder.do", new ShowMyOrderController());
 		
 		// event controller
 		mapping.put("/eventMain.do", new EventMainController());
-		
+		//dummy
+		mapping.put("/dummy.do", new DummyController());
+		mapping.put("/dummyPro.do", new DummyProController());
+		//review
+		mapping.put("/writeReview.do", new WriteReviewController());
+		mapping.put("/showMyReview.do", new ShowMyReviewController());
 		
 	}
 	

@@ -131,8 +131,12 @@
 							class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
 							<li class="nav-item"><a class="nav-link"
 								href="${ctx }/main.do">홈</a></li>
+							<c:if test="${id ne 'admin'}">
 							<li class="nav-item"><a class="nav-link"
-								href="#">베스트셀러</a></li>
+								href="${ctx}/showMyOrder.do">구매내역</a></li>
+								</c:if>
+							<li class="nav-item"><a class="nav-link"
+								href="dummy.do">더미데이터</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="${ctx }/bookList.do">책 구매</a></li>
 							<li class="nav-item"><a class="nav-link"

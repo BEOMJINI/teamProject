@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.orderlist">
+
+	<resultMap id="orderlist"
+		type="com.basic.projectbook.vo.OrderListVO">
+		<id property="no" column="no" />
+		<result property="receive" column="receive" />
+		<result property="id" column="id" />
+		<result property="isbn" column="isbn" />
+		<result property="cqty" column="cqty" />
+		<collection property="com.basic.projectbook.vo.BookVO" resultMap="book">
+		
+		</collection>
+		
+		
+		
+	</resultMap>
+	<insert id="addOrderDummy" >
+	insert into orderlist (no,receive,id,isbn,cqty) 
+	select 1,1,1,b.isbn,1 from book b
+	</insert>
+	<select id="getMyOrder" parameterType="String" resultType="com.basic.projectbook.vo.MyOrderViewBean">
+	select o.no as no , o.receive as receive, o.id as id, o.isbn as isbn, o.cqty as cqty,
+	 b.title as title from orderlist o join book b on o.isbn = b. isbn where o.id=#{id} 
+	</select>
+	
+	<select id="getReviewCheck" parameterType="String" resultType="com.basic.projectbook.vo.ReviewCheckBean">
+  	SELECT 
+    o.*, r.*, 
+    CASE WHEN r.id IS NOT NULL THEN TRUE ELSE FALSE END AS written
+FROM 
+    orderlist o 
+    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
+WHERE 
+    o.id = #{id};
+	</select>
+	
+	
+	
+	
+	
+
+</mapper>

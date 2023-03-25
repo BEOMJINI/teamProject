@@ -54,6 +54,10 @@ cqty int not null
 
 );
 
+
+INSERT INTO orderlist (no,receive,id,isbn,cqty) VALUES
+(2,2,'2','9791185701752',1);
+
 select * from orderlist;
 delete from orderlist;
 drop table orderlist;
@@ -68,6 +72,25 @@ select * from sale;
 delete from sale;
 drop table sale;
 
+
+SELECT 
+    o.*, r.*, 
+    CASE WHEN r.id IS NOT NULL THEN 'matched' ELSE 'unmatched' END AS match_status
+FROM 
+    orderlist o 
+    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
+    
+    where o.id='2'
+    
+    
+SELECT 
+    o.*, r.*, 
+    CASE WHEN r.id IS NOT NULL THEN TRUE ELSE FALSE END AS match_status
+FROM 
+    orderlist o 
+    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
+WHERE 
+    o.id = '2';
 
 
 
@@ -93,6 +116,23 @@ country varchar(30) not null
 select * from book;
 delete from book;
 drop table book;
+
+create table review(
+no int auto_increment primary key,
+isbn varchar(50),
+id varchar(30),
+point int not null,
+title varchar(50),
+comment varchar(300),
+foreign key(id) references member (id) on update cascade on delete cascade,
+foreign key(isbn) references book (isbn) on update cascade on delete cascade
+)
+
+insert into review(isbn,id,point,title,comment) values
+('9791185701752','1',0,'0','0')
+select * from review;
+delete from review;
+drop table review;
 
 
 create table store(
@@ -136,7 +176,7 @@ select * from storemap;
 delete from storemap;
 drop table storemap;
 SELECT * FROM book
-WHERE title LIKE BINARY '%메이플%';
+
 
 
 

@@ -72,6 +72,9 @@
                                     <div class="col d-grid">
                                         <button type="button" class="btn btn-success btn-lg" name="submit" value="addtocard" onclick="cartAdds(${BookVO.isbn})">장바구니</button>
                                     </div>
+                                    <div class="col d-grid">
+                                        <button type="button" class="btn btn-success btn-lg" name="submit" value="addtocard" onclick="location.href='${ctx}/showReview.do?isbn=${BookVO.isbn}'">리뷰보기</button>
+                                    </div>
                                 </div>
                             </form>
 
