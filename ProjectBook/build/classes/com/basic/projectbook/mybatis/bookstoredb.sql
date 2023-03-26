@@ -133,19 +133,23 @@ create table review(
 no int auto_increment primary key,
 isbn varchar(50),
 id varchar(30),
-point int not null,
+rating int not null,
 title varchar(50),
 comment varchar(300),
 foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 )
 
+SELECT isbn, AVG(rating) AS rating
+FROM review
+GROUP BY isbn
+
 insert into review(isbn,id,point,title,comment) values
 ('9791185701752','1',0,'0','0')
 select * from review;
 delete from review;
 drop table review;
-
+insert into review (isbn,id,rating,title,comment) values(#{isbn},#{id},#{rating},#{title},#{comment})
 
 create table store(
  no int auto_increment primary key,

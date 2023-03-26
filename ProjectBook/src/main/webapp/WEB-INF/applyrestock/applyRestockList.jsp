@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />    
 <%@ include file="../header.jsp" %>
+<link rel="stylesheet" href="assets/css/table.css">
 <h1>현재 재입고 신청 리스트입니다.</h1>
 
 <table class="table table-bordered border-dark text-center">

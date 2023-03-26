@@ -4,6 +4,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />    
 <%@ include file="../header.jsp" %>
 <script type="text/javascript" src="script/applyRestock.js" defer></script>
+<link rel="stylesheet" href="assets/css/table.css">
 <h1>현재 재고가 없는 매장 목록입니다.</h1>
 
 <table class="table table-bordered border-dark text-center">

@@ -10,8 +10,7 @@
  	<result property="id" column="id"/>
  	<result property="isbn" column="isbn"/>
  	<result property="cqty" column="cqty"/>
- 	<collection property="com.basic.projectbook.vo.BookVo" resultMap="book"></collection>
- 	<collection property="com.basic.projectbook.vo.ReviewVo" resultMap="review"></collection>
+ 	
   </resultMap>
  
  <select id="getMaxNo" resultType="Integer" >
