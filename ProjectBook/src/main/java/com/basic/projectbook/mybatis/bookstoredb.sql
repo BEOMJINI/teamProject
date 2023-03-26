@@ -235,3 +235,4 @@ drop table book;
 drop table store;
 drop table bookstock;
 drop table applyrestock;
+drop table storemap;
