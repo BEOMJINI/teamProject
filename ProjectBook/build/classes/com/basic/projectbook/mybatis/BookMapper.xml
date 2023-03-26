@@ -19,6 +19,18 @@
 		<result property="country" column="country" />
 		
 	</resultMap>
+	<resultMap id="bookAndRatingMap" type="com.basic.projectbook.vo.BookAndRatingBean">
+  <id property="isbn" column="isbn"/>
+  <result property="title" column="title"/>
+  <result property="author" column="author"/>
+  <result property="publisher" column="publisher"/>
+  <result property="pubdate" column="pubdate"/>
+  <result property="description" column="description"/>
+  <result property="genre" column="genre"/>
+  <result property="country" column="country"/>
+  <result property="price" column="price"/>
+  <result property="rating" column="rating"/>
+</resultMap>
 
 	<select id="getAllBook" resultMap="book">
 		select * from book
@@ -67,5 +79,96 @@
 	<select id="getAllBookAuthor" parameterType="String" resultMap="book">
 		SELECT * FROM book WHERE author LIKE CONCAT('%', #{keyword}, '%')
 	</select>
+<!--  -->
+	<select id="getAllBookAndRating" resultMap="bookAndRatingMap">
+		SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating 
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  GROUP BY b.isbn;
+	</select>
+	<select id="getAllBookLatestAndRating" resultMap="bookAndRatingMap">
+	SELECT b.*,
+          COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+    FROM book b
+    LEFT OUTER JOIN review r ON b.isbn = r.isbn
+    GROUP BY b.isbn
+    ORDER BY b.pubdate DESC;
+	</select>
+	<select id="getAllBookLetterAndRating" resultMap="bookAndRatingMap">
+	SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  GROUP BY b.isbn
+  ORDER BY b.title ASC;
+	</select>
+	<select id="getGenreBookAndRating" parameterType="String" resultMap="bookAndRatingMap">
+		SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  WHERE b.genre = #{genre}
+  GROUP BY b.isbn
+	</select>
+	<select id="getCountryBookAndRating" parameterType="String" resultMap="bookAndRatingMap">
+		SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  WHERE b.country = #{country}
+  GROUP BY b.isbn
+	</select>
+	<select id="getPublisherBookAndRating" parameterType="String" resultMap="bookAndRatingMap">
+		SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  WHERE b.publisher = #{publisher}
+  GROUP BY b.isbn
+	</select>
+	<select id="getAllBookTitleAndRating" parameterType="String" resultMap="bookAndRatingMap">
+		SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  WHERE b.title LIKE CONCAT('%', #{keyword}, '%')
+  GROUP BY b.isbn;
+	</select>
+	<select id="getAllBookDescriptionAndRating" parameterType="String" resultMap="bookAndRatingMap">
+		SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  WHERE b.description LIKE CONCAT('%', #{keyword}, '%')
+  GROUP BY b.isbn;
+	</select>
+	<select id="getAllBookAuthorAndRating" parameterType="String" resultMap="bookAndRatingMap">
+		SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  WHERE b.author LIKE CONCAT('%', #{keyword}, '%')
+  GROUP BY b.isbn;
+	</select>
+	<select id="getAllBookRatingAndRating" resultMap="bookAndRatingMap">
+  SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  GROUP BY b.isbn
+  ORDER BY rating DESC;
+</select>
+<select id="getAllBookSaleAndRating" resultMap="bookAndRatingMap">
+  SELECT b.*, COALESCE(ROUND(AVG(r.rating), 2), 0) AS rating
+  FROM book b
+  LEFT OUTER JOIN review r
+  ON b.isbn = r.isbn
+  LEFT OUTER JOIN sale s
+  ON b.isbn = s.isbn
+  GROUP BY b.isbn
+  ORDER BY COALESCE(SUM(s.qty), 0) DESC
+</select>
+	
 
 </mapper>

@@ -4,7 +4,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />    
 <%@ include file="../header.jsp" %>
 <script type="text/javascript" src="script/bookstockmanage.js" defer></script>
-
+<link rel="stylesheet" href="assets/css/table.css">
 <table class="table table-bordered border-dark text-center" >
 <tr border="3">
 <td border="3">책이름</td>

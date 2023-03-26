@@ -1,39 +1,16 @@
 package com.basic.projectbook.vo;
 
-public class ReviewVO {
+public class UpdateMyReviewBean {
 private int no;
-private String isbn;
-private String id;
-private int rating;
 private String title;
 private String comment;
-
-
+private int rating;
 public int getNo() {
 	return no;
 }
 public void setNo(int no) {
 	this.no = no;
 }
-public String getIsbn() {
-	return isbn;
-}
-public void setIsbn(String isbn) {
-	this.isbn = isbn;
-}
-public String getId() {
-	return id;
-}
-public void setId(String id) {
-	this.id = id;
-}
-public int getrating() {
-	return rating;
-}
-public void setrating(int rating) {
-	this.rating = rating;
-}
-
 public String getTitle() {
 	return title;
 }
@@ -45,6 +22,12 @@ public String getComment() {
 }
 public void setComment(String comment) {
 	this.comment = comment;
+}
+public int getRating() {
+	return rating;
+}
+public void setRating(int rating) {
+	this.rating = rating;
 }
 
 }

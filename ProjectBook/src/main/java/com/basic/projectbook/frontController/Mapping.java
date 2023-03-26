@@ -35,7 +35,11 @@ import com.basic.projectbook.controller.pay.PayMainController;
 import com.basic.projectbook.controller.pay.SelectShopController;
 import com.basic.projectbook.controller.pay.payResultController;
 import com.basic.projectbook.controller.review.ShowMyReviewController;
+import com.basic.projectbook.controller.review.ShowMyReviewProController;
+import com.basic.projectbook.controller.review.ShowReviewController;
+import com.basic.projectbook.controller.review.ShowReviewInfoController;
 import com.basic.projectbook.controller.review.WriteReviewController;
+import com.basic.projectbook.controller.review.WriteReviewProController;
 import com.basic.projectbook.controller.shop.ShopMainController;
 import com.basic.projectbook.controller.store.StoreInfoController;
 import com.basic.projectbook.controller.store.StoreMapController;
@@ -111,6 +115,10 @@ public class Mapping {
 		//review
 		mapping.put("/writeReview.do", new WriteReviewController());
 		mapping.put("/showMyReview.do", new ShowMyReviewController());
+		mapping.put("/writeReviewPro.do", new WriteReviewProController());
+		mapping.put("/showMyReviewPro.do", new ShowMyReviewProController());
+		mapping.put("/showReview.do", new ShowReviewController());
+		mapping.put("/showReviewInfo.do", new ShowReviewInfoController());
 		
 	}
 	

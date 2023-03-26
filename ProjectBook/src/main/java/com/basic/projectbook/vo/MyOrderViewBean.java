@@ -8,6 +8,7 @@ private String isbn;
 private int cqty;
 private String title;
 private boolean reviewCheck;
+private int discount;
 public int getNo() {
 	return no;
 }
@@ -50,6 +51,13 @@ public boolean isReviewCheck() {
 public void setReviewCheck(boolean reviewCheck) {
 	this.reviewCheck = reviewCheck;
 }
+public int getdiscount() {
+	return discount;
+}
+public void setdiscount(int discount) {
+	this.discount = discount;
+}
+
 
 
 

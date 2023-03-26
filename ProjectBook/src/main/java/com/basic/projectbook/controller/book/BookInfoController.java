@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.basic.projectbook.dao.BookDAO;
+import com.basic.projectbook.dao.ReviewDAO;
 import com.basic.projectbook.frontController.Controller;
 import com.basic.projectbook.vo.BookVO;
 
@@ -31,6 +32,8 @@ public class BookInfoController	implements Controller {
 			}
 			
 		}
+		int rating=ReviewDAO.getInstance().getRating(isbn);
+		request.setAttribute("rating", rating);
 		return "book/bookInfo";
 		
 		

@@ -10,7 +10,7 @@
  	<result property="id" column="id"/>
  	<result property="isbn" column="isbn"/>
  	<result property="cqty" column="cqty"/>
-
+ 	
   </resultMap>
  
  <select id="getMaxNo" resultType="Integer" >
@@ -28,7 +28,6 @@
  <select id="orderlistMember" resultMap="orderlist" parameterType="String">
  	select * from orderlist where id=#{id}
  </select>
- 
  <insert id="addOrderDummy" >
  	INSERT INTO orderlist (no, receive, id, isbn, cqty)
 SELECT 1, 1, '1', b.isbn, 1

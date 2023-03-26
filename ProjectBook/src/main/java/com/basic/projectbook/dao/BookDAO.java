@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.basic.projectbook.util.MybatisConfig;
+import com.basic.projectbook.vo.BookAndRatingBean;
 import com.basic.projectbook.vo.BookVO;
 
 public class BookDAO {
@@ -115,6 +116,70 @@ public class BookDAO {
 	public List<BookVO> getAllBookAuthor(String keyword){
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		List<BookVO> list=session.selectList("mapper.book.getAllBookAuthor",keyword);
+		session.close();
+		return list;
+	}
+	///========================/////////////========================
+	public List<BookAndRatingBean> getAllBookAndRating(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookAndRating");
+		session.close();
+		return list;
+	}
+	public List<BookAndRatingBean> getAllBookLetterAndRating(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookLetterAndRating");
+		session.close();
+		return list;
+	}
+	public List<BookAndRatingBean> getAllBookLatestAndRating(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookLatestAndRating");
+		session.close();
+		return list;
+	}
+	public List<BookAndRatingBean> getGenreBookAndRating(String genre){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getGenreBookAndRating",genre);
+		return list;
+	}
+	public List<BookAndRatingBean> getCountryBookAndRating(String country){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getCountryBookAndRating",country);
+		return list;
+	}
+	public List<BookAndRatingBean> getPublisherBookAndRating(String publisher){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getPublisherBookAndRating",publisher);
+		return list;
+	}
+	public List<BookAndRatingBean> getAllBookTitleAndRating(String keyword){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookTitleAndRating",keyword);
+		session.close();
+		return list;
+	}
+	public List<BookAndRatingBean> getAllBookDescriptionAndRating(String keyword){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookDescriptionAndRating",keyword);
+		session.close();
+		return list;
+	}
+	public List<BookAndRatingBean> getAllBookAuthorAndRating(String keyword){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookAuthorAndRating",keyword);
+		session.close();
+		return list;
+	}
+	public List<BookAndRatingBean> getAllBookSaleAndRating(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookSaleAndRating");
+		session.close();
+		return list;
+	}
+	public List<BookAndRatingBean> getAllBookRatingAndRating(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<BookAndRatingBean> list=session.selectList("mapper.book.getAllBookRatingAndRating");
 		session.close();
 		return list;
 	}

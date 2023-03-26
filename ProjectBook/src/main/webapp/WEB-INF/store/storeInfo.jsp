@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />    
-<%@ include file="../header.jsp" %>    
+<%@ include file="../header.jsp" %>
+<link rel="stylesheet" href="assets/css/table.css">    
 <table class="table table-bordered border-dark text-center">
 <tr>
 <td>매장명</td>

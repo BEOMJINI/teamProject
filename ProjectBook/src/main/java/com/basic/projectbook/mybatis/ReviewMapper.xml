@@ -9,24 +9,50 @@
 		<id property="no" column="no" />
 		<result property="isbn" column="isbn" />
 		<result property="id" column="id" />
-		<result property="point" column="point" />
+		<result property="rating" column="rating" />
 		<result property="title" column="title" />
 		<result property="comment" column="comment" />
-		<collection property="com.basic.projectbook.vo.OrderListVO" resultMap="orderlist">
 		
-		</collection>
 		
 		
 	</resultMap>
 	<insert id="addReviewDummy">
-	insert into review (isbn,id,point,title,comment)
+	insert into review (isbn,id,rating,title,comment)
 	select b.isbn,1,1,1,1 from book b
 	
 	</insert>
 	<select id="getLastNo"  resultType="int">
 	SELECT IFNULL(MAX(no), -1) as last_no FROM review;
 	</select>
+	<insert id="insertReview" parameterType="review">
+		insert into review (isbn,id,rating,title,comment) values(#{isbn},#{id},#{rating},#{title},#{comment})
+	</insert>
+	<select id="getMyReview" parameterType="com.basic.projectbook.vo.GetMyReviewBean" resultType="review">
+		select * from review where id=#{id} and isbn=#{isbn}
+	</select>
+	<update id="updateMyReview" parameterType="com.basic.projectbook.vo.UpdateMyReviewBean">
+		
+		update review set title=#{title}, comment=#{comment}, rating=#{rating} WHERE no=#{no}
+	</update>
+	<delete id="deleteMyReview" parameterType="int">
 	
+		delete from review where no=#{no}
+	</delete>
+	<select id="getBookReview" parameterType="String" resultType="review">
+		select * from review where isbn=#{isbn}
+	</select>
+	<select id="getOneReview" parameterType="int" resultType="review">
+		select * from review where no=#{no}
+	</select>
+	<select id="getRatingAvg" resultType="com.basic.projectbook.vo.ReviewRatingAvgBean">
+		SELECT isbn, AVG(rating) AS rating
+FROM review
+GROUP BY isbn
+	</select>
+	<select id="getRating" parameterType="String" resultType="int">
+		select IFNULL(AVG(rating), 0) from review where isbn=#{isbn}
+</select>
+
 
 	
 	
