@@ -12,14 +12,7 @@
 	  <typeAlias type="com.basic.projectbook.vo.CartVO" alias="cart"/>
 	  <typeAlias type="com.basic.projectbook.vo.ApplyRestockVO" alias="applyrestock"/>
 	  <typeAlias type="com.basic.projectbook.vo.StoreMapVO" alias="storemap"/>
-
-<<<<<<< HEAD
-
-=======
-	 
->>>>>>> origin/yyjjhh_Dev
 	  <typeAlias type="com.basic.projectbook.vo.ReviewVO" alias="review"/>
-
 	  <typeAlias type="com.basic.projectbook.vo.OrderlistVO" alias="orderlist"/>
 	  <typeAlias type="com.basic.projectbook.vo.SaleVO" alias="sale"/>
 
@@ -45,9 +38,7 @@
    	<mapper resource="com/basic/projectbook/mybatis/CartMapper.xml"/>
    	<mapper resource="com/basic/projectbook/mybatis/ApplyRestockMapper.xml"/>
    	<mapper resource="com/basic/projectbook/mybatis/StoreMapMapper.xml"/>
-
    	<mapper resource="com/basic/projectbook/mybatis/ReviewMapper.xml"/>
-
    	<mapper resource="com/basic/projectbook/mybatis/OrderlistMapper.xml"/>
    	<mapper resource="com/basic/projectbook/mybatis/SaleMapper.xml"/>
 

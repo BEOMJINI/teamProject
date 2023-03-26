@@ -23,6 +23,10 @@ public int getStoreid() {
 public void setStoreid(int storeid) {
 	this.storeid = storeid;
 }
+@Override
+public String toString() {
+	return "StoreVO [no=" + no + ", storename=" + storename + ", storeid=" + storeid + "]";
+}
 
 
 }

@@ -10,8 +10,7 @@
  	<result property="id" column="id"/>
  	<result property="isbn" column="isbn"/>
  	<result property="cqty" column="cqty"/>
- 	<collection property="com.basic.projectbook.vo.BookVo" resultMap="book"></collection>
- 	<collection property="com.basic.projectbook.vo.ReviewVo" resultMap="review"></collection>
+
   </resultMap>
  
  <select id="getMaxNo" resultType="Integer" >
@@ -29,6 +28,7 @@
  <select id="orderlistMember" resultMap="orderlist" parameterType="String">
  	select * from orderlist where id=#{id}
  </select>
+ 
  <insert id="addOrderDummy" >
  	INSERT INTO orderlist (no, receive, id, isbn, cqty)
 SELECT 1, 1, '1', b.isbn, 1

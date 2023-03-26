@@ -22,5 +22,9 @@ public class BookStockVO {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+	@Override
+	public String toString() {
+		return "BookStockVO [storeid=" + storeid + ", qty=" + qty + ", isbn=" + isbn + "]";
+	}
 	
 }

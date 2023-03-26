@@ -4,14 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.bookstock">
 
-	<resultMap id="book"
+	<resultMap id="bookstock"
 		type="com.basic.projectbook.vo.BookStockVO">
 		<id property="no" column="no" />
 		<result property="storeid" column="storeid" />
 		<result property="qty" column="qty" />
 		<result property="isbn" column="isbn" />
-		<collection property="com.basic.projectbook.vo.BookVo" resultMap="book"></collection>
-		<collection property="com.basic.projectbook.vo.StoreVO" resultMap="store"></collection>
 		
 	</resultMap>
 
@@ -36,10 +34,10 @@ WHERE NOT EXISTS (
 	
 	
 	<select id="deleteAllBookStock" parameterType="bookstock">
-		delete from bookstock;
+		delete from bookstock
 	</select>
-	<select id="getBookStock" parameterType="String" resultType="bookstock">
-		SELECT storeid, isbn, SUM(qty) as qty FROM bookstock where isbn=#{isbn} GROUP BY storeid ;
+	<select id="getBookStock" parameterType="String" resultMap="bookstock">
+		SELECT storeid, isbn, SUM(qty) as qty FROM bookstock where isbn=#{isbn} GROUP BY storeid
 	</select>
 	<insert id="addBookStock" parameterType="bookstock">
 	insert into bookstock (storeid,isbn,qty) values(#{storeid},#{isbn},#{qty})
@@ -48,5 +46,10 @@ WHERE NOT EXISTS (
 	<delete id="deleteBook" parameterType="bookstock">
 	delete from book where isbn=#{isbn}
 	</delete>
+	
+	<select id="bookStockQtyCheck" parameterType="bookstock" resultType="String">
+		select isbn from bookstock where isbn=#{isbn} and storeid=#{storeid} and qty>#{qty}
+	</select>
+	
 	
 </mapper>
