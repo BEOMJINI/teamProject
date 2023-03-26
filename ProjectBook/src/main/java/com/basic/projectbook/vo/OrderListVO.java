@@ -6,6 +6,8 @@ public class OrderlistVO {
 	private String id;
 	private String isbn;
 	private int cqty;
+	private String title;
+	private int discount;
 	public int getNo() {
 		return no;
 	}
@@ -35,6 +37,20 @@ public class OrderlistVO {
 	}
 	public void setCqty(int cqty) {
 		this.cqty = cqty;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 	@Override
 	public String toString() {

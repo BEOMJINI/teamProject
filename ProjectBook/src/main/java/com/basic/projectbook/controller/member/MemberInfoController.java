@@ -60,7 +60,7 @@ public class MemberInfoController implements Controller{
 		}
 		DecimalFormat df = new DecimalFormat("###,###,### 원");
 		for(int i=0; i<orderlist.size(); i++) {
-			int money = (orderlist.get(i).getCqty() * Integer.parseInt(booklist.get(i).getDiscount()));
+			int money = (orderlist.get(i).getCqty() * orderlist.get(i).getDiscount());
 			moneyList.add(df.format(money));
 		}
 		request.setAttribute("bookData", booklist);
