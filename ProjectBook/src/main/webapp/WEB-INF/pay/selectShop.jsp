@@ -22,8 +22,93 @@
 				</div>
 			</div>
 		</div>
-
 	<!--  ----------------------------------------------------------------------------------- -->
+		<br>
+		<div style="">	
+			<div id="sto0" style="display: none; border: 1px solid black; width: 100%; text-indent: 5em; padding: 20px;">
+				<c:set var="tag" value="0"/>
+				<c:forEach var="sto0" items="${sto0 }">
+					<c:set var="sto0" value="${sto0 }"/>
+					<c:set var="size" value="${fn:length(sto0)}"/>
+					<c:set var="ck" value="${fn:substring(sto0, 0, 1) }"/>
+					<c:if test="${ck eq 'O'}">
+						<p><font color="blue">${fn:substring(sto0, 1,size) } -> 바로 수령 가능합니다</font> </p>
+					</c:if>
+					<c:if test="${ck eq 'X'}">
+						<c:set var="tag" value="1"/>
+						<p><font color="red">${fn:substring(sto0, 1,size) } -> 지점 사정으로 구매가 불가능합니다</font> </p>
+					</c:if>
+				</c:forEach>
+				<c:if test="${tag eq '0'}">
+					<p style="text-align: center; vertical-align: middle;"><input type="button" name="payBtn" value="결제하러가기"/> </p>
+				</c:if>
+			</div>
+		</div>
+		
+		<div style="">	
+			<div id="sto1" style="display: none; border: 1px solid black; width: 100%; text-indent: 5em; padding: 20px;">
+				<c:set var="tag" value="0"/>
+				<c:forEach var="sto1" items="${sto1 }">
+					<c:set var="sto1" value="${sto1 }"/>
+					<c:set var="size" value="${fn:length(sto1)}"/>
+					<c:set var="ck" value="${fn:substring(sto1, 0, 1) }"/>
+					<c:if test="${ck eq 'O'}">
+						<p><font color="blue">${fn:substring(sto1, 1,size) } -> 바로 수령 가능합니다</font> </p>
+					</c:if>
+					<c:if test="${ck eq 'X'}">
+						<c:set var="tag" value="1"/>
+						<p><font color="red">${fn:substring(sto1, 1,size) } -> 지점 사정으로 구매가 불가능합니다</font> </p>
+					</c:if>
+				</c:forEach>
+				<c:if test="${tag eq '0'}">
+					<p style="text-align: center; vertical-align: middle;"><input type="button" name="payBtn" value="결제하러가기"/> </p>
+				</c:if>
+			</div>
+		</div>
+		
+		<div style="">	
+			<div id="sto2" style="display: none; border: 1px solid black; width: 100%; text-indent: 5em; padding: 20px;">
+				<c:set var="tag" value="0"/>
+				<c:forEach var="sto2" items="${sto2 }">
+					<c:set var="sto2" value="${sto2 }"/>
+					<c:set var="size" value="${fn:length(sto2)}"/>
+					<c:set var="ck" value="${fn:substring(sto2, 0, 1) }"/>
+					<c:if test="${ck eq 'O'}">
+						<p><font color="blue">${fn:substring(sto2, 1,size) } -> 바로 수령 가능합니다</font> </p>
+					</c:if>
+					<c:if test="${ck eq 'X'}">
+						<c:set var="tag" value="1"/>
+						<p><font color="red">${fn:substring(sto2, 1,size) } -> 지점 사정으로 구매가 불가능합니다</font> </p>
+					</c:if>
+				</c:forEach>
+				<c:if test="${tag eq '0'}">
+					<p style="text-align: center; vertical-align: middle;"><input type="button" name="payBtn" value="결제하러가기"/> </p>
+				</c:if>
+			</div>
+		</div>
+		
+		<div style="">	
+			<div id="sto3" style="display: none; border: 1px solid black; width: 100%; text-indent: 5em; padding: 20px;">
+				<c:set var="tag" value="0"/>
+				<c:forEach var="sto3" items="${sto3 }">
+					<c:set var="sto3" value="${sto3 }"/>
+					<c:set var="size" value="${fn:length(sto3)}"/>
+					<c:set var="ck" value="${fn:substring(sto3, 0, 1) }"/>
+					<c:if test="${ck eq 'O'}">
+						<p><font color="blue">${fn:substring(sto3, 1,size) } -> 바로 수령 가능합니다</font> </p>
+					</c:if>
+					<c:if test="${ck eq 'X'}">
+						<c:set var="tag" value="1"/>
+						<p><font color="red">${fn:substring(sto3, 1,size) } -> 지점 사정으로 구매가 불가능합니다</font> </p>
+					</c:if>
+				</c:forEach>
+				<c:if test="${tag eq '0'}">
+					<p style="text-align: center; vertical-align: middle;"><input type="button" name="payBtn" value="결제하러가기"/> </p>
+				</c:if>
+			</div>
+		</div>
+	<!--  ----------------------------------------------------------------------------------- -->
+		<br>
 		<h1>재고 조회</h1>
 		<div>
 			<c:forEach var="isbn" items="${isbn }" varStatus="i">
@@ -37,20 +122,10 @@
 					<th>${storeList[3].storename }</th>
 					</tr>
 					<tr>
-					<c:forEach var="stock" items="${stockList[i.index] }" varStatus="j">
-						<c:if test="${stock.storeid == '0' }">
-							<td>${stock.qty }</td>
-						</c:if>
-						<c:if test="${stock.storeid == '1' }">
-							<td>${stock.qty }</td>
-						</c:if>	
-						<c:if test="${stock.storeid == '2' }">
-							<td>${stock.qty }</td>
-						</c:if>	
-						<c:if test="${stock.storeid == '3' }">
-							<td>${stock.qty }</td>
-						</c:if>	
-					</c:forEach>
+					<td>${Tlist.get(i.index).get(0) }</td>
+					<td>${Tlist.get(i.index).get(1) }</td>
+					<td>${Tlist.get(i.index).get(2) }</td>
+					<td>${Tlist.get(i.index).get(3) }</td>
 					</tr>
 					</table>
 				</c:if>
@@ -62,14 +137,13 @@
 		<div>1544-1234</div>
 		
 	<!--  ----------------------------------------------------------------------------------- -->
-	<form>
-		<input type="hidden" name="discount" value="${discount }"/>
-		<input type="hidden" name="qty" value="${qty }"/>
-		<input type="hidden" name="img" value="${img }"/>
-		<input type="hidden" name="title" value="${title }"/>
-		<input type="hidden" name="isbn" value="${isbn }"/>
-		<input type="hidden" name="status" value="${status }"/>
+	<form id="selectShop_Form">
+		
+		<input type="hidden" value="${formlist }"/>
+		
 	</form>
+	
+	<h1>${discount[0] }</h1>
 	</div>
 </section>
 

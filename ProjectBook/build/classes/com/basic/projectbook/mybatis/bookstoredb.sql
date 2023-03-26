@@ -201,7 +201,7 @@ SELECT * FROM book
 create table bookstock(
 no int auto_increment primary key,
 storeid int,
-qty int(50),
+qty int default 0,
 isbn varchar(50),
 foreign key(isbn) references book(isbn) on update cascade on delete cascade,
 foreign key(storeid)references store(storeid) on delete cascade

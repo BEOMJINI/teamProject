@@ -33,6 +33,7 @@ import com.basic.projectbook.controller.member.MemberUpdateController;
 import com.basic.projectbook.controller.orderlist.ShowMyOrderController;
 import com.basic.projectbook.controller.pay.PayMainController;
 import com.basic.projectbook.controller.pay.SelectShopController;
+import com.basic.projectbook.controller.pay.StockCheckController;
 import com.basic.projectbook.controller.pay.payResultController;
 import com.basic.projectbook.controller.review.ShowMyReviewController;
 import com.basic.projectbook.controller.review.ShowMyReviewProController;
@@ -101,6 +102,7 @@ public class Mapping {
 		mapping.put("/payMain.do", new PayMainController());
 		mapping.put("/payResult.do", new payResultController());
 		mapping.put("/selectShop.do", new SelectShopController());
+		mapping.put("/stockCheck.do", new StockCheckController());
 		
 		// shop controller
 		mapping.put("/shopMain.do", new ShopMainController());

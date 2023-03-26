@@ -48,8 +48,14 @@ WHERE NOT EXISTS (
 	</delete>
 	
 	<select id="bookStockQtyCheck" parameterType="bookstock" resultType="String">
-		select isbn from bookstock where isbn=#{isbn} and storeid=#{storeid} and qty>#{qty}
+		select isbn from bookstock where storeid=#{storeid} and isbn=#{isbn} and qty>#{qty}
 	</select>
 	
+	<select id="bookStockQtyPrint" parameterType="bookstock" resultType="String">
+		select ifnull(sum(qty),0) from bookstock where isbn=#{isbn} and storeid=#{storeid}
+	</select>
 	
+	<select id="validStore" parameterType="bookstock" resultType="String">
+		select if(sum(qty)>#{qty}, isbn, '-1') from bookstock where storeid=#{storeid} and isbn=#{isbn}
+	</select>
 </mapper>
