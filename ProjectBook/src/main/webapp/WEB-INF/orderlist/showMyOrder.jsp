@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <c:forEach var="vo" items="${list}" varStatus="st">
-      <c:if test="${vo.title ne null}">
+      
         <tr>
           <td>${vo.no}</td>
           <td>
@@ -42,7 +42,7 @@
             </c:choose>
           </td>
         </tr>
-      </c:if>
+      
     </c:forEach>
   </tbody>
 </table>

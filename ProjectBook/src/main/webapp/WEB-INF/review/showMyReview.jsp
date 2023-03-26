@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td style="width: 70px">책이름</td>
-        <td style="width: 230px">${vo.title}</td>
+        <td style="width: 230px">${title}</td>
     </tr>
     <tr>
         <td style="width: 70px">작성자</td>
