@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="mapper.orderlist">
+ 
+ <resultMap type="com.basic.projectbook.vo.OrderlistVO" id="orderlist">
+ 	<result property="no" column="no"/>
+ 	<result property="receive" column="receive"/>
+ 	<result property="id" column="id"/>
+ 	<result property="isbn" column="isbn"/>
+ 	<result property="cqty" column="cqty"/>
+ 	<result property="title" column="title"/>
+ 	<result property="discount" column="discount"/>
+ 	
+  </resultMap>
+ 
+ <select id="getMaxNo" resultType="Integer" >
+ 	select ifnull(MAX(no),0) from orderlist
+ </select>
+ 
+ <insert id="orderlistInsert" parameterType="orderlist">
+  	insert into orderlist (no, receive, id, isbn, title, cqty ,discount)
+    select #{no}, #{receive}, #{id}, #{isbn}, b.title, #{cqty}, b.discount from book b
+    where b.isbn = #{isbn}
+ </insert>
+ 
+ <select id="orderlistPrint" resultMap="orderlist">
+ 	select * from orderlist
+ </select>
+ 
+ <select id="orderlistMember" resultMap="orderlist" parameterType="String">
+ 	select * from orderlist where id=#{id}
+ </select>
+ <insert id="addOrderDummy" >
+ 	INSERT INTO orderlist (no, receive, id, isbn, cqty,title)
+SELECT 1, 1, '1', b.isbn, 1,'1'
+FROM book b;
+ </insert>
+ <select id="getMyOrder" resultType="com.basic.projectbook.vo.MyOrderViewBean" parameterType="String">
+ 	SELECT o.*, b.title
+FROM orderlist o
+LEFT JOIN book b ON o.isbn = b.isbn
+WHERE o.id = #{id};
+ </select>
+ 
+ <select id="getReviewCheck" resultType="com.basic.projectbook.vo.ReviewCheckBean" parameterType="String">
+ SELECT 
+    CASE WHEN r.id IS NOT NULL AND r.isbn = o.isbn THEN 'true' ELSE 'false' END AS written
+FROM 
+    orderlist o 
+    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
+WHERE 
+    o.id = '1';
+ </select>
+ 
+ </mapper> 

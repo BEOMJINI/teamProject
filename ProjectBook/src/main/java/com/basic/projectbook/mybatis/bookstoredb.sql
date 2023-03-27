@@ -13,10 +13,7 @@ interest varchar(30),
 address varchar(50) not null,
 mileage int not null default 0
 );
-SELECT o.no as no,o.receive as receive, o.id as id, o.isbn as isbn,o.cqty as cqty, b.title as title
-FROM orderlist o
-LEFT JOIN book b ON o.isbn = b.isbn
-WHERE o.id = '1';
+
 
 select * from member;
 delete from member;
@@ -59,8 +56,7 @@ discount int not null
 );
 
 
-INSERT INTO orderlist (no,receive,id,isbn,cqty) VALUES
-(2,2,'2','9791185701752',1);
+
 
 select * from orderlist;
 delete from orderlist;
@@ -78,32 +74,6 @@ delete from sale;
 drop table sale;
 
 
-SELECT 
-    o.*, r.*, 
-    CASE WHEN r.id IS NOT NULL THEN 'matched' ELSE 'unmatched' END AS match_status
-FROM 
-    orderlist o 
-    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
-    
-    where o.id='2'
-    
-    SELECT 
-    CASE WHEN r.id IS NOT NULL AND r.isbn = o.isbn THEN 'true' ELSE 'false' END AS written
-FROM 
-    orderlist o 
-    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
-WHERE 
-    o.id = '1';
-    
-    
-SELECT 
-    o.*, r.*, 
-    CASE WHEN r.id IS NOT NULL THEN TRUE ELSE FALSE END AS match_status
-FROM 
-    orderlist o 
-    LEFT JOIN review r ON o.id = r.id AND o.isbn = r.isbn
-WHERE 
-    o.id = '1';
 
 
 
@@ -141,12 +111,9 @@ foreign key(id) references member (id) on update cascade on delete cascade,
 foreign key(isbn) references book (isbn) on update cascade on delete cascade
 )
 
-SELECT isbn, AVG(rating) AS rating
-FROM review
-GROUP BY isbn
 
-insert into review(isbn,id,point,title,comment) values
-('9791185701752','1',0,'0','0')
+
+
 select * from review;
 delete from review;
 drop table review;
@@ -237,6 +204,7 @@ drop table cart;
 drop table orderlist;
 drop table sale;
 drop table book;
+drop table review;
 drop table store;
 drop table bookstock;
 drop table applyrestock;

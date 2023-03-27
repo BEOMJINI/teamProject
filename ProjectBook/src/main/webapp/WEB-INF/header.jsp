@@ -19,14 +19,15 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-	
-	
+
+
 <script src="https://kit.fontawesome.com/116a85af51.js"
 	crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="assets/img/apple-icon.png"> <!-- 파비콘 수정 -->
+<link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+<!-- 파비콘 수정 -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="assets/img/favicon.ico">
 
@@ -72,8 +73,8 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="text-light" href="${ctx }/api.do"
 								style="text-decoration: none;">api</a>
-				
-								
+
+
 						</c:if>
 						<c:if test="${id ne null and id ne 'admin'}">
 							<a class="text-light" href="${ctx }/memberUpdate.do"
@@ -81,25 +82,26 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="text-light" href="${ctx }/logout.do"
 								style="text-decoration: none;">로그아웃</a>
-						
-						<input type="hidden" value="${id }" id="idid"/>		
+
+							<input type="hidden" value="${id }" id="idid" />
 						</c:if>
-						
+
 						<c:if test="${id eq 'admin'}">
-					
-  <label for="menu">관리자 메뉴:</label>
-  <select id="menu" name="menu"  onchange="if(this.value) location.href=(this.value)">
-  	<option value="">선택</option>
-    <option value="${ctx}/memberList.do">회원 관리</option>
-    <option value="">재고 관리</option>
-    <option value="">Contact</option>
-  </select>
+
+							<label for="menu">관리자 메뉴:</label>
+							<select id="menu" name="menu"
+								onchange="if(this.value) location.href=(this.value)">
+								<option value="">선택</option>
+								<option value="${ctx}/memberList.do">회원 관리</option>
+								<option value="">재고 관리</option>
+								<option value="">Contact</option>
+							</select>
  
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="text-light" href="${ctx }/logout.do"
 								style="text-decoration: none;">로그아웃</a>
 						</c:if>
-						
+
 
 					</div>
 				</div>
@@ -133,11 +135,12 @@
 							<li class="nav-item"><a class="nav-link"
 								href="${ctx }/main.do">홈</a></li>
 							<c:if test="${id ne 'admin'}">
-							<li class="nav-item"><a class="nav-link"
-								href="${ctx}/showMyOrder.do">구매내역</a></li>
-								</c:if>
-							<li class="nav-item"><a class="nav-link"
-								href="dummy.do">더미데이터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="${ctx}/showMyOrder.do">구매내역</a></li>
+							</c:if>
+							<c:if test="${id eq 'admin'}">
+								<li class="nav-item"><a class="nav-link" href="dummy.do">더미데이터</a></li>
+							</c:if>
 							<li class="nav-item"><a class="nav-link"
 								href="${ctx }/bookList.do">책 구매</a></li>
 							<li class="nav-item"><a class="nav-link"
@@ -147,16 +150,16 @@
 									href="${ctx }/bookStockManage.do">재고관리</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="${ctx }/memberList.do">회원관리</a></li>
-								
-										
-					
-									
+
+
+
+
 							</c:if>
 							<c:if test="${id ne 'admin'}">
 								<li class="nav-item"><a class="nav-link"
 									href="${ctx }/applyRestock.do">재입고신청</a>
 							</c:if>
-							
+
 						</ul>
 					</div>
 					<div class="navbar align-self-center d-flex">
@@ -176,9 +179,11 @@
 						</a> <a class="nav-icon position-relative text-decoration-none"
 							href="${ctx }/cartList.do"> <i
 							class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i> <span
-							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" id="cart-count"></span>
+							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
+							id="cart-count"></span>
 						</a> <a class="nav-icon position-relative text-decoration-none"
-							href="${ctx }/memberInfo.do"> <i class="fa fa-fw fa-user text-dark mr-3"></i> <span
+							href="${ctx }/memberInfo.do"> <i
+							class="fa fa-fw fa-user text-dark mr-3"></i> <span
 							class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
 						</a>
 					</div>
@@ -192,7 +197,7 @@
 	<br>
 	<br>
 	<br>
-	
+
 	<script>
 	$(document).ready(function () {
 		let idid = $('#idid').val();
@@ -213,28 +218,33 @@
 		})
 		
 	</script>
-	<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        
-        
-        <div class="modal-dialog modal-lg" role="document">
-        	
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="${ctx}/bookList.do " method="get" class="modal-content modal-body border-0 p-0">
-            	<div>
-        			<select name="search">
-        				<option value="title">제목</option>
-        				<option value="author">저자</option>
-        				<option value="description">내용</option>
-        			</select>
-        		</div>
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="keyword" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+	<div class="modal fade bg-white" id="templatemo_search" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+		<div class="modal-dialog modal-lg" role="document">
+
+			<div class="w-100 pt-1 mb-5 text-right">
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<form action="${ctx}/bookList.do " method="get"
+				class="modal-content modal-body border-0 p-0">
+				<div>
+					<select name="search">
+						<option value="title">제목</option>
+						<option value="author">저자</option>
+						<option value="description">내용</option>
+					</select>
+				</div>
+				<div class="input-group mb-2">
+					<input type="text" class="form-control" id="inputModalSearch"
+						name="keyword" placeholder="Search ...">
+					<button type="submit"
+						class="input-group-text bg-success text-light">
+						<i class="fa fa-fw fa-search text-white"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>

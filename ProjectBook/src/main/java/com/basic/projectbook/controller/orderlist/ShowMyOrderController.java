@@ -27,12 +27,14 @@ public class ShowMyOrderController implements Controller{
 	@Override
 	public String service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		HttpSession session=request.getSession();
-		if(session.getAttribute("id")==null) {
-			return "main.do";
+request.setCharacterEncoding("utf-8");
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		
+		if(id == null) {
+			return "login.do";
 		}
-		String id=(String)session.getAttribute("id");
 		List<MyOrderViewBean>list=OrderlistDAO.getInstance().getMyOrder(id);
 		
 		List<ReviewCheckBean> list1=OrderlistDAO.getInstance().getReviewCheck(id);
