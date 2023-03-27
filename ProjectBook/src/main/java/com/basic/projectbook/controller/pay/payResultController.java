@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-<<<<<<< HEAD
+
 import com.basic.projectbook.dao.BookStockDAO;
-=======
+
 import com.basic.projectbook.dao.BookDAO;
->>>>>>> origin/yangjjhh_dev
+
 import com.basic.projectbook.dao.CartDAO;
 import com.basic.projectbook.dao.MemberDAO;
 import com.basic.projectbook.dao.OrderlistDAO;
 import com.basic.projectbook.dao.SaleDAO;
 import com.basic.projectbook.frontController.Controller;
-<<<<<<< HEAD
+
 import com.basic.projectbook.vo.BookStockVO;
-=======
+
 import com.basic.projectbook.vo.BookVO;
->>>>>>> origin/yangjjhh_dev
+
 import com.basic.projectbook.vo.CartVO;
 import com.basic.projectbook.vo.MemberVO;
 import com.basic.projectbook.vo.OrderlistVO;

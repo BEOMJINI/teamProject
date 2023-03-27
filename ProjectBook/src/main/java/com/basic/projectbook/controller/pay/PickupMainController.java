@@ -51,6 +51,8 @@ public class PickupMainController implements Controller{
 		request.setAttribute("store_name", store_name);
 		request.setAttribute("storeid", storeid);
 		
+		
+		
 		request.setAttribute("discount", discount);
 		request.setAttribute("qty", qty);
 		request.setAttribute("img", img);
@@ -58,7 +60,7 @@ public class PickupMainController implements Controller{
 		request.setAttribute("isbn", isbn);
 		request.setAttribute("status", status);
 		
-		return "pay/payMain";
+		return "pay/pickupMain";
 	}
 
 }
