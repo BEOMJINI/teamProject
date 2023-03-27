@@ -15,7 +15,7 @@ function radioEvent(){
 	if(store == '0'){
 		sto0.style.display = "block";
 		sto1.style.display = "none";
-		sto2.style.display = "none";
+		sto2.style.display = "none"; 
 		sto3.style.display = "none";		
 	} else if (store == '1'){
 		sto0.style.display = "none";
@@ -41,7 +41,7 @@ $(document).ready(function() {
 	let pay = document.querySelectorAll("input[name=payBtn]");
 	for(let i=0; i<pay.length; i++){
 		pay[i].addEventListener("click",()=>{
-			selectShopForm.action="payMain.do";
+			selectShopForm.action="pickupMain.do";
 			selectShopForm.submit();
 		});
 	}	

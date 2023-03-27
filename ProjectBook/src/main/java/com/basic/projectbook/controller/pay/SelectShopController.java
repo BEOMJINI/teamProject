@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
+
 import com.basic.projectbook.dao.BookDAO;
 import com.basic.projectbook.dao.BookStockDAO;
 import com.basic.projectbook.dao.StoreDAO;
@@ -43,18 +45,10 @@ public class SelectShopController implements Controller{
 		request.setAttribute("isbn", isbn);
 		request.setAttribute("status", status);
 		
-		List<OrderBean> formlist = new ArrayList<>();
-		for(int i=0; i<isbn.length; i++) {
-			OrderBean bean = new OrderBean();
-			bean.setDiscount(discount[i]);
-			bean.setQty(qty[i]);
-			bean.setImg(img[i]);
-			bean.setTitle(title[i]);
-			bean.setIsbn(isbn[i]);
-			bean.setStatus(status[i]);
-			formlist.add(bean);
-		}
-		request.setAttribute("formlist", formlist);
+		
+		
+		
+		
 		
 		//
 		List<OrderBean> orderbeanlist = new ArrayList<>();
@@ -66,10 +60,11 @@ public class SelectShopController implements Controller{
 			orderbean.setTitle(title[i]);
 			orderbean.setIsbn(isbn[i]);
 			orderbean.setStatus(status[i]);
-			orderbeanlist.add(orderbean);
+			orderbeanlist.add(orderbean); 
 		}
-		System.out.println(orderbeanlist);
-	
+		System.out.println("R == " + orderbeanlist);
+		
+		
 		
 		
 		// 지점 목록
