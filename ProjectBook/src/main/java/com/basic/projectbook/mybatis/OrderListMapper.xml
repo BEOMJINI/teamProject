@@ -12,6 +12,8 @@
  	<result property="cqty" column="cqty"/>
  	<result property="title" column="title"/>
  	<result property="discount" column="discount"/>
+ 	<result property="image" column="image"/>
+ 	<result property="orderdate" column="orderdate"/>
  	
   </resultMap>
  
@@ -20,8 +22,8 @@
  </select>
  
  <insert id="orderlistInsert" parameterType="orderlist">
-  	insert into orderlist (no, receive, id, isbn, title, cqty ,discount)
-    select #{no}, #{receive}, #{id}, #{isbn}, b.title, #{cqty}, b.discount from book b
+  	insert into orderlist (no, receive, id, isbn,  cqty , title, discount, image, orderdate)
+    select #{no}, #{receive}, #{id}, #{isbn},  #{cqty}, b.title, #{discount}, b.image, #{orderdate}from book b
     where b.isbn = #{isbn}
  </insert>
  
@@ -33,8 +35,8 @@
  	select * from orderlist where id=#{id}
  </select>
  <insert id="addOrderDummy" >
- 	INSERT INTO orderlist (no, receive, id, isbn, cqty,title)
-SELECT 1, 1, '1', b.isbn, 1,'1'
+ 	INSERT INTO orderlist (no, receive, id, isbn, cqty,title,discount,image,orderdate)
+SELECT 1, 1, '1', b.isbn, 1,'1',10000,"1","1"
 FROM book b;
  </insert>
  <select id="getMyOrder" resultType="com.basic.projectbook.vo.MyOrderViewBean" parameterType="String">
@@ -53,5 +55,9 @@ FROM
 WHERE 
     o.id = '1';
  </select>
+ 
+ <delete id="memberDelete" parameterType="String">
+ 	delete from orderlist where id=#{id}
+ </delete>
  
  </mapper> 

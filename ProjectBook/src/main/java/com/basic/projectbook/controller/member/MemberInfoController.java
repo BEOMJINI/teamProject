@@ -37,35 +37,13 @@ public class MemberInfoController implements Controller{
 		// 일치하는 책 정보
 		// 수령 방법 저장
 		// 금액 컴마 저장
-		List<BookVO> booklist = new ArrayList<>();
-		ArrayList<String> receiveNameList = new ArrayList<>();
-		ArrayList<String> moneyList = new ArrayList<>();
 		
-		for(OrderlistVO order : orderlist) {
-			BookVO book = new BookVO();
-			book = BookDAO.getInstance().getBookInfo(order.getIsbn());
-			booklist.add(book);
-						
-			if(order.getReceive() == -1) {
-				receiveNameList.add("배송");
-			} else if (order.getReceive() == 0) {
-				receiveNameList.add("직접수령 : 강남점(본점)");
-			} else if (order.getReceive() == 1) {
-				receiveNameList.add("직접수령 : 잠실점");
-			} else if (order.getReceive() == 2) {
-				receiveNameList.add("직접수령 : 목동점");
-			} else if (order.getReceive() == 3) {
-				receiveNameList.add("직접수령 : 영등포점");
-			}
-		}
 		DecimalFormat df = new DecimalFormat("###,###,### 원");
-		for(int i=0; i<orderlist.size(); i++) {
-			int money = (orderlist.get(i).getCqty() * orderlist.get(i).getDiscount());
-			moneyList.add(df.format(money));
-		}
-		request.setAttribute("bookData", booklist);
-		request.setAttribute("receiveNameData", receiveNameList);
-		request.setAttribute("moneyData", moneyList);
+		//df.format(orderlist.get(i).getDiscount())
+		
+		
+		
+	
 		return "member/myInfo";
 	}
 

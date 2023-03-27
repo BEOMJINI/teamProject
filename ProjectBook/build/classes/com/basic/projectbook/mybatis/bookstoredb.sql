@@ -52,7 +52,9 @@ id varchar(50) not null,
 isbn varchar(50) not null,
 cqty int not null,
 title varchar(500) not null,
-discount int not null
+discount int not null,
+image varchar(500) not null,
+orderdate varchar (100) not null
 );
 
 

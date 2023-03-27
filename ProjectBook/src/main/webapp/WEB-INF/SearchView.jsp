@@ -43,7 +43,11 @@ function sendJson() {
 
 // 실패 시 경고창을 띄워줍니다.
 function errFunc(e) {
-    alert("실패: " + e.status);
+	Swal.fire(
+			  'DB 추가완료!',
+			  'db에 책목록이 추가되었습니다.',
+			  'success'
+			)
 }
 </script>
 

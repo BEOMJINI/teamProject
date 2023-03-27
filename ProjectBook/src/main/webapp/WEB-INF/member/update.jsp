@@ -66,7 +66,7 @@
 				<br>
 					  <input type="submit" value="수정하기"/>
 					  &nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" value="탈퇴하기" id="leaveBtn"/>
+					<input type="button" value="탈퇴하기" id="leaveBtn" onclick="location.href='memberUpdate.do?delete=true'"/>
 			</div>
 		</div>
 

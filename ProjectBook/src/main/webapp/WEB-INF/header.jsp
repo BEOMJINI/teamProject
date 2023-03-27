@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
 <!-- 파비콘 수정 -->
 <link rel="shortcut icon" type="image/x-icon"
-	href="assets/img/favicon.ico">
+	href="assets/img/faviconbb.png">
 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -71,8 +71,7 @@
 						<a class="text-light" href="${ctx }/login.do"
 								style="text-decoration: none;">로그인</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<a class="text-light" href="${ctx }/api.do"
-								style="text-decoration: none;">api</a>
+						
 
 
 						</c:if>
@@ -82,6 +81,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="text-light" href="${ctx }/logout.do"
 								style="text-decoration: none;">로그아웃</a>
+							
 
 							<input type="hidden" value="${id }" id="idid" />
 						</c:if>
@@ -100,6 +100,9 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a class="text-light" href="${ctx }/logout.do"
 								style="text-decoration: none;">로그아웃</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="text-light" href="${ctx }/api.do"
+								style="text-decoration: none;">api</a>			
 						</c:if>
 
 

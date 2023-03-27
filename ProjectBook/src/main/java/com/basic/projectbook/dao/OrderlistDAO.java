@@ -62,6 +62,13 @@ public class OrderlistDAO {
 		session.close();
 		return list;
 	}
+	public void memberDelete(String id) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.delete("mapper.orderlist.memberDelete", id);
+		session.close();
+		return;
+		
+	}
 	
 	
 	
