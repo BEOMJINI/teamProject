@@ -52,8 +52,8 @@ public class SelectShopController implements Controller{
 		
 		//
 		List<OrderBean> orderbeanlist = new ArrayList<>();
-		OrderBean orderbean = new OrderBean();
 		for(int i=0; i<discount.length; i++) {
+			OrderBean orderbean = new OrderBean();
 			orderbean.setDiscount(discount[i]);
 			orderbean.setQty(qty[i]);
 			orderbean.setImg(img[i]);
@@ -63,6 +63,7 @@ public class SelectShopController implements Controller{
 			orderbeanlist.add(orderbean); 
 		}
 		System.out.println("R == " + orderbeanlist);
+		request.setAttribute("orderbeanlist", orderbeanlist);
 		
 		
 		

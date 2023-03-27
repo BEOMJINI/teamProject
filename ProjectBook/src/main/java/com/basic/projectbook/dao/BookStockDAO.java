@@ -76,4 +76,9 @@ public class BookStockDAO {
 		return x;
 		
 	}
+	
+	public void bookStockChangeStore(BookStockVO vo) {
+		SqlSession session=MybatisConfig.getInstance().openSession(true);
+		session.selectOne("mapper.bookstock.bookStockChangeStore", vo);
+	}
 }

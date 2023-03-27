@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.basic.projectbook.dao.BookStockDAO;
 import com.basic.projectbook.dao.CartDAO;
 import com.basic.projectbook.dao.MemberDAO;
 import com.basic.projectbook.dao.OrderlistDAO;
 import com.basic.projectbook.dao.SaleDAO;
 import com.basic.projectbook.frontController.Controller;
+import com.basic.projectbook.vo.BookStockVO;
 import com.basic.projectbook.vo.CartVO;
 import com.basic.projectbook.vo.MemberVO;
 import com.basic.projectbook.vo.OrderlistVO;
@@ -80,6 +82,18 @@ public class payResultController implements Controller{
 		DecimalFormat df = new DecimalFormat("###,###,### 원");
 		String printDiscountData = df.format(printDiscount);
 		request.setAttribute("printDiscountData", printDiscountData);
+		
+		// bookstock 삭제( 직접 수령 시 )
+		System.out.println(request.getParameter("storeid"));
+		if(request.getParameter("storeid") != null) {
+			for(int i=0; i<isbn.length; i++) {
+				BookStockVO bookstockvo = new BookStockVO();
+				bookstockvo.setIsbn(isbn[i]);
+				bookstockvo.setQty(Integer.parseInt(cqty[i]));
+				bookstockvo.setStoreid(Integer.parseInt(request.getParameter("storeid")));
+				BookStockDAO.getInstance().bookStockChangeStore(bookstockvo);
+			}
+		}
 		
 		return "pay/payResult";
 	}

@@ -58,4 +58,8 @@ WHERE NOT EXISTS (
 	<select id="validStore" parameterType="bookstock" resultType="String">
 		select if(sum(qty)>#{qty}, isbn, '-1') from bookstock where storeid=#{storeid} and isbn=#{isbn}
 	</select>
+	
+	<update id="bookStockChangeStore" parameterType="bookstock" >
+		update bookstock set qty= qty-#{qty} where isbn=#{isbn} and storeid=#{storeid}
+	</update>
 </mapper>

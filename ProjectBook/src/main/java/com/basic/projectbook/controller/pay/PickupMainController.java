@@ -34,37 +34,22 @@ public class PickupMainController implements Controller{
 		String img [] = request.getParameterValues("cart_img");
 		String title [] = request.getParameterValues("cart_title");
 		String isbn [] = request.getParameterValues("cart_isbn");
-		String status = request.getParameter("status");
-		String formlist [] = request.getParameterValues("formlist");
-		
-		String gettest [] = request.getParameterValues("gettest");
-		for(String s : gettest) {
-			System.out.println("S = " + s);
-		}
-		
-		
-		System.out.println(formlist);
-		
-		for(int i=0; i<formlist.length; i++) {
-			System.out.println(formlist[i]);
+		String status [] = request.getParameterValues("status");
 			
+		String storeid = request.getParameter("store");
+		System.out.println("sssss " + storeid);
+		 
+		String store_name = "책방 강남점(본점)";
+		if(storeid.equals("1")) {
+			store_name="책방 잠실점";
+		} else if (storeid.equals("2")) {
+			store_name="책방 목동점";
+		} else if (storeid.equals("3")) {
+			store_name="책방 영등포점";
 		}
 		
-		for(String s : isbn) {
-			System.out.println(s);
-		}
-		for(int i=0; i<qty.length; i++) {
-			System.out.println(qty[0]);
-			
-			System.out.println(discount[0]);
-			System.out.println(isbn[1]);
-			System.out.println(isbn[1]);
-			
-		}
-		
-		
-		
-		
+		request.setAttribute("store_name", store_name);
+		request.setAttribute("storeid", storeid);
 		
 		request.setAttribute("discount", discount);
 		request.setAttribute("qty", qty);
@@ -73,7 +58,7 @@ public class PickupMainController implements Controller{
 		request.setAttribute("isbn", isbn);
 		request.setAttribute("status", status);
 		
-		return "pay/pickupMain";
+		return "pay/payMain";
 	}
 
 }

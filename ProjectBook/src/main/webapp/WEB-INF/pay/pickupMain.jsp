@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<script type="text/javascript" src="script/payMain.js" defer></script>
+<script type="text/javascript" src="script/pickupMain.js" defer></script>
 <script type="text/javascript">
 
 </script>
@@ -24,18 +24,19 @@
 					<tr>
 						<td><img src="${img[i.index] }" style="width: 100px; height: 150px;"></td>
 						<td>${title[i.index] }	</td>
-						<td>${qty[i.index] }	</td>
+						<td>${qty[i.index] }	</td>	
 						<td id="total${i.index}">${discount[i.index] * qty[i.index] }</td>
 					</tr>
 					<input type="hidden" value="${isbn[i.index] }" name="isbn"/>
 					<input type="hidden" value="${qty[i.index] }" name="cqty"/>
+					<input type="hidden" value="${storeid }" name="storeid"/>
 				</c:if>
 			</c:forEach>
 			<tr>
 			<td></td>
-			<td>배송비</td>
+			<td>직접 수령 지점</td>
 			<td></td>
-			<td id="deli"></td>
+			<td>${store_name }</td>
 			</tr>
 			
 			<tr style="font-weight: bold;">

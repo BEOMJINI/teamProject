@@ -39,9 +39,11 @@ function radioEvent(){
 $(document).ready(function() {
 	let selectShopForm = document.querySelector("#selectShop_Form");
 	let pay = document.querySelectorAll("input[name=payBtn]");
+	let store = $('input:radio[name=store]:checked').val();
 	for(let i=0; i<pay.length; i++){
 		pay[i].addEventListener("click",()=>{
-			selectShopForm.action="pickupMain.do";
+			selectShopForm.method="post";
+			selectShopForm.action="pickupMain.do?store="+store;
 			selectShopForm.submit();
 		});
 	}	

@@ -138,23 +138,15 @@
 		
 	<!--  ----------------------------------------------------------------------------------- -->
 	<form id="selectShop_Form">
-		
-		
-		
-		
-		<input type="hidden" value="${formlist }" name="formlist"/>
-		
-		<c:forEach var="pay" items="${formlist }" varStatus="i">
-			<p><input type="hidden" value="${formlist.get(i.index).getDiscount}" name="gettest"/></p>
+		<c:forEach var="pay" items="${orderbeanlist }" varStatus="i">
+			<p><input type="hidden" value="${pay.discount }" name="cart_discount"/></p>
+			<p><input type="hidden" value="${pay.qty }" name="cart_qty"/></p>
+			<p><input type="hidden" value="${pay.img }" name="cart_img"/></p>
+			<p><input type="hidden" value="${pay.title }" name="cart_title"/></p>
+			<p><input type="hidden" value="${pay.isbn }" name="cart_isbn"/></p>
+			<p><input type="hidden" value="${pay.status }" name="status"/></p>
 		</c:forEach>
 		
-		
-		
-		<input type="hidden" value="${o_qty }" name="cart_qty"/>
-		<input type="hidden" value="${o_img }" name="cart_img"/>
-		<input type="hidden" value="${o_title }" name="cart_title"/>
-		<input type="hidden" value="${o_isbn }" name="cart_isbn"/>
-		<input type="hidden" value="${o_status }" name="status"/>
 	</form>
 	
 	

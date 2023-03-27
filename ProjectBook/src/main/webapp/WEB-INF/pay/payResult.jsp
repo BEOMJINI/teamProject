@@ -10,7 +10,7 @@
 <p>
 <button type="submit" class="btn btn-success btn-lg" name="" value="" onclick="location.href='${ctx}/main.do'">홈으로</button>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button type="submit" class="btn btn-success btn-lg" name="" value="" >결제 내역 보기</button>
+<button type="submit" class="btn btn-success btn-lg" name="" value="" onclick="location.href='${ctx }/memberInfo.do'">결제 내역 보기</button>
 </p>
 </div>
 </div>
