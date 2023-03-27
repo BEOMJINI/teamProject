@@ -8,6 +8,8 @@ public class OrderlistVO {
 	private int cqty;
 	private String title;
 	private int discount;
+	private String image;
+	private String orderdate;
 	public int getNo() {
 		return no;
 	}
@@ -51,6 +53,19 @@ public class OrderlistVO {
 	}
 	public void setDiscount(int discount) {
 		this.discount = discount;
+	}
+	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getOrderdate() {
+		return orderdate;
+	}
+	public void setOrderdate(String orderdate) {
+		this.orderdate = orderdate;
 	}
 	@Override
 	public String toString() {

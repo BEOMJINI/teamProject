@@ -1,20 +1,31 @@
 package com.basic.projectbook.controller.pay;
 
 import java.io.IOException;
+
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 import com.basic.projectbook.dao.BookStockDAO;
+=======
+import com.basic.projectbook.dao.BookDAO;
+>>>>>>> origin/yangjjhh_dev
 import com.basic.projectbook.dao.CartDAO;
 import com.basic.projectbook.dao.MemberDAO;
 import com.basic.projectbook.dao.OrderlistDAO;
 import com.basic.projectbook.dao.SaleDAO;
 import com.basic.projectbook.frontController.Controller;
+<<<<<<< HEAD
 import com.basic.projectbook.vo.BookStockVO;
+=======
+import com.basic.projectbook.vo.BookVO;
+>>>>>>> origin/yangjjhh_dev
 import com.basic.projectbook.vo.CartVO;
 import com.basic.projectbook.vo.MemberVO;
 import com.basic.projectbook.vo.OrderlistVO;
@@ -56,12 +67,29 @@ public class payResultController implements Controller{
 		OrderlistVO orderVo = new OrderlistVO();
 		int orderMax = OrderlistDAO.getInstance().getMaxNo() + 1;
 		
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy년 MM월 dd일");
+ 
+        Date now = new Date();
+ 
+        String nowTime1 = sdf1.format(now);
+        String nowTime2 = sdf2.format(now);
+ 
+        System.out.println(nowTime1);
+        System.out.println(nowTime2);
+		
 		for(int i =0; i<isbn.length; i++) {
 		orderVo.setNo(orderMax);
 		orderVo.setReceive(-1); // 배송 -1 
 		orderVo.setId(id);
 		orderVo.setIsbn(isbn[i]);
 		orderVo.setCqty(Integer.parseInt(cqty[i]));
+		BookVO bvo=BookDAO.getInstance().getBookInfo(isbn[i]);
+		orderVo.setTitle(bvo.getTitle());
+		orderVo.setDiscount(Integer.parseInt(bvo.getDiscount())*orderVo.getCqty());
+		String image=bvo.getImage();
+		orderVo.setImage(image);
+		orderVo.setOrderdate(nowTime2);
 		OrderlistDAO.getInstance().orderlistInsert(orderVo);
 		}
 		
